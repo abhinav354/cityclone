@@ -1,0 +1,16 @@
+x: ?0
+y: ?0
+size: #[0, 0]
+draggable: ?true
+isDragging: false
+
+setAbsPosFromRect: #
+
+#
+var setAbsPosFromRect = function(rect){
+    this.x = rect[0];
+    this.y = rect[1];
+    this.size[0] = rect[2];
+    this.size[1] = rect[3];
+}
+#

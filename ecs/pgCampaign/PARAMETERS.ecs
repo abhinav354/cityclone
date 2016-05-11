@@ -1,0 +1,24 @@
+!arg towerEmotionItemActions closureAction|
+!arg startEntities gameStateEntity|self|day|dayEnergy|poorSleep|startGameStage|unpackingItem|memoryMaker|adult|solitary|unpackingWish|happyThought|pathButton|controlPanel
+!arg startEntityGroups path|emotionState|emotionSentinel|emotionCurrencyTicker|emotionEntityMaker|currencyConverter
+!arg currencyBoostChance 0
+!arg defaultHeldOpinions acquaintance|friend
+!arg wishCurrencies chores|work|pop culture|walk|diary|exercise|meditate
+!arg size 16|25
+!arg pathEmotionChance 0.03
+
+!arg clickText clickText
+!arg creep creep
+!arg currencyBoost currencyBoost
+!arg dailyCurrencyStore dailyCurrencyStore
+!arg day day
+!arg emotionSource emotionSource
+!arg memory memory
+!arg notification notification
+!arg path path
+!arg player player
+!arg playerInform playerInform
+
+!arg infoPanel infoPanel
+!arg infoFoldout infoFoldout
+!arg bullet bullet

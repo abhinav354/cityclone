@@ -1,0 +1,8 @@
+key,name,items,currency,consumeCheck,towerEffect,entitiesToMake,focusCost,requiredOpinions,personAcceptChance,personHealthFactor,personHealthDiff,successChance,makeMemoryChance
+smallTalkAction,Chat,smallTalk|,social:250,1,,smallTalk:100|helpfulTalk:20,20,acquaintance|,acquaintance:100,0.5,2,alive:80|sadness:-1,0.1
+coolCodeAction,Discuss,coolCode|,social:300,1,,coolCodeActionSucess:100|devWorkInsight:30,20,acquaintance|,acquaintance:10|dev:50,0.5,2,alive:80|sadness:-1,0.25
+chatWorkAction,Chat About,discussable|,social:300,0,,chatWorkActionSuccess|,20,acquaintance|,acquaintance:10|pgWork:10,0.5,5,alive:80|sadness:-1,0.25
+closureTalkAction,Solve,association|,closure:1000,1,,,40,friend|,friend:20,1,10,alive:50|sadness:-3,0
+talkFriendAction,Talk,talkFriendItem|,social:300,1,,,20,friend|,friend:60,0.5,2,alive:80|sadness:-1,0.1
+talkRequestAction,Talk,talkRequestItem|,social:50,1,,,20,friend|,friend:100,0,5,alive:100|sadness:-1,0.1
+gossipAction,Gossip About,gossipItem|,social:100,1,,,20,acquaintance|,acquaintance:10|pgWork:10,0.5,2,alive:75|sadness:-1,0.1

@@ -1,0 +1,10 @@
+!inherit uniqueComponent
+
+uniqueDuplicateEvent: #assertUnique
+
+#
+var assertUnique = function(entity){
+    console.log('Tried to make a duplicate of ' + entity.identityComponent.key);
+    return false;
+};
+#

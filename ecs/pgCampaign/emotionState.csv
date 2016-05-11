@@ -1,0 +1,5 @@
+key,name,checkTag,source,result
+designRage,Design Rage,enraged,designWorkTower,rageDesignWorkTower
+discussRage,Discuss Rage,enraged,discussWorkTower,shoutTower
+discussSad,Discuss Sad,depressed,discussWorkTower,sadDiscussWorkTower
+talkSad,Talk Sad,depressed,talkTower,sadTalkTower

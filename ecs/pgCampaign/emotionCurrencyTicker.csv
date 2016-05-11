@@ -1,0 +1,7 @@
+key,name,emotionSentinel,currency
+boredomWill,Boredom Will,bored,will:6
+relaxedWill,Relaxed Will,relaxed,will:4
+activeWill,Active Will,active,will:3
+distractedWill,Distracted Will,distracted,will:-1
+overwhelmedWill,Overwhelmed Will,overwhelmed,will:-2
+brokenWill,Broken Will,broken,will:-5

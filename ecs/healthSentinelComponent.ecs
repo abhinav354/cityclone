@@ -1,0 +1,7 @@
+sentinel: #healthSentinelCheck
+
+#
+var healthSentinelCheck = function(entity, world){
+    return entity.healthComponent.health > 0;
+};
+#

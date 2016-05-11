@@ -1,0 +1,39 @@
+identityComponent: ()
+boostSlotComponent: ()
+rendererComponents: [boostRenderComponent()]
+
+positionComponent: ()
+
+createExecutables: [randomOpenPositionExec()]
+
+--- boostSlotComponent
+
+traits:
+checkEntityForBoost: #
+
+#
+var checkEntityForBoost = function(entity){
+    var that = this
+    return entity.boostSocketComponent &&
+        _.all(this.traits, function(trait){
+            return _.contains(entity.boostSocketComponent.boostTraits, trait);
+        });
+};
+#
+
+--- boostRenderComponent
+
+!inherit rendererComponent
+
+renderState: planeOfExistence
+priority: 6
+render: #boostRender
+
+#
+var boostRender = function(rect, entity){
+    ctx.drawImage(getImage('towerHex'), rect[0], rect[1]);
+    ctx.fillStyle = '#ffff00';
+    ctx.fillText(entity.identityComponent.name, rect[0] + rect[2] / 3, rect[1] + 2 * rect[3] / 3);
+}
+#
+

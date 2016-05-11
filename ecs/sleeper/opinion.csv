@@ -1,0 +1,9 @@
+key,name,aliveEntities,successOpinions,buttonKeys
+acquaintance,acquaintance,,friend:20,chatButton|
+friend,friend,,romance:10,talkButton|
+romance,romance,,dating:10,flirtButton|
+knownAgent,known agent,,,
+dating,dating,,proposal:5,dateButton|
+married,married,,,
+target,target,,,ambushButton|
+hurtful,hurtful,personHurt:5,,

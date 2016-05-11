@@ -1,0 +1,17 @@
+key,name,spawnSourceKey,emotionsToAdd,focusCost
+playedWell,Played Well,adult,joy:2,
+playedPoor,Played Poorly,adult,anger:2,
+teamFail,Let Team Down,adult,sadness:2,
+racistComment,Racist Comment,holcomb,anger:2,10
+racistThreat,Racist Threat,holcomb,fear:2,10
+spyFear,Spy Fear,agent,fear:15,40
+closeCall,Close Call,agent,fear:15,40
+terrorEventEmotionSource,Terror Event,adult,fear:5,
+holcombTerrorEmotionSource,Terror Event,holcomb,fear:5,
+didWell,Good Session,adult,joy:2,
+didPoorly,Bad Session,adult,disgust:2,
+personHurt,Hurtful Person,self,sadness:5,10
+dateJoy,Date Joy,self,joy:5,10
+dateSadness,Date Sad,self,sadness:5,10
+dateFear,Date Fear,self,fear:5,10
+dateAnger,Date Anger,self,anger:5,10

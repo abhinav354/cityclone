@@ -1,0 +1,7 @@
+ticks: 0
+impulseTicks: ?2
+triggerComponents: []
+damageMultipliers:
+damage: ?10
+targetCount: ?1
+bonusDamagePerTower: ?5

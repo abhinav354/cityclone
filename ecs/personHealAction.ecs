@@ -1,0 +1,7 @@
+!arg health 0
+
+!derive personHeld args.source.personHeldComponent.personHeld
+
+healthComponent: ()
+personHeldComponent: ()
+createExecutables: [personRelationshipExec()]

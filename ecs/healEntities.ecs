@@ -1,0 +1,14 @@
+!inherit executable
+
+execute: #healEntities
+entitiesToHeal: ?#{}
+
+#
+var healEntities = function(entity, world){
+    _.each(this.entitiesToHeal, function(val, key){
+        _.each(world.entitiesForKey(key), function(entityToHeal){
+            entityToHeal.healthComponent.health += val;
+        });
+    });
+};
+#

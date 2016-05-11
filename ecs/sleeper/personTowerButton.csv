@@ -1,0 +1,6 @@
+key,name,towerCost
+chatButton,chat,will:-100
+talkButton,talk,will:-100
+flirtButton,flirt,will:-100
+dateButton,date,will:-100
+ambushButton,ambush,will:-100

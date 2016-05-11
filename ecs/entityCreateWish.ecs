@@ -1,0 +1,39 @@
+!inherit wish
+
+goalTrackComponent: entityCreateTrackComponent()
+notificationComponents: [entityCreateNotificationComponent()]
+
+--- entityCreateTrackComponent
+
+!inherit goalTrackComponent
+
+checkCompleted: #checkForEntityCreateSuccess
+
+entitiesToCreate:
+completed: false
+
+#
+var checkForEntityCreateSuccess = function(){
+    return this.completed;
+};
+#
+
+--- entityCreateNotificationComponent
+
+!inherit notificationComponent
+
+notificationFunctions: #{addedEntities: entityAddedNotification}
+
+#
+var entityAddedNotification = function(entity, args){
+    _.each(args.addedEntities, function(entityKey){
+        if (entity.goalTrackComponent.entitiesToCreate[entityKey]){
+            entity.goalTrackComponent.entitiesToCreate[entityKey] -= 1;
+        }
+    });
+
+    entity.goalTrackComponent.completed = _.all(entity.goalTrackComponent.entitiesToCreate, function(val){
+        return val <= 0;
+    });
+};
+#

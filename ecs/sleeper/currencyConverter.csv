@@ -1,0 +1,12 @@
+key,currencyKey,emotionsConversion,currencyConversion
+choresConvert,chores,joy:1,will:0.25
+meditateConvert,meditate,,will:0.25
+exerciseConvert,exercise,joy:1,will:0.5
+meetPersonConvert,meetPerson,joy:1,will:0.5
+travelConvert,travel,joy:1,will:0.25
+relaxConvert,relax,joy:2,will:1
+chatConvert,chat,joy:1,will:0.25
+talkConvert,talk,joy:1,will:0.25
+flirtConvert,flirt,joy:2,will:1
+playConvert,play,joy:1,will:0.5
+ambushConvert,ambush,joy:1,will:1

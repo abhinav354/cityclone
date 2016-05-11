@@ -1,0 +1,4 @@
+!inherit wish
+
+goalTrackComponent: currencyGoalTrackComponent()
+notificationComponents: [currencyGoalNotificationComponent()]

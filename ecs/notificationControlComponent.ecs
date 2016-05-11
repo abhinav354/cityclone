@@ -1,0 +1,28 @@
+!inherit controlComponent
+
+makeEntity: #makeNotificationEntity
+canMakeEntity: #canMakeNotificationEntity
+
+commandKey:
+controlledKey:
+lockedEmotions:
+getNotificationArgs: #getNotificationArgs
+
+#
+var makeNotificationEntity = function(entity){
+    return makeEcs('notification', {
+        notifyEntityKey: this.controlledKey,
+        notificationKey: this.commandKey,
+        notificationArgs: this.getNotificationArgs(entity)
+    });
+};
+
+var getNotificationArgs = function(entity){
+    return { notifyingEntity: entity };
+};
+
+var canMakeNotificationEntity = function(entity, world){
+    return !this.lockedEmotions ||
+        (_.intersection(emotionTags(world.player), this.lockedEmotions).length == 0)
+};
+#

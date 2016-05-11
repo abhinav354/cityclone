@@ -1,0 +1,6 @@
+key,name,damageMultipliers,currency,emotionsToAdd,aliveEntities,traits,icon,image,playerControlled,damage
+chatTower,Chat,,chat:1|will:1,,,,CHAT,,,
+talkTower,Talk,anger:1|joy:1|sadness:1|fear:1|disgust:1,talk:1,,,,TALK,,,20
+flirtTower,Flirt,,flirt:1,,,,FLIRT,,,
+ambushTower,ambush,,ambush:1,fear:1,closeCall:5,,AMBUSH,,,
+dateTower,date,,date:1,,dateJoy:5|dateSad:5|dateFear:5|dateAnger:5,,DATE,,,

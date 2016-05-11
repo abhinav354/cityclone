@@ -1,0 +1,17 @@
+x:
+y:
+setPos: #setPos
+isPos: #isPos
+canBuildAtPos: #trueFunction
+planeOfExistence:
+
+#
+var setPos = function(pos){ 
+    this.x = pos[0];
+    this.y = pos[1]; 
+};
+
+var isPos = function(pos){
+    return this.x == pos[0] && this.y == pos[1];
+};
+#

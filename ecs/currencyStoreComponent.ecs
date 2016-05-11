@@ -1,0 +1,35 @@
+currencies: ?#{}
+
+storeCurrency: #
+satisfiesCurrencyReq: #
+
+#
+var storeCurrency = function(currency, player){
+    var that = this;
+    _.each(currency, function(val, key){
+        if (that.currencies[key] === undefined){
+            that.currencies[key] = 0;
+        }
+
+        var startValue = that.currencies[key];
+
+        if (player && _.contains(KEY_EMOTIONS, key)){
+            var playerCurrency = player.calculatedCurrencyComponent.currencies[key];
+            playerCurrency = playerCurrency ? playerCurrency : 0;
+            if ((playerCurrency == MAX_KEY_EMOTION && val > 0) ||
+                (playerCurrency == 0 && val < 0)){
+                return;
+            }
+        }
+
+        that.currencies[key] += val;
+    });
+};
+
+var satisfiesCurrencyReq = function(req){
+    var that = this;
+    return _.all(req, function(val, key){
+        return that.currencies[key] + val >= 0;
+    });
+};
+#

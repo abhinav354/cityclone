@@ -1,0 +1,19 @@
+currencyStoreComponent: ()
+rendererComponents: [currencyStoreRenderComponent()]
+identityComponent: ()
+healthComponent: singleHealthComponent()
+
+--- currencyStoreRenderComponent
+
+!inherit rendererComponent
+
+priority: 9
+render: #currencyStoreRender
+
+#
+var currencyStoreRender = function(rect, entity, ui){
+    if (_.keys(entity.currencyStoreComponent.currencies).length > 0){
+        ui.addCurrencyLine(entity.identityComponent.name, entity.currencyStoreComponent.currencies);
+    }
+}
+#

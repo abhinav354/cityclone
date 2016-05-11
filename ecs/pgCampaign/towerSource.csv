@@ -1,0 +1,10 @@
+key,towerActions
+designWorkSource,designProblemAction|designSolutionPolishAction|findFeatureAction
+devWorkSource,lightWorkAction|stretchWorkAction|bugAction|designSolutionAction
+discussWorkSource,featureItemAction|
+walkSource,walkAction|closureAction|memoryAction
+choreSource,choreAction|unpackingAction|choreRequestAction
+popSource,discoverPopAction|readBookAction|watchTvAction
+diarySource,diaryAction|closureAction|memoryAction
+exerciseSource,exerciseAction|
+meditateSource,meditateAction|

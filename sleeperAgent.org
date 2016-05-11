@@ -1,0 +1,236 @@
+* High level themes:
+  - Should you give up on your dreams in exchange for a comfortable life
+  - Can you justify violence if you believe in your cause
+    - You need to let the player avoid violence.
+  - Should you do your duty if it involves hurting others?
+  - Will the threat to things you care about push you into doing things you abhor?
+* Family:
+  - Need to have a family in order to reduce suspicion.
+    - This adds importance to the NPCs in the game
+  - Need to constantly generate things to do from this part
+  - Need to give the player scope to choose family over being an agent.
+  - Needs to require money that can be generated through the sleeper agent stuff
+  - Needs to generate states which require you to be emotional
+  - Needs to generate lots of emotions
+  - Need to have a day job as well
+* Agent
+  - Negotiations which force you be calm
+  - Good for generating fear and disgust
+
+* Activities:
+** Family:
+   - Dating -> marriage
+   - Work
+     - Maybe work at a newspaper?
+   - Bonus work
+   - Bills
+   - Playing chess
+     - Can you figure out an equivalent but more interesting game here
+** Agent:
+   - Spying
+   - Assassination
+   - Bombings?
+   - Negotation
+   - Trasferring documents
+   - Destroying evidence
+   - Writing articles
+   - Torture?
+   - Talking to the handler.
+   - Converting people to the cause
+     - Make this into a cult thing?
+* Mechanical pieces:
+  - Finding time in the midst of the everyday life to perform secret agent tasks
+  - Needing to calm yourself down before handling tense secret agent stuff
+  - Developing a taste for the quiet suburban life
+    - Valuing the small goals of daily life
+    - Developing a personality to deal with the demands of the quiet life
+  - Keeping secrets from everyone you know
+    - Needing to deal with emotions from things but being unable to talk to people
+  - Dealing with racism
+    - Every time something happens, people focus on you.
+  - Needing to be emotional to talk to the S/O
+  - Avoiding suspicious activities after an incident
+  - Needing to be angry to perform acts of terrorism
+  - A hostage situation that kills everything on the mind except for it.
+    - So, you cannot do a lot of actions
+    - All of your goals and current activities are stopped
+* Key moments:
+  - Making a fresh start at the beginning of the game, having moved to a new town
+  - Have the key word told to you, triggering the shift into being an agent.
+  - Have the S/O leave on learning that you're a spy
+    - Have them come back or turn you on based on relationship
+    - Leave some time where you have to manage without them
+  - Someone you know dies due to an act you commit
+  - Having your S/O be taken hostage
+    - This disables her towers and that needs to feel major
+  - Losing pieces of yourself as the secret agent stuff takes up more and more time
+* Minor events:
+  - Waiting to hear from a person
+  - Make fear if you have less than a certain amount of money to represent financial worries.
+  - You can make the house into an aquarium piece in holcomb
+* Currencies that do things:
+  - Will
+  - Suspicion
+  - Money
+  - Frustration at the country you live in
+    - This manifests as anger as it builds up without being addressed
+    - Random events to push this higher
+  - Time spent with family?
+  - Something for building traits
+* Strong questions:
+  - How cartoonish is this?
+  - How sinister is this?
+  - Can we afford cut-scenes?
+  - When is this game set?
+  - Where is this game set?
+  - Who are you a sleeper agent for?
+
+* Chapter 1
+  - Moving In
+  - Major goal: Settling In
+    - Find a house
+    - Find a job
+  - Personality:
+    - Holcomb
+      - Travel
+    - Adult
+      - Chores
+      - Exercise
+      - Meditate
+  - Events:
+    - Racist comments
+* Chapter 2
+  - Fitting In
+  - Major goal: 
+    - Make a friend
+    - Know three people
+    - Comfortable at work
+    - Play a game of chess
+  - Personality:
+    - People:
+      - Play chess
+      - Talk
+      - Flirt
+    - Holcomb
+      - Meet person
+      - Work
+  - Events:
+    - Have work generate racist comments
+    - Do chores for people
+    - People talking to you about their lives
+* Chapter 3
+  - It begins
+    - Be activated with a code word
+  - Major goal:
+    - Contact agent
+    - Spying
+    - Start dating
+      - Only activate this if the player isn't doing this themselves
+  - Events
+    - Chess tournament
+    - Dates
+    - Spending time with friends
+* Chapter 4
+  - Escalation
+  - Major goals:
+    - Marriage
+    - Be given evidence
+    - Destroy evidence
+  - Events:
+    - Terrorist attack
+* Chapter 5
+  - Zenith
+  - Major goals:
+    - Completing missions:
+      - Spying on places
+      - Delivering stuff
+      - Planning honeymoon
+* Chapter 6
+  - Truth
+  - Major goals:
+    - Bombing
+    - Admitting that you are a secret agent
+* Chapter 7
+  - Ascension
+    - Your handler has been captured
+    - Now you are the prime
+  - Major goals:
+    - Look for converts
+    - Look for orders
+    - Bombing
+  - Personality
+    - Agent:
+      - Plot
+* Things that can be generated
+  - Solitary
+    Trigger: Low focus state and no person actions
+    - Walk
+    - Diary entries
+    - Read
+    - Television
+  - Pride in work
+    Trigger: Keep hitting work deadlines
+    - Bonus work
+  - Inured to racism
+    Trigger: Kill a racist creep
+    - No longer affected by racist events
+    - Hate for the country greatly increases
+  - Making friends at work
+    Sometimes make a friend while driving your cab
+
+* Story notes:
+** High level:
+   - [ ] You need more things that cost money
+   - [ ] You need to be able to use secret agent skills to get through everyday life
+** Chapter 1 [9/9]
+   - [X] The first chapter needs more to do.
+   - [X] You need to be able to do things that will have benefit in the future to soak up your excess time now.
+     - What pop culture did for pgCampaign
+     - Solved by work
+   - [X] You need to have a closure action.
+     - Do you really? We might be able to do without it.
+     - [X] Reduce the flashback chance
+     - [X] Reduce the likelihood of making a memory
+     - [X] Also reduce the health they gain
+     - [X] Make the racist events more likely but do less
+   - [X] Make things like meditating also take more effort to complete
+     - Reduce the happiness that it generates
+   - [X] These names are largely quite bad.
+     - [X] Meet person is too long
+   - [X] Need more emotions generated in the beginning.
+   - [X] Put in rent and savings
+   - [X] You want something here that can build up will
+   - [X] The chess source and meet person source are not generated at the end of chapter 1
+     - Make the sources when the button is made
+     - Make the traits calculate whether or not they are active by looking at all the entities
+** Chapter 2
+   - [ ] Instead of putting chess through adult, I'd like the trait to be cultural heritage
+     - I also want that trait to generate anger at the country that you stay in.
+     - I also don't want chess to kill emotions
+     - It can take a lot of focus though
+   - [ ] Make doing work have more potential for going wrong
+     - If you're angry while driving, have this result in poor performance when driving
+       - Customer complaints? Make work a project and have this hurt it?
+   - [ ] More things to chat about
+   - [ ] Give some people the trait of romantic interest and only alow flirting with those people
+** Chapter 3
+   - [ ] I want you to be able to know agent E, but only know he is an agent in chapter 3
+** Chapter 4
+   - [X] Make the proposal into a multi-step thing
+     - [X] You have to buy the ring
+     - [X] You have to get the person to go there and then pop the question
+
+* Story Goals:
+  These are the same as the goals for the game, just slightly reworded
+  - Communicate interesting concepts
+  - Respond to players meaningfully
+  - Provide challenge
+  - Provide scope for self-expression
+
+* Concepts to represent
+  - Poisoining an activity
+  - Developing dependence on people/traits
+  - Not having the time to do everything
+  - Needing to manage emotions to perform activities
+  - Keeping yourself busy to distract from emotions
+  - The riskiness of talking about your problems.

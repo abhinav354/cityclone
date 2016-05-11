@@ -1,0 +1,25 @@
+healthComponent: hundredHealthComponent()
+identityComponent: ()
+sentinelComponent: healthSentinelComponent()
+slotComponent: ()
+towerSourceComponent: ()
+uniqueComponent: assertUniqueComponent()
+
+--- slotComponent
+
+slottedItem: #false
+currentAction: #false
+resetSlotComponent: #
+
+#
+var resetSlotComponent = function(){
+    this.slottedItem = false;
+    this.currentAction = false;
+};
+#
+
+--- towerSourceComponent
+
+towerKey:
+sourceTrait:
+towerActions:

@@ -1,0 +1,19 @@
+key,name,spawnSourceKey,emotionsToAdd
+lightWorkFail,Failing Light Work,game,anger:2
+designProblemFail,Failing Design Problem,game,anger:4|sadness:2
+designSolutionFail,Failed Design Solution,game,anger:6|sadness:4
+featureItemFail,Failed Dicussing Feature,game,anger:6|sadness:6
+missExercise,Exercise Missed,adult,anger:3
+missPop,Pop Culture Missed,solitary,sadness:2
+missWork,Work Missed,workaholism,anger:5|sadness:5
+saidWrong,Said Something Wrong,adult,sadness:3
+scaryPop,Scary Pop Culture,solitary,fear:2
+sadPop,Sad Pop Culture,solitary,sadness:2
+happyPop,Happy Pop Culture,solitary,joy:2
+playedWell,Played Well,adult,joy:2
+playedPoor,Played Poorly,adult,anger:2
+teamFail,Let Team Down,adult,sadness:2
+seeCoolThing,See Cool Thing,solitary,joy:2
+designFailEvent,Designers Failing Their Work,game,anger:3
+coolThing,Cool Pop Culture,solitary,joy:1
+talkFun,Fun Talking,adult,joy:1

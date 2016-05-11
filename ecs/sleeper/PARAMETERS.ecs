@@ -1,0 +1,24 @@
+!arg startEntities gameStateEntity|self|day|memoryMaker|pathButton|controlPanel|dayEnergy|chapter1|rememberItem
+!arg startEntityGroups emotionState|emotionSentinel|emotionCurrencyTicker|emotionEntityMaker|currencyConverter|traitMaker
+!arg defaultHeldOpinions acquaintance|
+!arg wishCurrencies meditate|choes|exercise|meetPerson|travel
+!arg size 16|25
+!arg pathEmotionChance 0
+
+!arg clickText clickText
+!arg creep creep
+!arg currencyBoost currencyBoost
+!arg dailyCurrencyStore dailyCurrencyStore
+!arg day day
+!arg emotionSource emotionSource
+!arg memory memory
+!arg notification notification
+!arg path path
+!arg player player
+!arg playerInform playerInform
+!arg self self
+
+!arg infoPanel infoPanel
+!arg infoFoldout infoFoldout
+!arg bullet bullet
+

@@ -1,0 +1,12 @@
+!inherit executable
+
+execute: #timedMakeEntities
+timedOutEntities: ?[]
+
+#
+var timedMakeEntities = function(entity, world){
+    if (entity.timedDeathComponent.timeToDeath <= 0){
+        makeEntities(entity, world, this.timedOutEntities);
+    }
+};
+#

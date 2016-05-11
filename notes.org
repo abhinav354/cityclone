@@ -1,0 +1,72 @@
+* Issues with people traits:
+  - Figure out secondary traits well
+  - You need to have the dev trait grow when you're doing dev work
+  - Maybe have the dev trait be like the game one and allow the player to build dev towers from either one.
+  - Make the modifiers also result in exp for the trait that unlocks it
+  - Make stable do extra damage and make understanding add success to talking
+* Notes:
+  - Disgust taking out all of your will doesn't really work well. You need to let players solve the issue
+    - Maybe take away control for a while, but then clean up the problem.
+  - Make sources need to connect to the self to work.
+  - Walk tower is garbage
+  - Really need to do something about the multiple towers finishing tasks instantly
+    - Maybe infinite work things for a lot of issues?
+    - The tower cap seems somewhat effective.
+  - Can you also fold the mapEmotionComponent into the memory?
+  - Make memories more likely to flare when associated actions are being run
+    - You can actually replace associations with this.
+  - Can you make things like depression and rage into things on the map as well?
+    - Essentially, make them trait-like entities
+    - Make them active when the emotion is active
+    - Maybe do the same with the emotion currency ticker
+  - The tower stuff appears very opaque right now
+* Further playtest notes
+  - Completing a task and keeping yourself running doesn't seem to do enough right now
+    - Firstly, there are a lot of things that one is doing all the time - maybe space that out a little
+    - Secondly, the economy issue of multiple towers is still a problem
+    - Thirdly, there are too few major tasks, like unpacking
+    - Fourthly, there just doesn't seem to be any larger goals to build to with each goal completion
+      - ie; Finishing a goal just asks the player to turn those towers back on.
+      - It needs to present the player with either a decision point or the anticipation of a decision point
+    - I also just want more records of the things I do
+      - When I read a book, I want it added to my lifetime experiences
+    - You can enhance the boost system with this?
+
+  - So, the core of tower placement is maximizing tower efficiency, but that is capped.
+    - If a tower that overlaps three tiles is constantly firing, then it would be no more efficient if it covered five tiles
+      
+  - The tower defense side is just not built correctly
+    - The sprawling structure and limited number of towers also make things a little hard, but that's actually sort of interesting.
+    - Can you put in something to keep parts of the map separate from each other? What's the metaphor?
+
+  - The goals are nice and do a lot to keep the game moving, but I would like more logic behind them
+    - They feel very random now, I would like it if it made sense to the player why the surrogate would want that thing
+      
+  - Maybe more of a maintenance cost would both help with the economy issue and get buildings to disappear.
+
+  - The new buildings are built too far off. The random open position exec needs to clump better
+
+  - I reallly don't like the diary item losing will
+
+  - People lose health way too quickly and you should always be able to build at least one tower from a source.
+
+  - Being overwhelmed, etc. does not do enough
+    - Make it create emotions? It can make them from self
+
+  - Differentiate will costs more
+
+  - Maybe have towers transform (from something like meditate to walk)
+* Play notes:
+  - The boosts are actually fun and nice to get, but can probably be cut.
+  - Finishing a task and freeing up that focus is a good feeling.
+  - The creeps need to be tweaked into being bigger.
+
+* Possible solution for extreme emotion:
+  - Suspend all activities while gaining control of self
+  - Transform the towers that need to be transformed.
+  - Kill a lot of emotions, but leave an undercurrent of the emotion that was extreme
+  - Create memories
+
+* New notes:
+  - Towers being used for closure should not hit emotions
+  - It would be nice to have more currencies like will that do stuff

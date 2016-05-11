@@ -1,0 +1,73 @@
+!inherit itemAction
+
+!derive personHeld args.traitKey
+
+itemActionComponent: personActionComponent()
+goalTrackComponent: personActionGoalTrackComponent()
+personHeldComponent: ()
+
+--- personActionComponent
+
+!inherit itemActionComponent
+
+requiredOpinions:
+baseCheckItemForAction: #checkItemForAction
+checkItemForAction: #personCheckItemForAction
+
+#
+var personCheckItemForAction = function(item, trait){
+    if (!trait.personalityComponent){
+        return;
+    }
+
+    var personHeldOpinions = _.map(trait.personalityComponent.heldOpinions, function(opinion){
+        return opinion.identityComponent.key;
+    });
+
+    return this.baseCheckItemForAction(item, trait) &&
+        _.all(this.requiredOpinions, function(opinion){
+            return _.contains(personHeldOpinions, opinion);
+        });
+};
+#
+
+--- personActionGoalTrackComponent
+
+!inherit itemActionGoalTrackComponent
+
+!extend successExecutables [personRelationshipExec()]
+
+--- personRelationshipExec
+
+!inherit executable
+
+execute: #personRelationshipExec
+personHealthDiff: ?0
+personLearnChance: 0.2
+
+#
+var personRelationshipExec = function(entity, world){
+    var person = world.entityForKey(entity.personHeldComponent.personHeld);
+    var opinionsToMake = [];
+    _.each(person.personalityComponent.heldOpinions, function(opinion){
+        _.each(opinion.successOpinions, function(val, key){
+            if (percentCheck(val)){
+                opinionsToMake.push(key);
+            }
+        });
+    });
+
+    _.each(opinionsToMake, function(key){
+        person.personalityComponent.addOpinionToPersonality(key, person, world);
+    });
+
+    person.healthComponent.health += this.personHealthDiff;
+
+    if (Math.random() < this.personLearnChance){
+        var trait = _.sample(person.personalityComponent.personalityTraits);
+        if (!_.contains(person.personalityComponent.knownPersonalityTraits, trait)){
+            person.personalityComponent.knownPersonalityTraits.push(trait);
+        }
+    }
+};
+#

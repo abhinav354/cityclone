@@ -1,0 +1,14 @@
+identityComponent: ()
+dayResponseComponent: dailyEntityMakerComponent()
+
+--- dailyEntityMakerComponent
+
+dayStart: #dailyEntityMake
+dayStartEntity:
+
+#
+var dailyEntityMake = function(entity, world){
+    var newEntity = makeEcs(this.dayStartEntity);
+    world.addEntity(newEntity);
+};
+#

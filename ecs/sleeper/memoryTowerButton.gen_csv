@@ -1,0 +1,2 @@
+key,name,towerCost,towerKey,sourceKey,isaacEntities
+rememberButton,remember,will:-100,rememberTower,rememberSource,rememberSource|

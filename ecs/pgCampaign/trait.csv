@@ -1,0 +1,13 @@
+key,name,aliveEntities,currencies,isaacEntities,dailyEntities,currency
+workaholism,workaholism,workWish:30,will:100,devWorkLove|designWorkLove|workHardActivate,,
+laziness,laziness,,will:-250,,,
+adult,adult,choreItem:2,,choreButton|exerciseButton|exerciseItem|meditateButton|meditateItem,exerciseWish:3,
+game,game,,,findFeatureItem|designWorkButton|devWorkButton|discussWorkButton,,
+solitary,solitary,,,walkButton|diaryButton|popButton|walkItem|diaryItem|discoverPop,popCultureWish:3,
+selfAware,self aware,,understanding:25,,,closure:2
+stable,stable,,stable:50,,,
+dev,dev,,,devWorkButton|,,
+pgWork,pgwork,gossipItem:2,,,,
+listener,listener,,understanding:25,listenActivate|,,
+whiny,whiny,,,complainActivate|,,
+healthy,healthy,exerciseWish:10,,pushYourselfActivate|,,exercise:2

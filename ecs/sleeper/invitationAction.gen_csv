@@ -1,0 +1,20 @@
+key,name,items,currency,consumeCheck,towerEffect,entitiesToMake,focusCost,requiredOpinions,successChance,makeMemoryChance
+invite_findHouse,Invite to Find House,findHouseItem|,chat:250,0,,inviteGoal_findHouse,10,acquaintance|,,0
+invite_findJob,Invite to Find Job,findJobItem|,chat:250,0,,inviteGoal_findJob,10,acquaintance|,,0
+invite_meetPersonAction,Invite to Meet,meetPersonItem|,chat:250,0,,inviteGoal_meetPersonAction,10,acquaintance|,,0
+invite_choreAction,Invite to Clean,choreItem|,chat:250,0,,inviteGoal_choreAction,10,acquaintance|,,0
+invite_exerciseAction,Invite to Exercise,exerciseItem|,chat:250,0,,inviteGoal_exerciseAction,10,acquaintance|,,0
+invite_meditateAction,Invite to Meditate,meditateItem|,chat:250,0,,inviteGoal_meditateAction,10,acquaintance|,,0
+invite_driveCabAction,Invite to Drive,driveCabItem|,chat:250,0,,inviteGoal_driveCabAction,10,acquaintance|,,0
+invite_chessAction,Invite to Play,chessItem|,chat:250,0,,inviteGoal_chessAction,10,acquaintance|,,0
+invite_spyAction,Invite to Spy,spyItem|,chat:250,0,,inviteGoal_spyAction,10,acquaintance|,,0
+invite_chessMatchAction,Invite to Play Match,chessMatchItem|,chat:250,0,,inviteGoal_chessMatchAction,10,acquaintance|,,0
+invite_relaxAction,Invite to Relax,relaxItem|,chat:250,0,,inviteGoal_relaxAction,10,acquaintance|,,0
+invite_getEvidenceAction,Invite to Discover,getEvidenceItem|,chat:250,0,,inviteGoal_getEvidenceAction,10,acquaintance|,,0
+invite_destroyEvidence,Invite to Destroy,evidenceItem|,chat:250,0,,inviteGoal_destroyEvidence,10,acquaintance|,,0
+invite_buyRingAction,Invite to Buy,buyRingItem|,chat:250,0,,inviteGoal_buyRingAction,10,acquaintance|,,0
+invite_mission1Action,Invite to Spy,mission1Item|,chat:250,0,,inviteGoal_mission1Action,10,acquaintance|,,0
+invite_mission2Action,Invite to Deliver,mission2Item|,chat:250,0,,inviteGoal_mission2Action,10,acquaintance|,,0
+invite_mission3Action,Invite to Bomb,mission3Item|,chat:250,0,,inviteGoal_mission3Action,10,acquaintance|,,0
+invite_playAction,Invite to Play,playItem|,chat:250,0,,inviteGoal_playAction,10,acquaintance|,,0
+invite_rememberAction,Invite to Remember,rememberItem|,chat:250,0,,inviteGoal_rememberAction,10,acquaintance|,,0

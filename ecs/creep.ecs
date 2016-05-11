@@ -1,0 +1,109 @@
+!derive currencies simpleDict(args.emotion, 5)
+!default health 50
+
+currencyStoreComponent: ()
+dayResponseComponent: killDayEndComponent()
+damageableComponent: ()
+healthComponent: ()
+identityComponent: ()
+pathVelocityComponent: ()
+positionComponent: ()
+rendererComponents: [creepRenderComponent(), currencyStoreRenderComponent(), hitRenderComponent()]
+tickComponent: creepTickComponent()
+
+--- creepRenderComponent
+
+!inherit rendererComponent
+
+render: #creepRender
+priority: 8
+activated: 0
+
+#
+var getEmotionRect = function(rect, entity, rectCount){
+    var dx = entity.pathVelocityComponent.forward ? -12 : 12;
+    var x = rect[0] + rect[2] / 2 + dx;
+    var y = rect[1] + rect[3] / 3 + 10 * rectCount;
+    var size = Math.floor(entity.healthComponent.health / 5);
+    return [x, y, size, size];
+};
+
+var EMOTION_FILLSTYLES = {
+    anger: '#ff0000',
+    sadness: '#0000ff',
+    joy: '#ffff00',
+    disgust: '#00ff00',
+    fear: '#ff00ff'
+};
+
+var creepRender = function(rect, entity, ui, rectCount){
+    var emotion = entity.damageableComponent;
+    var emotionRect = getEmotionRect(rect, entity, rectCount);
+    
+    if (entity.pathVelocityComponent.path){
+        var pathMoveComponent = entity.pathVelocityComponent.path.pathMoveComponent;
+        var pos = entity.pathVelocityComponent.forward ? 
+            pathMoveComponent.endPosition : 
+            pathMoveComponent.startPosition;
+        pos = {x: pos[0], y: pos[1]}
+        
+        var nextRect = ui.world.hexMap.cellForPosComp(pos).rect;
+        nextRect = getEmotionRect(nextRect, entity, rectCount);
+        
+        var fraction = 1 - (entity.pathVelocityComponent.ticks / pathMoveComponent.ticks);
+        
+        emotionRect = [emotionRect[0] + ((nextRect[0] - emotionRect[0]) * fraction),
+                       emotionRect[1] + ((nextRect[1] - emotionRect[1]) * fraction),
+                       emotionRect[2], emotionRect[3]];
+    }
+
+    if (entity.healthComponent.damageFactor === 0){
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(emotionRect[0] - 2, emotionRect[1] - 2, emotionRect[2] + 4, emotionRect[2] + 4);
+    }
+
+    ctx.fillStyle = (this.activated > 0) ? '#ffffff' : EMOTION_FILLSTYLES[emotion.emotion];
+    ctx.fillRect(emotionRect[0], emotionRect[1], emotionRect[2], emotionRect[3]);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(emotionRect[0], emotionRect[1] - 2, emotionRect[2] * entity.healthComponent.health / 100, 2);
+};
+
+#
+
+--- creepMapSpawnComponent
+
+!inherit mapSpawnComponent
+
+mapSpawnChance: #creepMapEmotionSpawnChance
+mapSpawnKey: "mapEmotion"
+mapSpawnFraction: ?0.001
+extremeSpawnFraction: ?0.005
+
+spawnedToday: #false
+
+#
+var creepMapEmotionSpawnChance = function(entity, world){
+    var tags = emotionTags(world.player);
+    var emotion = entity.damageableComponent.emotion;
+    var emotionList = emotionTable[emotion];
+    var extremeEmotion = emotionList[emotionList.length - 1];
+    return (_.contains(tags, extremeEmotion)) ? this.extremeSpawnFraction : this.mapSpawnFraction;
+};
+#
+
+--- creepTickComponent
+
+!inherit tickComponent
+
+tick: #creepTick
+
+#
+var creepTick = function(entity, world){
+    entity.healthComponent.health -= 2;
+    _.each(entity.rendererComponents, function(renderComponent){
+        if (renderComponent.activated){
+            renderComponent.activated -= 1;
+        }
+    });
+};
+#

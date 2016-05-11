@@ -1,0 +1,113 @@
+!default tags [(args.source) ? args.source.identityComponent.key : 'default']
+
+identityComponent: ()
+buttonControlComponent: towerControlComponent()
+healthComponent: singleHealthComponent()
+isaacEntityComponent: ()
+rendererComponents: [towerButtonRender()]
+
+--- towerControlComponent
+
+!inherit controlComponent
+
+towerCost:
+
+towerKey:
+sourceKey:
+managerKey:
+
+canMakeEntity: #canBuildTower
+makeEntity: #buildTower
+canOverlap: #false
+wrappedFunction: #undefined
+checkMakePos: #
+
+#
+var canBuildTower = function(world){
+    if (!world.player.calculatedCurrencyComponent.satisfiesCurrencyReq(this.towerCost)){
+        return false;
+    }
+
+    var managingEntity = world.entityForKey(this.managerKey);
+    
+    if (!managingEntity){
+        console.log(this.managerKey);
+    }
+
+    if (!managingEntity.entityManagerComponent.canMakeManagedEntity(managingEntity, world)){
+        return false;
+    }
+
+    return true;
+};
+
+var buildTower = function(world, pos){
+    var entity = makeEcs(this.towerKey, {
+        x: pos[0], 
+        y: pos[1],
+        source: world.entityForKey(this.managerKey)
+    });
+
+    if (entity.damageComponent){
+        var tickSetEntity = world.entityForKey(this.towerKey);
+        if (tickSetEntity){
+            entity.damageComponent.ticks = tickSetEntity.damageComponent.ticks;
+        }
+    }
+
+    world.addCost('built ' + entity.identityComponent.name, this.towerCost);
+    return entity;
+};
+
+var checkMakePos = function(world, pos){
+    var that = this;
+    if (this.canOverlap){
+        return true;
+    }
+    return world.isPosEmptyTrait(pos, this.managerKey);
+};
+#
+
+--- towerButtonRender
+
+!inherit rendererComponent
+
+priority: 9
+render: #towerButtonRender
+
+#
+var towerButtonRender = function(rect, entity, ui){
+    if (entity.buttonControlComponent.wrappedFunction === undefined){
+        entity.buttonControlComponent.wrappedFunction = makeButtonWrappedFunction(entity, ui.world);
+    }
+    var buttonLine = [
+        {
+            buttonFunction: entity.buttonControlComponent.wrappedFunction,
+            text: entity.identityComponent.name + ' (' + dictString(entity.buttonControlComponent.towerCost) + ')',
+            disabled: !entity.buttonControlComponent.canMakeEntity(ui.world)
+        }
+    ];
+
+    var towerKey = entity.buttonControlComponent.towerKey;
+    if (allArgs[towerKey].damageMultipliers){
+        buttonLine.push(dictString(allArgs[towerKey].damageMultipliers));
+    }
+
+    var line = {
+        line: buttonLine
+    }
+
+    ui.addFoldLine('#' + entity.buttonControlComponent.managerKey, line, '#towers');
+    
+    ui.addFoldLine('#towers', line, '#' + entity.buttonControlComponent.managerKey);
+};
+
+var makeButtonWrappedFunction = function(entity, world){
+    return function(){
+        world.resetCurrents();
+        if (entity.buttonControlComponent.canMakeEntity(world)){
+            world.currentMakingEntity = entity;
+        }
+    };
+};
+#

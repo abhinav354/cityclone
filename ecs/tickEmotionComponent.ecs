@@ -1,0 +1,12 @@
+currency:
+traits: ?#[]
+towerSourceKey: ?false
+checkTickContinue: #
+
+#
+var checkTickContinue = function(world, entity){
+    return !(this.currency.will && 
+             this.currency.will < 0 && 
+             world.player.calculatedCurrencyComponent.currencies.will < 0);
+};
+#

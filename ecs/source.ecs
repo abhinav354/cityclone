@@ -1,0 +1,43 @@
+!derive touchable true
+
+clickComponent: traitClickComponent()
+positionComponent: ()
+identityComponent: ()
+healthComponent: ()
+rendererComponents: [sourceRenderComponent(), nameRenderComponent()]
+sentinelComponent: healthSentinelComponent()
+uniqueComponent: assertUniqueComponent()
+
+--- sourceRenderComponent
+
+!inherit rendererComponent
+
+render: #sourceRender
+priority: 6
+
+#
+var sourceRender = function(rect){
+    ctx.drawImage(getImage('activeHex'), rect[0], rect[1]);
+};
+#
+
+--- traitClickComponent
+
+!inherit clickComponent
+
+onClick: #traitOnClick
+
+#
+var traitOnClick = function(entity, world, ui){
+    var didOpen = ui.openPanelAtPos('#' + entity.identityComponent.key, entity.positionComponent);
+    if (!didOpen && entity.experienceComponent){
+        var gameStateEntity = world.entityForKey('gameStateEntity');
+        if (gameStateEntity.rendererSystemComponent.currentRenderState == entity.identityComponent.key){
+            gameStateEntity.rendererSystemComponent.currentRenderState = 'default';
+        }
+        else{
+            //gameStateEntity.rendererSystemComponent.currentRenderState = entity.identityComponent.key;
+        }
+    }
+};
+#

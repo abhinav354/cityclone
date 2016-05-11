@@ -1,0 +1,14 @@
+mapSpawnChance:
+mapSpawnPos: #
+mapSpawnKey:
+mapPostSpawn: #trueFunction
+
+#
+var mapSpawnPos = function(entity, world){
+    return _.chain(world.hexMap.neighbors(entity.positionComponent.x,
+                                          entity.positionComponent.y))
+        .filter(function(neighbor){ return world.isPosBuildable(neighbor); })
+        .sample()
+        .value();
+};
+#

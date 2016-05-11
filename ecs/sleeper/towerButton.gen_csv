@@ -1,0 +1,11 @@
+key,name,towerCost,tags,towerKey,sourceKey,isaacEntities,managerKey
+choreButton,chore,will:-100,adult|,choreTower,choreSource,choreSource|,adult
+exerciseButton,exercise,will:-100,adult|,exerciseTower,exerciseSource,exerciseSource|,adult
+meditateButton,meditate,will:-100,adult|,meditateTower,meditateSource,meditateSource|,adult
+meetPersonButton,meet person,will:-100,holcomb|,meetPersonTower,meetPersonSource,meetPersonSource|,holcomb
+travelButton,travel,will:-100,holcomb|,travelTower,travelSource,travelSource|,holcomb
+chessButton,chess,will:-100,lovesChess|,chessTower,chessSource,chessSource|,lovesChess
+spyButton,spy,will:-100,agent|,spyTower,spySource,spySource|,agent
+relaxButton,relax,will:-100,holcomb|,relaxTower,relaxSource,relaxSource|,holcomb
+bombButton,bomb,will:-100,agent|,bombTower,bombSource,bombSource|,agent
+playButton,play,will:-100,adult|,playTower,playSource,playSource|,adult

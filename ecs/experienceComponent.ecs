@@ -1,0 +1,10 @@
+getXpLevel: #
+currentLevel: 1
+maxLevel: 10
+xpPerLevel: 50
+
+#
+var getXpLevel = function(entity){
+    return min(Math.floor(entity.healthComponent.health / this.xpPerLevel), this.maxLevel);
+};
+#

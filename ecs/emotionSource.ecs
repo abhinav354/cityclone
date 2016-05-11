@@ -1,0 +1,91 @@
+!derive draggable false
+
+identityComponent: ()
+healthComponent: singleHealthComponent()
+emotionSourceComponent: ()
+focusCostComponent: ()
+rendererComponents: [emotionSourceRenderComponent(), emotionSourceUiRenderComponent(), focusRenderComponent()]
+absolutePositionComponent: ()
+uiClickComponent: emotionSourceUiClickComponent()
+
+--- emotionSourceRenderComponent
+
+!inherit rendererComponent
+
+render: #emotionSourceRender
+priority: 8
+
+#
+var emotionSourceRender = function(rect, entity, ui, rectCount){
+    if (entity.emotionSourceComponent.emotions.length === 0 || !entity.emotionSourceComponent.shouldTick(entity, ui.world)){
+        return;
+    }
+    var spawnSource = ui.world.entityForKey(entity.emotionSourceComponent.spawnSourceKey);
+    for (var i = entity.emotionSourceComponent.spawnCount; i < entity.emotionSourceComponent.emotions.length; i++){
+        rect = ui.world.hexMap.cellForPosComp(spawnSource.positionComponent).rect;
+        rect = [rect[0] + i * 10, rect[1], 10, 10];
+        var emotion = entity.emotionSourceComponent.emotions[0];
+        ctx.fillStyle = entity.emotionSourceComponent.border;
+        ctx.beginPath();
+        ctx.arc(rect[0] + rect[2] / 2, rect[1] + rect[3] / 2, rect[2] / 2 + 2, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillStyle = EMOTION_FILLSTYLES[emotion];
+        ctx.fillRect(rect[0], rect[1], rect[2], rect[3]);
+    }
+};
+#
+
+--- emotionSourceUiRenderComponent
+
+!inherit rendererComponent
+
+render: #emotionSourceUiRender
+priority: 9
+
+#
+var emotionSourceUiRender = function(rect, entity, ui){
+    var emotion = entity.emotionSourceComponent.emotions[0];
+    var text = emotion + ' (' + entity.identityComponent.name + ')';
+    if (entity.absolutePositionComponent){
+        entity.absolutePositionComponent.setAbsPosFromRect(rect);
+        ui.addLine('#' + entity.identityComponent.key + '_' + entity.identityComponent.uid, text, true);
+    }
+
+    ui.addFoldLine('#' + entity.emotionSourceComponent.spawnSourceKey, text, '#emotionSources');
+};
+#
+
+--- emotionSourceComponent
+
+spawnCount: 0
+ticks: ?2
+impulseTicks: ?60
+
+spawnSourceKey:
+emotions: ?#unrollDict(args.emotionsToAdd)
+
+spawnComplete: #
+shouldTick: #trueFunction
+traits: ?[]
+border: "#ffffff"
+
+#
+var spawnComplete = function(entity, world){
+    entity.healthComponent.health = 0;
+};
+#
+
+--- emotionSourceUiClickComponent
+
+uiClick: #emotionSourceUiClick
+
+#
+var emotionSourceUiClick = function(pos, entity, ui){
+    var panelKey = '#' + entity.identityComponent.key + '_' + entity.identityComponent.uid;
+    var infoPanel = ui.getPanel(panelKey);
+    infoPanel.panelComponent.closed = false;
+    infoPanel.panelComponent.minimized = false;
+    infoPanel.absolutePositionComponent.x = pos[0];
+    infoPanel.absolutePositionComponent.y = pos[1];
+};
+#

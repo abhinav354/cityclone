@@ -1,0 +1,4 @@
+!inherit sourceExtension
+
+!derive name args.source ? args.source.identityComponent.name : undefined
+!derive sourceKey args.source ? args.source.identityComponent.key : undefined

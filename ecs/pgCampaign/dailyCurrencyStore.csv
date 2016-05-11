@@ -1,0 +1,11 @@
+key,name,currencies,focusCost
+poorSleep,Poor Sleep,will:-100
+sadStore,Depression,will:-1000,40
+ecstaticWill,Ecstatic,will:1000
+ecstaticFocus,Ecstatic,focus:60
+nauseatedWill,Nauseated,will:-500
+trickyCode,Tricky Code,will:-25
+refreshed,Refreshed,will:25
+enragedWill,Enraged,will:500
+flabbiness,Flabbiness,will:-250
+unstimulated,Unstimulated,will:-250

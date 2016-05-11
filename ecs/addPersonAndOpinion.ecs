@@ -1,0 +1,23 @@
+createExecutables: [addPersonAndOpinionExec()]
+healthComponent: singleHealthComponent()
+
+--- addPersonAndOpinionExec
+
+!inherit executable
+
+execute: #addPersonAndOpinionExec
+personKey:
+opinionKey:
+
+#
+var addPersonAndOpinionExec = function(entity, world){
+    var person = world.entityForKey(this.personKey);
+    if (!person){
+        person = makeEcs(this.personKey);
+        world.addEntity(person);
+    }
+
+    person.personalityComponent.addOpinionToPersonality(this.opinionKey, person, world);
+    entity.healthComponent.health = 0;
+};
+#

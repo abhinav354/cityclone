@@ -1,0 +1,39 @@
+!inherit itemAction
+
+goalTrackComponent: meetPersonGoalTrackComponent()
+
+--- meetPersonGoalTrackComponent
+
+!inherit itemActionGoalTrackComponent
+
+!extend successExecutables [addRandomPersonToMap()]
+
+--- addRandomPersonToMap
+
+!inherit executable
+
+execute: #addRandomPersonToMap
+
+#
+var addRandomPersonToMap = function(entity, world){
+    var peopleOnMap = _.chain(world.entities)
+        .filter(function(worldEntity){
+            return worldEntity.personalityComponent;
+        })
+        .map(function(worldEntity){
+            return worldEntity.identityComponent.key;
+        })
+        .value();
+
+    var person = _.chain(csvIdentifiers.person)
+        .filter(function(key){
+            return !_.contains(peopleOnMap, key);
+        })
+        .sample()
+        .value();
+    
+    if (person){
+        world.addEntity(makeEcs(person));
+    }
+};
+#

@@ -1,0 +1,48 @@
+!derive x args['start'][0]
+!derive y args['start'][1]
+
+!derive key 'path_' + args.x + '_' + args.y + '_' + args.end[0] + '_' + args.end[1];
+!derive name 'path(' + args.x + ',' + args.y + ')';
+
+healthComponent: hundredHealthComponent()
+identityComponent: ()
+pathMoveComponent: ()
+positionComponent: ()
+rendererComponents: [pathConnectRenderComponent()]
+
+--- pathMoveComponent
+startPosition: start
+endPosition: end
+ticks: 6
+
+--- pathRenderComponent
+!inherit rendererComponent
+
+render: #pathRender
+priority: 5
+
+#
+var pathRender = function(rect){
+    ctx.drawImage(getImage('activeHex'), rect[0], rect[1]);
+};
+#
+
+--- pathConnectRenderComponent
+
+!inherit rendererComponent
+
+render: #pathConnectRender
+priority: 11
+
+#
+var pathConnectRender = function(rect, entity, ui){
+    var endRect = ui.world.hexMap.cellForPosComp({x: entity.pathMoveComponent.endPosition[0],
+                                                  y: entity.pathMoveComponent.endPosition[1]}).rect;
+    ctx.strokeStyle = '#ff0000';
+    ctx.beginPath();
+    ctx.moveTo(rect[0] + rect[2] / 2, rect[1] + rect[3]/ 2);
+    ctx.lineTo(endRect[0] + endRect[2] / 2, endRect[1] + endRect[3] / 2);
+    ctx.stroke();
+}
+#
+

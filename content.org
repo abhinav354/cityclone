@@ -1,0 +1,29 @@
+* Secondary Tower Effects:
+  - Suppressing emotional effect - calming
+  - Aggregating - combo with things that shoot slowly but hard.
+  - Increasing emotional effect (daydreaming)
+  - Rationalizing - lets other towers do significantly more damage
+  - Generating events
+* PG:
+  Dealing with:
+  - Anger at the game not moving.
+  - Frustration that the people you are working with cannot do good work themselves
+  - Frustration at working with stupid people
+  - Desire to get work done.
+  - Loneliness
+  - Feeling used
+  - Need to do interesting work
+  
+  Actions:
+  - Doing some design work
+  - Doing programming work
+  - Taking a walk
+  - Talking to other people
+  - Playing games with people
+  
+  Events:
+  - Assigned work
+  - Coworkers failing assigned sprint work
+  - Coworkers talking to you - good if non-designers, bad if designers
+  - Developers/Artists doing good work
+  - Sleeping badly

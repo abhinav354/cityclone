@@ -1,0 +1,10 @@
+key,name,towerCost,towerKey,sourceKey
+designWorkButton,design work,will:-200,designWorkTower,designWorkSource
+devWorkButton,dev work,will:-100,devWorkTower,devWorkSource
+discussWorkButton,discuss work,will:-200,discussWorkTower,discussWorkSource
+walkButton,walk,will:-100,walkTower,walkSource
+choreButton,chore,will:-100,choreTower,choreSource
+popButton,pop culture,will:-100,popTower,popSource
+diaryButton,diary,will:-100,diaryTower,diarySource
+exerciseButton,exercise,will:-100,exerciseTower,exerciseSource
+meditateButton,meditate,will:-100,meditateTower,meditateSource

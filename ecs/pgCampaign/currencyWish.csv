@@ -1,0 +1,5 @@
+key,name,minCurrency,squashCurrency,focusCost,entitiesToMake,emotionsToAdd,spawnSourceKey,timedOutEntities,timeToDeath
+popCultureWish,Pop Culture Wish,pop culture:100,,10,,,solitary,unstimulated|missPop,360
+workWish,Work Wish,work:250,will:-100,20,,anger:1,workaholism,missWork,90
+socialWish,Social Wish,social:250,will:-50,20,,,adult,,
+exerciseWish,Exercise,exercise:100,,10,,,adult,flabbiness|missExercise,360

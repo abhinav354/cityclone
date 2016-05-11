@@ -1,0 +1,4 @@
+key,name,towerTrait,emotionState,factor
+talkSadModifier,Talking When Depressed,talk,depressed,50
+distractedWork,Working When Distracted,work,distracted,50
+overwhelmedWork,Working When Overwhelmed,work,overwhelmed,20

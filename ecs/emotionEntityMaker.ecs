@@ -1,0 +1,8 @@
+identityComponent: ()
+emotionEntityMakerComponent: ()
+
+--- emotionEntityMakerComponent
+
+emotionSentinel:
+activeSource:
+entitiesToMake:

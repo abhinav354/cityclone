@@ -1,0 +1,19 @@
+key,name,currencies,sourceKey
+holcomb_ext,Holcomb,,holcomb
+adult_ext,adult,,adult
+racist_ext,Racist,,racist
+lovesChess_ext,Loves Chess,,lovesChess
+wishesToTalk_ext,Wishes To Talk,,wishesToTalk
+agent_ext,Agent,,agent
+worldTerror_ext,World Terror,,worldTerror
+lethargy_ext,Lethargy,will:-100,lethargy
+excitable_ext,Excitable,will:100,excitable
+outgoing_ext,Outgoing,,outgoing
+resilient_ext,Resilient,,resilient
+empathic_ext,Empathic,,empathic
+personA_ext,Person A,,personA
+personB_ext,Person B,,personB
+personC_ext,Person C,,personC
+personD_ext,Person D,,personD
+agentE_ext,Agent E,,agentE
+TargetA_ext,Target A,,TargetA

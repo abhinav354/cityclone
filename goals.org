@@ -1,0 +1,42 @@
+* Aims:
+  - Make sure that the player knows what they should be doing next
+  - Civ style addiction - one more turn
+  - Needs to communicate that wants come from the surrogate, and not the player
+* Secondary aims:
+  - Add maintenance costs
+  - Add depth to the decision making by instituting more trade-offs
+  - Allowing the micro-optimizations of completing multiple wishes simultaneously
+  - Push players to build more things
+  - Push players to build a variety of things
+  - Reinforcing decisions already made - cooking gets you cooking wishes
+  - Recognizing major player decisions
+* Pieces:
+  - Can be used to heal/hurt traits
+  - Should put a timer on them
+  - Limit the number that can be active at any time?
+  - Make them take up focus
+  - Squash them with will
+  - Generate them from traits? From producers?
+  - Don't remake duplicates
+  - Try letting the player decide which wishes to take
+    - Try having all of the traits have a number of wishes associated with them
+* Requirements:
+  - Needs a reward, possibly trait health + will is insufficient
+    - Look at lifetime happiness for The Sims, the currency doesn't do much from a gameplay perspective
+    - It has strong story-telling though
+
+* Translation issues from The Sims:
+  - Representing hurting the trait
+  - It feels too much in control. The game is all about managing a person and this undercuts that
+  - It doesn't do maintenance cleanly
+
+* Things to do [3/9]:
+  - [X] Generate wishes from items that are alive
+  - [X] Uniquify the wishes
+  - [X] Make the wish generation dependent on the number of wishes alive
+  - [ ] Make the wishes scale in order to provide maintenance
+  - [ ] Make wishes for things not tried yet
+  - [ ] Have finishing goals make other goals more likely
+  - [ ] Make goal archetypes
+  - [ ] Make leveling the trait add goal archetypes.
+  - [ ] Make goal to level the trait.

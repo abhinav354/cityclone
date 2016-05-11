@@ -1,0 +1,78 @@
+dayResponseComponent: gameStageDayResponseComponent()
+healthComponent: singleHealthComponent()
+identityComponent: ()
+notificationComponents: [gameStageNotificationComponent()]
+rendererComponents: [gameStageRenderComponent()]
+stageChangeComponent: ()
+
+createExecutables: [makeOnCreateEntityExec()]
+
+--- gameStageRenderComponent
+
+!inherit rendererComponent
+
+priority: 9
+render: #gameStageRender
+
+#
+var gameStageRender = function(rect, entity, ui){
+    ui.addLine('#day', entity.identityComponent.name);
+};
+#
+
+--- gameStageNotificationComponent
+
+!inherit notificationComponent
+
+notificationFunctions: #{goalComplete: checkStageComplete}
+
+#
+var checkStageComplete = function(entity, notificationArgs){
+    if (_.contains(entity.stageChangeComponent.goalsToCheck, notificationArgs.key)){
+        var index = entity.stageChangeComponent.goalsToCheck.indexOf(notificationArgs.key);
+        entity.stageChangeComponent.goalsToCheck.splice(index, 1);
+        entity.stageChangeComponent.shouldChange = (entity.stageChangeComponent.goalsToCheck.length == 0);
+    }
+};
+#
+
+--- gameStageDayResponseComponent
+
+!inherit dayResponseComponent
+
+dayEnd: #gameStageDayEnd
+
+#
+var gameStageDayEnd = function(entity, world){
+    if (entity.stageChangeComponent.checkAndChange(entity, world)){
+        entity.healthComponent.health = 0;
+    }
+};
+#
+
+--- stageChangeComponent
+
+shouldChange: #false
+executables: [makeEntityComponent(), killEntityComponent()]
+checkAndChange: #checkAndChangeGameState
+goalsToCheck:
+
+#
+var checkAndChangeGameState = function(entity, world){
+    if (this.shouldChange){
+        _.each(this.executables, function(exec){
+            exec.execute(entity, world);
+        });
+        return true;
+    }
+    return false;
+};
+#
+
+--- makeOnCreateEntityExec
+
+!inherit makeEntityComponent
+
+!default makeOnCreateEntities []
+
+entitiesToMake: makeOnCreateEntities

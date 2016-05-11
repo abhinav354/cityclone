@@ -1,0 +1,31 @@
+!inherit item
+
+!arg key memoryItem
+!arg name memory
+!arg traits discussable|
+!arg spawnSourceKey self
+
+killExecutables: [itemKillExec(), goalCompleteExec(), memoryPonderExec()]
+
+--- memoryPonderExec
+
+!inherit executable
+
+trait:
+currencyBoost:
+
+execute: #memoryPonderExec
+
+#
+var memoryPonderExec = function(entity, world){
+    var currencyKey = _.keys(this.currencyBoost)[0];
+    var boost = makeEcs('currencyBoost', {
+        key: 'memory_' + this.trait + '_' + currencyKey,
+        name: 'memory ' + this.trait + ' ' + currencyKey,
+        traits: [this.trait],
+        currencyBoost: this.currencyBoost
+    });
+    world.addEntity(boost);
+};
+#
+

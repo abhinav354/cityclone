@@ -1,0 +1,11 @@
+key,towerKey,sourceTrait,towerActions
+meditateSource,meditateTower,adult,meditateAction|
+choreSource,choreTower,adult,choreAction|
+exerciseSource,exerciseTower,adult,exerciseAction|
+meetPersonSource,meetPersonTower,holcomb,meetPersonAction|
+travelSource,travelTower,holcomb,findHouse|findJob|driveCabAction|getEvidenceAction|destroyEvidence|buyRingAction|mission2Action
+chessSource,chessTower,lovesChess,chessAction|chessMatchAction
+spySource,spyTower,agent,spyAction|mission1Action
+relaxSource,relaxTower,holcomb,relaxAction|
+bombSource,bombTower,agent,mission3Action|
+playSource,playTower,adult,playAction|

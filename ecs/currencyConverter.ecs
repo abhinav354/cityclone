@@ -1,0 +1,7 @@
+currencyConverterComponent: ()
+
+--- currencyConverterComponent
+
+currencyKey:
+emotionsConversion: ?#{}
+currencyConversion: ?#{}

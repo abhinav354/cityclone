@@ -1,0 +1,37 @@
+!inherit executable
+
+entitiesToMake: ?#[]
+
+execute: #executeMakeEntities
+
+#
+var executeMakeEntities = function(entity, world){
+    makeEntities(entity, world, this.entitiesToMake);
+};
+
+var makeEntities = function(entity, world, entitiesToMake){
+    var args = {
+        source: entity
+    };
+
+    var entitiesMade = [];
+    
+    if (entitiesToMake[0] === undefined){ //we assume that entitiesToMake is a dictionary if this is true
+        _.each(entitiesToMake, function(val, key){
+            if (Math.random() * 100 < val){
+                var entityMade = makeEcs(key, _.clone(args));
+                world.addEntity(entityMade);
+                entitiesMade.push(entityMade);
+            }
+        });
+    }
+    else{
+        _.each(entitiesToMake, function(key){
+            var entityMade = makeEcs(key, _.clone(args));
+            world.addEntity(entityMade);
+            entitiesMade.push(entityMade);
+        });
+    }
+    return entitiesMade;
+};
+#

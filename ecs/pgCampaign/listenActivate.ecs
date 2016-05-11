@@ -1,0 +1,11 @@
+!inherit activatable
+
+!derive canActivate canListenActivate
+
+#
+var canListenActivate = function(entity, world){
+    return _.all(KEY_EMOTIONS, function(emotionKey){
+        return world.player.calculatedCurrencyComponent.currencies[emotionKey] <= 40;
+    });
+};
+#

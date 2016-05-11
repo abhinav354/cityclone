@@ -1,0 +1,17 @@
+entitiesMade: []
+
+makeLifecycleEntities: #
+endLifecycle: #
+startLifecycle:
+
+#
+var makeLifecycleEntities = function(entity, world, entitiesToMake){
+    this.entitiesMade = makeEntities(entity, world, entitiesToMake);
+};
+
+var endLifecycle = function(){
+    _.each(this.entitiesMade, function(entity){
+        entity.healthComponent.health = 0;
+    });
+};
+#

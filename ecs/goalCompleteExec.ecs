@@ -1,0 +1,14 @@
+!inherit executable
+
+execute: #goalCompleteExec
+
+#
+var goalCompleteExec = function(entity, world){
+    world.addEntity(makeEcs('notification', {
+        notificationKey: 'goalComplete',
+        notificationArgs: {
+            key: entity.identityComponent.key
+        }
+    }));
+};
+#

@@ -1,0 +1,31 @@
+Elevator Pitch: /Inside Out/ as a hybrid city builder/tower defense.
+
+* Things I want to represent:
+** Showing other people as the same kind of systems and being a source for your child and spouse. Having your child's city develop and having more and more of it be behind fog of war and the interaction reducing as the child grows.
+** Needing to move city becuase of a break-up or work problem.
+** Friendships dying due to depression (both reducing energy and also because most of what you say is sad).
+** Needing to build yourself up for big things
+   - Eg; needing more will than your natural max in a day, and so completing goals
+   - Giving yourself comfort things with poor long term effects, but short term will benefits
+** Talking to a friend through that friend hurting you
+   - First, this needs a representation of being hurt by a friend
+   - Then, you need to be able to talk about it with that friend
+   - This has a chance of ending a friendship, accumulates hurt in this relationship
+   - If it succeeds, the friendship strengthens
+** The obligation of being asked to do something by someone whom you want to like you
+** Being unable to reconnect with a friend because you don't do the same things that you used to
+** Feeling sad about losing personal connections
+* Touchstones:
+** Inside Out
+** The Sims
+** Cities: Skylines
+** Cart Life?
+* Aesthetics:
+  - Allowing people to create and play as the people they want to.
+    - Corollary: the game needs to put up some resistance to you getting exactly the person you want though.
+      You should have to work for it.
+  - The systems should interact to give you things that you didn't expect, but which make sense when you see them.
+    - The mechanics need to work with their semantic values for this.
+  - Players should be able to understand pieces of my theories of people from the systems of the game.
+    - Having a balanced life should make the character happier / Focusing should lead to more progress
+    - You have a lot of control over yourself and your life and your development.

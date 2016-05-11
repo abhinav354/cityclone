@@ -1,0 +1,3 @@
+!inherit towerSource
+
+!derive sourceTrait args.source ? args.source.identityComponent.tags[0] : undefined

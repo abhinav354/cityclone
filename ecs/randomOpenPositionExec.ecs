@@ -1,0 +1,10 @@
+!inherit executable
+
+execute: #randomOpenPositionExec
+
+#
+var randomOpenPositionExec = function(entity, world){
+    var pos = world.randomOpenPosition(entity.positionComponent.planeOfExistence);
+    entity.positionComponent.setPos(pos);
+};
+#

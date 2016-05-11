@@ -1,0 +1,21 @@
+!inherit boost
+
+healthComponent: singleHealthComponent()
+emotionSourceComponent: emotionBoostSourceComponent()
+
+!derive removable false
+
+--- emotionBoostSourceComponent
+
+!inherit infiniteEmotionSourceComponent
+
+shouldTick: #shouldEmotionBoostTick
+
+#
+var shouldEmotionBoostTick = function(entity, world){
+    return _.any(world.entities, function(sourceEntity){
+        return entity.boostSlotComponent.checkEntityForBoost(sourceEntity) &&
+            sourceEntity.sentinelComponent.active;
+    });
+};
+#

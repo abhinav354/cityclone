@@ -1,0 +1,9 @@
+healthComponent: singleHealthComponent()
+identityComponent: ()
+emotionTickModifyComponent: ()
+
+--- emotionTickModifyComponent
+
+towerTrait:
+emotionState:
+factor:

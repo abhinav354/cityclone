@@ -1,0 +1,6 @@
+!inherit currencyStore
+
+!default timeToDeath 120
+
+timedDeathComponent: timedDeathComponent()
+healthComponent: singleHealthComponent()

@@ -1,0 +1,11 @@
+!inherit executable
+
+execute: #featureItemActionExec
+execCurrencyKey:
+execCurrencyChange:
+
+#
+var featureItemActionExec = function(entity, world){
+    entity.currency[this.execCurrencyKey] += this.execCurrencyChange;
+};
+#

@@ -1,0 +1,13 @@
+key,name,aliveEntities,currencies,isaacEntities,dailyEntities,currency,traitImage,health
+holcomb,Holcomb,,,travelButton|relaxButton|relaxItem,,,violetTower,75
+adult,adult,choreItem:2,,choreButton|exerciseButton|meditateButton|meditateItem|playButton|playItem|exerciseItem,exerciseWish:3,,yellowTower,75
+racist,Racist,racistEvent:5,,,,,magentaTower,75
+lovesChess,Loves Chess,playChess:5,,chessButton|chessItem,,,indigoTower,150
+wishesToTalk,Wishes To Talk,talkWish:5,,,,,orangeTower,75
+agent,Agent,fearFlash:10,,spyButton|spyItem,,,greenTower,150
+worldTerror,World Terror,terrorEvent:10,,,,,redTower,75
+lethargy,Lethargy,,will:-100,,,,pinkTower,75
+excitable,Excitable,,will:100,,,,brownTower,75
+outgoing,Outgoing,,,,,chat:1,slimyTower,75
+resilient,Resilient,,,,,will:1,maroonTower,75
+empathic,Empathic,,,,,talk:1,steelblueTower,75

@@ -1,0 +1,6 @@
+key,emotionSentinel,activeEntities
+depresssedSentinel,depressed,lostControl|
+ecstaticSentinel,ecstatic,lostControl|
+nauseatedSentinel,nauseated,lostControl|
+enragedSentinel,enraged,lostControl|
+terrifiedSentinel,terrified,lostControl|

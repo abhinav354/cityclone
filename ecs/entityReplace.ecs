@@ -1,0 +1,2 @@
+createExecutables: [makeEntityComponent(), killEntity()]
+healthComponent: singleHealthComponent()

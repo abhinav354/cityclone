@@ -1,0 +1,46 @@
+!inherit goal
+
+goalTrackComponent: currencyGoalTrackComponent()
+notificationComponents: [currencyGoalNotificationComponent()]
+
+--- currencyGoalTrackComponent
+
+!inherit goalTrackComponent
+
+checkCompleted: #checkForGoalTrackCurrencySuccess
+currencyGoal: true
+
+!extend successExecutables [makeEntityComponent()]
+
+minCurrency:
+progress: #_.reduce(args['minCurrency'], function(memo, val, key){ memo[key] = 0; return memo; }, {})
+innerSt: #getCurrencyGoalInnerSt
+
+#
+var checkForGoalTrackCurrencySuccess = function(player){
+    var progress = this.progress;
+    return _.every(this.minCurrency, function(val, key){ return progress[key] >= val; });
+};
+
+var getCurrencyGoalInnerSt = function(){
+    return _.reduce(this.minCurrency, function(memo, val, key){
+        return memo + key + ': ' + entity.goalTrackComponent.progress[key] + '/' + val;
+    }, '');
+};
+#
+
+--- currencyGoalNotificationComponent
+
+!inherit notificationComponent
+
+notificationFunctions: #{currencyChange: goalCurrencyNotification}
+
+#
+var goalCurrencyNotification = function(entity, args){
+    _.each(entity.goalTrackComponent.minCurrency, function(val, key){
+        if (args.currencyChange[key] !== undefined){
+            entity.goalTrackComponent.progress[key] += args.currencyChange[key];
+        }
+    });
+};
+#

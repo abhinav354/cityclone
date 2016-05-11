@@ -1,0 +1,7 @@
+!inherit item
+
+!default timeToDeath 30
+
+timedDeathComponent: ()
+
+killExecutables: [timedMakeEntities()]

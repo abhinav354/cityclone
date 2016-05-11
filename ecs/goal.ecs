@@ -1,0 +1,57 @@
+!default timeToDeath 180
+
+identityComponent: ()
+healthComponent: singleHealthComponent()
+rendererComponents: [goalRenderComponent()]
+goalTrackComponent:
+timedDeathComponent: ()
+
+killExecutables: [timedMakeEntities()]
+
+--- goalRenderComponent
+
+!inherit rendererComponent
+
+priority: 8
+render: #goalRender
+
+#
+var showCurrency = function(currency, symbol){
+    return _.map(currency, function(val, key){
+        return key + symbol + val;
+    })[0];
+};
+
+var goalRender = function(rect, entity, ui){
+    var innerSt = entity.goalTrackComponent.getInnerSt();
+        
+    var line = entity.identityComponent.name + ' (' +  innerSt + ')' + ' (' + entity.timedDeathComponent.timeToDeath + 's)';
+
+    if (entity.squashComponent){
+        if (entity.squashComponent.squashFunction === undefined){
+            entity.squashComponent.squashFunction = makeWrappedSquashFunction(entity, ui.world);
+        }
+        var button = {
+            text: 'squash',
+            buttonFunction: entity.squashComponent.squashFunction
+        }
+        line = {
+            line: [line, button]
+        };
+    }
+
+    ui.addLine('#goals', line);
+};
+
+var makeWrappedSquashFunction = function(entity, world){
+    return function(){
+        var squashCurrency = entity.squashComponent.squashCurrency;
+        if (!world.player.calculatedCurrencyComponent.satisfiesCurrencyReq(squashCurrency)){
+            return;
+        }
+
+        world.addCost('squashed ' + entity.identityComponent.name, squashCurrency);
+        entity.healthComponent.health = 0;
+    };
+};
+#

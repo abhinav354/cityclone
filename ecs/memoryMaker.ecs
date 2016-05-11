@@ -1,0 +1,53 @@
+makeMemoryComponent: ()
+
+--- makeMemoryComponent
+
+impulseTicks: 10
+ticks: 10
+makeMemory: #
+
+#
+var getMemoryEmotions = function(world){
+    var playerCurrencies = world.player.calculatedCurrencyComponent.currencies;
+    var memoryEmotions = {};
+    _.each(KEY_EMOTIONS, function(emotion){
+        if (playerCurrencies[emotion]){
+            memoryEmotions[emotion] = playerCurrencies[emotion];
+        }
+    });
+    return memoryEmotions;
+};
+
+var getMemoryActives = function(world){
+    return _.chain(world.entities)
+        .filter(function(entity){
+            return entity.towerSourceComponent &&
+                world.isTowerSourceActive(entity.identityComponent.key);
+        })
+        .map(function(entity){ return entity.identityComponent.key; })
+        .value();
+};
+
+var makeMemory = function(world){
+    var memoryEmotions = getMemoryEmotions(world);
+
+    var health = _.reduce(memoryEmotions, addFunction, 0) * (Math.random() + 0.5) + 75;
+
+    var memoryActives = getMemoryActives(world);
+    var spawnSourceKey = _.chain(memoryActives)
+        .map(function(sourceKey){
+            var towerSource = world.entityForKey(sourceKey);
+            return towerSource.towerSourceComponent.sourceTrait;
+        })
+        .sample()
+        .value();
+
+    var memory = makeEcs(PARAMETERS.memory, {
+        memoryEmotions: memoryEmotions,
+        memoryActives: memoryActives,
+        spawnSourceKey: spawnSourceKey,
+        health: health
+    });
+    world.addEntity(memory);
+};
+#

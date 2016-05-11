@@ -1,0 +1,33 @@
+!derive sourceTrait args.source ? args.source.identityComponent.key : undefined
+!derive planeOfExistence args.sourceTrait
+
+rendererComponents: [personAquariumRenderComponent()]
+personAquariumPieceComponent: ()
+positionComponent: ()
+createExecutables: [randomOpenPositionExec()]
+healthComponent: singleHealthComponent()
+
+
+--- personAquariumRenderComponent
+
+!inherit rendererComponent
+
+priority: 6
+render: #personAquariumRender
+renderState: sourceTrait
+name: trait
+
+#
+var personAquariumRender = function(rect, entity){
+    ctx.drawImage(getImage('towerHex'), rect[0], rect[1]);
+    ctx.fillStyle = '#000000';
+    var txt = entity.personAquariumPieceComponent.pieceDiscovered ? this.name : '???';
+    ctx.fillText(txt, rect[0] + rect[2] / 3, rect[1] + 2 * rect[3] / 3);
+};
+#
+
+--- personAquariumPieceComponent
+
+sourceTrait:
+pieceDiscovered: false
+personalityTrait: trait

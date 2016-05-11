@@ -1,0 +1,10 @@
+!inherit entityLifecycleComponent
+
+isaacEntities: ?#[]
+startLifecycle: #makeIsaacLifecycleEntities
+
+#
+var makeIsaacLifecycleEntities = function(entity, world){
+    this.makeLifecycleEntities(entity, world, this.isaacEntities);
+};
+#

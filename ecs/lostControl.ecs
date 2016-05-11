@@ -1,0 +1,66 @@
+!arg timeToDeath 10
+!arg key lostControl
+!arg name lostControl
+
+identityComponent: ()
+healthComponent: singleHealthComponent()
+holdControlComponent: ()
+rendererComponents: [lostControlRenderComponent()]
+timedDeathComponent: ()
+
+createExecutables: [makeLostControlClickText()]
+killExecutables: [lostControlDeathExec()]
+
+--- holdControlComponent
+
+holdControl: true
+
+--- lostControlDeathExec
+
+!inherit executable
+
+execute: #lostControlDeathExec
+makeMemoryComponent: ()
+
+#
+var lostControlDeathExec = function(entity, world){
+    this.makeMemoryComponent.makeMemory(world);
+    
+    _.chain(world.entities)
+        .filter(function(worldEntity){ return worldEntity.damageableComponent; })
+        .each(function(worldEntity){ worldEntity.healthComponent.health = 0; });
+    
+    _.chain(world.entities)
+        .filter(function(worldEntity){ return worldEntity.emotionSourceComponent; })
+        .each(function(worldEntity){ worldEntity.emotionSourceComponent.spawnComplete(worldEntity, world); });
+};
+#
+
+--- lostControlRenderComponent
+
+!inherit rendererComponent
+
+priority: 9
+render: #lostControlRender
+
+#
+var lostControlRender = function(){
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText('Lost Control', width / 2, height / 2);
+};
+#
+
+--- makeLostControlClickText
+
+!inherit executable
+
+execute: #makeLostControlClickText
+
+#
+var makeLostControlClickText = function(entity, world){
+    var selfEntity = world.entityForKey('self');
+    world.makeClickText('Lost Control', 
+                        selfEntity.positionComponent.x,
+                        selfEntity.positionComponent.y);
+};
+#

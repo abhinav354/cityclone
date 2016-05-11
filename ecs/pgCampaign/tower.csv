@@ -1,0 +1,13 @@
+key,name,damageMultipliers,currency,sourceTrait,emotionsToAdd,aliveEntities,disableTimes,traits,icon,image,playerControlled
+designWorkTower,design work,,work:8|challenge:2|will:-1,game,anger:1,designFailEvent:5,early morning|late morning,work,DESIGN,,
+rageDesignWorkTower,enraged design work,,work:1,game,anger:2,,early morning|late morning,work,DESIGN,redTower,0
+devWorkTower,dev work,,work:6|challenge:2|will:-1,game,,coolCode:5|bugItem:5|trickyCode:5,early morning|late morning,work,DEV,,
+choreTower,chores,,chores:2|will:-1,adult,disgust:1,,,,CHORE,,
+discussWorkTower,discuss work,,work:2|will:-1,game,,designFailEvent:10,early morning|late morning|night,talk|work,DISCUSS,,
+shoutTower,shout,,work:8|will:3,game,,designFailEvent:30,early morning|late morning|night,talk|work,DISCUSS,redTower,0
+sadDiscussWorkTower,sad discuss work,,work:1,game,sadness:1,designFailEvent:30,early morning|late morning|night,talk|work,DISCUSS,blueTower,0
+popTower,pop culture,sadness:3,pop culture:1|will:2,solitary,joy:1,coolThing:10|scaryPop:5|sadPop:5|happyPop:5,,,POP,,
+walkTower,walk,anger:1|joy:1|sadness:1|fear:1|disgust:1,walk:1|closure:2,solitary,,refreshed:5|seeCoolThing:5,,,WALK,,
+diaryTower,diary,anger:1|joy:1|sadness:1|fear:1|disgust:1,diary:1|closure:3,solitary,,,,,DIARY,,
+exerciseTower,exercise,anger:3,exercise:2,adult,,playedWell:5|playedPoor:5|teamFail:2,,,EXERCISE,,
+meditateTower,meditate,anger:1|joy:1|sadness:1|fear:1|disgust:1,meditate:1|closure:1,adult,,,,,MEDITATE,,

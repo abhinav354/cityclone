@@ -1,0 +1,168 @@
+!default x width - 275
+
+identityComponent: ()
+uniqueComponent: ()
+rendererComponents: [panelRenderComponent()]
+panelComponent: ()
+absolutePositionComponent: ()
+uiClickComponent: ()
+
+--- panelComponent
+
+lastLines: []
+lines: []
+minimized: true
+buttonRects: []
+foldRects: []
+foldouts: #{}
+panelCloseFunction: #undefined
+closed: true
+
+
+--- panelRenderComponent
+
+!inherit rendererComponent
+
+!arg lineHeight 14
+!derive offset 2 * args.lineHeight + 4
+
+priority: 12
+render: #panelRender
+renderPanelPiece: #
+panelLength: 250
+lineHeight:
+offset:
+buttonRects: []
+foldRects: []
+
+
+#
+var renderPanelPiece = function(line, rect, lineCount){
+    var that = this;
+    if (line.color){
+        ctx.fillStyle = line.color;
+        ctx.fillText(line.text, rect[0], rect[1] + lineCount * that.lineHeight + this.offset);
+    }
+    else if (line.line){
+        var linePieceXDelta = this.panelLength / line.line.length;
+        _.each(line.line, function(linePiece, j){
+            that.renderPanelPiece(linePiece, [rect[0] + j * linePieceXDelta, 
+                                              rect[1] + lineCount * that.lineHeight],
+                                  0);
+        });
+    }
+    else if (line.buttonFunction){
+        var buttonLength = ctx.measureText(line.text).width;
+        var buttonRect = [rect[0], rect[1] + (lineCount - 1) * that.lineHeight + this.offset + 2, buttonLength, this.lineHeight - 2];
+        ctx.fillStyle = line.disabled ? '#660000' : '#ff0000';
+        ctx.fillRect(buttonRect[0], buttonRect[1], buttonRect[2], buttonRect[3]);
+        ctx.fillStyle = '#000000';
+        ctx.fillText(line.text, rect[0], rect[1] + lineCount * that.lineHeight + this.offset);
+        this.buttonRects.push([buttonRect, line.buttonFunction]);
+    }
+    else if (line.foldout){
+        lineCount = line.infoRender(this, rect, lineCount);
+    }
+    else{
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(line, rect[0], rect[1] + lineCount * that.lineHeight + this.offset);
+    }
+    return lineCount + 1;
+};
+
+var panelRender = function(rect, entity){
+    if (entity.panelComponent.closed){
+        entity.absolutePositionComponent.size = [0, 0];
+    }
+    else{
+        var that = this;
+        this.buttonRects = [];
+        this.foldRects = [];
+        ctx.fillStyle = '#666666';
+        var lineCount = entity.panelComponent.minimized ? 1 : 
+            _.chain(entity.panelComponent.lines)
+            .map(function(line){
+                return line.lineCount ? line.lineCount() : 1;
+            })
+            .reduce(addFunction, 1)
+            .value();
+
+        rect = [rect[0], rect[1], 
+                entity.panelComponent.minimized ? this.panelLength / 2 : this.panelLength,
+                lineCount * this.lineHeight + 4];
+        ctxFillRect(rect);
+        entity.absolutePositionComponent.size = [rect[2], rect[3]];
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(entity.identityComponent.name, rect[0], rect[1] + this.lineHeight);
+        
+        ctx.fillStyle = '#ff0000';
+        var closeButtonRect = [rect[0] + rect[2] - this.lineHeight, rect[1], this.lineHeight, this.lineHeight];
+        ctxFillRect(closeButtonRect);
+
+        if (!entity.panelComponent.panelCloseFunction){
+            entity.panelComponent.panelCloseFunction = makeWrappedEntityCloseFunction(entity);
+        }
+
+        this.buttonRects.push([closeButtonRect, entity.panelComponent.panelCloseFunction]);
+        
+        
+        if (!entity.panelComponent.minimized){
+            ctx.fillRect(rect[0], rect[1] + this.lineHeight, this.panelLength, 2);
+            var lineCount = 0;
+            _.each(entity.panelComponent.lines, function(line){
+                lineCount = that.renderPanelPiece(line, rect, lineCount);
+            });
+        }
+    }
+    entity.panelComponent.lastLines = entity.panelComponent.lines;
+    entity.panelComponent.lines = [];
+    entity.panelComponent.buttonRects = this.buttonRects;
+    entity.panelComponent.foldRects = this.foldRects;
+};
+
+var makeWrappedEntityCloseFunction = function(entity){
+    return function(){
+        entity.panelComponent.minimized = true;
+        entity.panelComponent.closed = true;
+    };
+};
+#
+
+--- uiClickComponent
+
+uiClick: #
+
+#
+var uiClick = function(pos, entity){
+    var touchFn;
+    var chk = _.any(entity.panelComponent.buttonRects, function(rectFn){
+        if (containsPos(rectFn[0], pos)){
+            touchFn = rectFn[1];
+            return true;
+        }
+        return false;
+    });
+
+    if (chk){
+        touchFn();
+    }
+    else{
+        _.each(entity.panelComponent.foldRects, function(rectFold){
+            if (containsPos(rectFold[0], pos)){
+                _.chain(entity.panelComponent.lastLines)
+                    .filter(function(line){
+                        return line.foldout == rectFold[1];
+                    })
+                    .each(function(line){
+                        entity.panelComponent.foldouts[line.foldout] = !line.folded;
+                        chk = true;
+                    });
+            }
+        });
+    }
+    
+    if (!chk){
+        entity.panelComponent.minimized = !entity.panelComponent.minimized;
+    }
+};
+#

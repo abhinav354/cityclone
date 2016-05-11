@@ -1,0 +1,39 @@
+!inherit goal
+
+!derive focusCost 2
+
+emotionSourceComponent: infiniteEmotionSourceComponent()
+focusCostComponent: ()
+squashComponent: ?(args.squashCurrency) ()
+uniqueComponent: ()
+!extend rendererComponents [emotionSourceRenderComponent(), focusRenderComponent()]
+
+!extend killExecutables [wishTraitHealthExec()]
+
+--- squashComponent
+
+squashCurrency:
+squashFunction: #undefined
+
+--- wishTraitHealthExec
+
+!inherit executable
+
+spawnSourceKey:
+healthDiff: ?10
+
+execute: #wishTraitHealthExecute
+
+#
+var wishTraitHealthExecute = function(entity, world){
+    var entityToHeal = world.entityForKey(this.spawnSourceKey);
+    if (entityToHeal){
+        if (entity.goalTrackComponent.checkCompleted()){
+            entityToHeal.healthComponent.health += this.healthDiff;
+        }
+        else if (entity.timedDeathComponent.timeToDeath <= 0){
+            entityToHeal.healthComponent.health += this.healthDiff;
+        }
+    }
+};
+#

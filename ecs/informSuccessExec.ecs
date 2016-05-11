@@ -1,0 +1,12 @@
+!inherit executable
+
+execute: #informSuccessExec
+
+#
+var informSuccessExec = function(entity, world){
+    var inform = makeEcs(PARAMETERS.playerInform, {
+        informText: 'completed ' + entity.identityComponent.name
+    });
+    world.addEntity(inform);
+};
+#

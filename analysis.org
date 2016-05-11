@@ -1,0 +1,176 @@
+* The core remains constant
+* Aesthetics:
+  - Novel representations
+  - Generating meaningful narrative
+  - Challenge
+  - Self-Expression
+* Dynamics
+  - Choosing what action to take right now
+    - Time pressure assoicated with that.
+    - Focus and will as limiters
+  - Building up emotional state
+  - Building up will to do something big
+  - Developing personality
+  - Needing to adjust your day due to random events
+    - If a day has you waking up depressed, then you may be unable to hit your work target for the day.
+    - When things make you angry, you may want to avoid talking to people
+  - Needing to deal with emotions
+    - Having to kill them becuase if you let them bounce around in the mind, they multiply.
+* Entities
+** Entities players need to think about
+  - creep
+    - emotionSource
+  - boosts
+    - currencyBoost
+    - damageBoost
+  - wish:
+    - currencyWish
+    - entityKillWish
+  - emotionCurrencyTicker
+  - emotionSentinel
+    - createModifyEntity
+    - emotionEntityMaker
+    - emotionState
+  - item
+    - personTimedItem
+    - project
+    - timedItem
+    - itemAction
+      - personAction
+      - activatable
+  - memory
+    - mapEmotion
+    - memoryItem
+  - path
+  - person
+    - opinion
+  - producer
+    - personTower
+    - tower
+  - trait
+    - personTrait
+    - sourceExtension
+    - emotionBoost
+      - workaholism adding joy to design/dev work
+  - spell
+** Entities players don't need to think about
+  - button
+    - towerButton
+  - clickText
+  - currencyConverter
+  - dailyCurrencyStore
+    - timedCurrencyStore
+  - day
+  - gameStage
+  - gameStateEntity
+  - memoryMaker
+  - notification
+  - personAquariumPiece
+  - personHealAction
+  - personTowerButton
+  - personTowerSource
+  - player
+  - playerControl
+  - playerTriggeredNotification
+  - randomOpenPositionExec
+  - randomReplace
+  - singleEmotionTick
+  - towerSource
+  - currencyGoal
+** Entities that represent interesting things, but are not integrated
+  - emotionTickModifier
+  - featureItemActionExec
+** Things to cut/fold
+  - towerEmotionSource
+    - Make a part of memories, and completely change how it works
+* Systems
+** Systems players need to think about
+  - Damage System
+  - Tick Emotion System
+  - Emotion Source System
+  - Source System
+  - Map Spawn System
+  - Wish Make System
+  - Make Memory System
+  - Execute System
+    - Mostly becuase it is used to make creeps
+  - Tick System
+    - This adds some complexity for towers
+    - Also, memory flaring
+  - Focus System
+  - Emotion State System
+    - Used to transform towers during extreme emotions
+** Systems players don't need to think about - these are either bookkeeping or intuitive enough not to have overhead
+  - Day System
+  - Path Move System
+  - Timed Death System
+  - Goal Check System
+  - Velocity System
+  - Notification System
+  - Maintenance System
+  - Source Slotted System
+  - Currency Calculate System
+  - Sentinel System
+  - Slave Entity System
+  - Death System
+** Systems that the player should care about, but seem like they could be cut
+  - Emotion Entity Maker System
+
+
+* Table
+| piece                 | novel | narrative | challenge | self-expression | choosing action | building up | development | adjust day | deal with emotions |
+|-----------------------+-------+-----------+-----------+-----------------+-----------------+-------------+-------------+------------+--------------------|
+| creep                 | X     | X         | X         |                 | X               | X           |             | X          | X                  |
+| boosts                |       |           |           | X               |                 |             | X           |            |                    |
+| wish                  |       | X         | X         |                 | X               |             |             | X          | X                  |
+| emotionCurrencyTicker | X     |           | X         |                 | X               | X           |             |            | X                  |
+| emotionSentinel       | X     | X         | X         |                 | X               | X           |             | X          | X                  |
+| item                  | X     | X         | X         | X               | X               | X           |             | X          | X                  |
+| memory                | X     | X         | X         |                 |                 |             | X           | X          |                    |
+| path                  |       |           | X         |                 | X               |             | X           |            | X                  |
+| person                | X     | X         | X         |                 | X               |             | X           | X          |                    |
+| producer              | X     | X         | X         | X               | X               | X           | X           | X          | X                  |
+| trait                 | X     | X         | X         |                 | X               |             | X           | X          |                    |
+| spell                 | X     | X         | X         |                 | X               | X           |             | X          | X                  |
+|-----------------------+-------+-----------+-----------+-----------------+-----------------+-------------+-------------+------------+--------------------|
+| Damage System         | X     | X         | X         | X               | X               |             |             | X          | X                  |
+| Tick Emotion System   | X     | X         | X         | X               | X               | X           | X           | X          | X                  |
+| Emotion Source System | X     | X         | X         |                 | X               |             |             | X          | X                  |
+| Source System         | X     | X         | X         |                 | X               |             |             | X          |                    |
+| Map Spawn System      | X     | X         |           |                 |                 |             | X           |            |                    |
+| Wish Make System      |       | X         | X         | X               | X               |             |             | X          |                    |
+| Make Memory System    | X     | X         | X         | X               |                 |             | X           | X          | X                  |
+| Execute System        | X     | X         | X         |                 | X               |             |             | X          | X                  |
+| Tick System           |       | X         | X         | X               | X               |             |             | X          | X                  |
+| Focus System          |       | X         | X         | X               | X               | X           |             | X          | X                  |
+| Emotion State System  | X     | X         | X         |                 | X               | X           |             | X          | X                  |
+|-----------------------+-------+-----------+-----------+-----------------+-----------------+-------------+-------------+------------+--------------------|
+
+
+
+
+
+* Current Issues on my mind
+  - The game doesn't handle extreme emotions well
+  - The towers are very opaque
+    - It's hard to tell which ones are any good
+    - It's hard to tell what they're doing.
+  - The economy for item actions doesn't work out with people being able to build multiple towers
+    - The tower cap mitigates this, but not enough
+    - Could be done by restructuring items into infinite work and projects
+  - Need another piece to emphasize management of emotions
+    - Right now, the actual numbers of each tend to be irrelevant. Everything that's not the extreme feels meaningless.
+  - Need another long term piece
+
+* Things to work on
+  - towerEmotionSource (fold them into memories)
+  - All the things that make entities (fold them)
+  - boosts
+  - emotionTickModifier - Make it more prominent and give it more instances. Also, actually integrate it.
+  - featureItemActionExec - Entities that cause goals to require a different amount of currency. Again, interesting, but not integrated.
+  - emotion entity maker system - Creation of entities based off emotions and active sources. Again, interesting, but not integrated.
+
+* Dynamics to support more
+  - Viruses, activitites going south far enough that you can't do them any more
+  - Generating traits
+    - Memories becoming traits

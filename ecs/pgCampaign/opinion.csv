@@ -1,0 +1,3 @@
+key,name,aliveEntities,successOpinions,buttonKeys
+acquaintance,acquaintance,,friend:20,talkButton|
+friend,friend,talkRequestItem:20|choreRequestItem:5,

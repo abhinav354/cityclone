@@ -1,0 +1,26 @@
+!inherit timedItem
+
+!extend killExecutables [personTimedItemDeathExec()]
+
+--- personTimedItemDeathExec
+
+!inherit executable
+
+execute: #personTimedItemDeathExec
+personFailHealthDiff:
+sourceKey: #args.source.identityComponent.key
+
+#
+var personTimedItemDeathExec = function(entity, world){
+    var source = world.entityForKey(this.sourceKey);
+    var person = world.entityForKey(source.personHeldComponent.personHeld);
+    var successs = entity.timedDeathComponent.timeToDeath > 0;
+    if (!successs){
+        person.healthComponent.health += this.personFailHealthDiff;
+    }
+    person.personalityComponent.personHistory.push({
+        itemKey: entity.identityComponent.key,
+        successs: successs
+    });
+};
+#

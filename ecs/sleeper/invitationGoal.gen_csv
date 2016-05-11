@@ -1,0 +1,20 @@
+key,name,entitiesToKill,squashCurrency,focusCost,spawnSourceKey,timeToDeath
+inviteGoal_findHouse,Invited Find House,findHouseItem:1,,5,self,60
+inviteGoal_findJob,Invited Find Job,findJobItem:1,,5,self,60
+inviteGoal_meetPersonAction,Invited Meet,meetPersonItem:1,,5,self,60
+inviteGoal_choreAction,Invited Clean,choreItem:1,,5,self,60
+inviteGoal_exerciseAction,Invited Exercise,exerciseItem:1,,5,self,60
+inviteGoal_meditateAction,Invited Meditate,meditateItem:1,,5,self,60
+inviteGoal_driveCabAction,Invited Drive,driveCabItem:1,,5,self,60
+inviteGoal_chessAction,Invited Play,chessItem:1,,5,self,60
+inviteGoal_spyAction,Invited Spy,spyItem:1,,5,self,60
+inviteGoal_chessMatchAction,Invited Play Match,chessMatchItem:1,,5,self,60
+inviteGoal_relaxAction,Invited Relax,relaxItem:1,,5,self,60
+inviteGoal_getEvidenceAction,Invited Discover,getEvidenceItem:1,,5,self,60
+inviteGoal_destroyEvidence,Invited Destroy,evidenceItem:1,,5,self,60
+inviteGoal_buyRingAction,Invited Buy,buyRingItem:1,,5,self,60
+inviteGoal_mission1Action,Invited Spy,mission1Item:1,,5,self,60
+inviteGoal_mission2Action,Invited Deliver,mission2Item:1,,5,self,60
+inviteGoal_mission3Action,Invited Bomb,mission3Item:1,,5,self,60
+inviteGoal_playAction,Invited Play,playItem:1,,5,self,60
+inviteGoal_rememberAction,Invited Remember,rememberItem:1,,5,self,60

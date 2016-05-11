@@ -1,0 +1,6 @@
+key,name,currencies
+dayEnergy,daily energy,will:500
+startExperience,start experience,experience:2
+cash,Cash,cash:30
+startCash,Starting Cash,cash:100
+rent,Rent,cash:-10

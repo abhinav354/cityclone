@@ -1,0 +1,3 @@
+key,name,entitiesToCreate,squashCurrency,focusCost,spawnSourceKey,timeToDeath
+peopleGoal,Meet 3 People,acquaintance:3,,5,holcomb,240
+friendGoal,Make a friend,friend:1,,5,holcomb,240

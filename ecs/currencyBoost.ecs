@@ -1,0 +1,7 @@
+!inherit boost
+
+currencyBoostComponent: ()
+
+--- currencyBoostComponent
+
+currencyBoost: ?#{}

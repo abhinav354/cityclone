@@ -1,0 +1,35 @@
+!inherit wish
+
+goalTrackComponent: notificationGoalTrackComponent()
+notificationComponents: [notificationWishNotificationComponent()]
+
+--- notificationGoalTrackComponent
+
+!inherit goalTrackComponent
+
+checkCompleted: #checkForNotificationGoalSuccess
+hitCount:
+
+#
+var checkForNotificationGoalSuccess = function(){
+    return this.hitCount <= 0;
+};
+#
+
+--- notificationWishNotificationComponent
+
+notificationFunctions: #deriveNotificationWishNotificationFunctions(args.notificationsToHit)
+
+#
+var deriveNotificationWishNotificationFunctions = function(notificationsToHit){
+    var notificationFunctions = {};
+    _.each(notificationsToHit, function(key){
+        notificationFunctions[key] = notificationWishHit;
+    });
+    return notificationFunctions;
+};
+
+var notificationWishHit = function(entity, args){
+    entity.notificationGoalTrackComponent.hitCount -= 1;
+};
+#

@@ -1,0 +1,13 @@
+!derive personHeld args.source.personHeldComponent.personHeld
+!derive entitiesToHeal simpleDict(args.source.personHeldComponent.personHeld, 10)
+
+!inherit entityKillWish
+
+goalTrackComponent: invitationGoalTrackComponent()
+personHeldComponent: personHeldComponent()
+
+--- invitationGoalTrackComponent
+
+!inherit entityKillTrackComponent
+
+!extend successExecutables [healEntities()]

@@ -1,0 +1,11 @@
+!inherit executeComponent
+
+executable: aliveMakeExec()
+
+--- aliveMakeExec
+
+!inherit makeEntityComponent
+
+!default aliveEntities []
+
+entitiesToMake: aliveEntities

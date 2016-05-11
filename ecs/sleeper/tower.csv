@@ -1,0 +1,11 @@
+key,name,damageMultipliers,currency,sourceTrait,emotionsToAdd,aliveEntities,traits,icon,image,playerControlled
+meditateTower,meditate,anger:1|joy:1|sadness:1|fear:1|disgust:1,meditate:1,adult,,,,MEDITATE,,
+choreTower,chores,,chores:1|will:-1,adult,disgust:1,,,CHORE,,
+exerciseTower,exercise,anger:3,exercise:1,adult,,playedWell:5|playedPoor:5|teamFail:2,,EXERCISE,,
+meetPersonTower,meet person,,meetPerson:1,holcomb,,racistEvent:20|jokeItem:5,,MEET PERSON,,
+travelTower,travel,,travel:1,holcomb,,racistEvent:10|discoveryItem:5|jokeItem:5,,TRAVEL,,
+chessTower,chess,anger:1|joy:1|sadness:1|fear:1|disgust:1,chess:1,lovesChess,,playedWell:10|playedPoor:5,,CHESS,,
+spyTower,spy,,spy:1,agent,fear:2,closeCall:10,,SPY,,
+relaxTower,relax,,relax:1|will:1,holcomb,,,,RELAX,,
+bombTower,bomb,,bomb:1,agent,fear:4,closeCall:10,,BOMB,,
+playTower,play,anger:1|sadness:2,play:1,adult,joy:1,playedWell:5|playedPoor:5|teamFail:2,,PLAY,,

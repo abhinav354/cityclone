@@ -1,0 +1,59 @@
+absolutePositionComponent: ()
+createModifyComponent: ()
+healthComponent: singleHealthComponent()
+identityComponent: ()
+itemComponent: ()
+wishMakingComponent: itemWishMakingComponent()
+uiClickComponent: emotionSourceUiClickComponent()
+
+killExecutables: [makeItemClickText()]
+
+--- itemWishMakingComponent
+
+!inherit wishMakingComponent
+
+makeWish: #makeItemWish
+canMakeWish: #trueFunction
+
+#
+var makeItemWish = function(entity){
+    var entitiesToKill = {};
+    entitiesToKill[entity.identityComponent.key] = 1;
+    return makeEcs('entityKillWish', {
+        key: 'gen_item_wish' + entity.identityComponent.key,
+        name: entity.identityComponent.name + ' Wish',
+        spawnSourceKey: entity.itemComponent.spawnSourceKey,
+        entitiesToKill: entitiesToKill,
+        squashCurrency: {will: -15}
+    });
+};
+#
+
+--- itemComponent
+
+canSlotItem: #
+successExecutables: [goalCompleteExec()]
+sourceHealth: ?(args.source) #args.source.healthComponent.health
+spawnSourceKey:
+
+#
+var canSlotItem = function(towerKey){
+    return _.any(towers[towerKey], function(val){ return val > 0; });
+};
+
+#
+
+--- makeItemClickText
+
+!inherit executable
+
+execute: #makeItemClickText
+
+#
+var makeItemClickText = function(entity, world){
+    var traitEntity = world.entityForKey(entity.itemComponent.spawnSourceKey);
+    world.makeClickText(entity.identityComponent.name + ' Complete',
+                        traitEntity.positionComponent.x,
+                        traitEntity.positionComponent.y);
+};
+#

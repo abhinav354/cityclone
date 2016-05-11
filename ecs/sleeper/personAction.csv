@@ -1,0 +1,11 @@
+key,name,items,currency,consumeCheck,towerEffect,entitiesToMake,focusCost,requiredOpinions,successChance,makeMemoryChance
+smallTalkAction,Chat,smallTalkItem|,chat:250,1,,smallTalkItem:100|joke:10|complimentItem:10,20,acquaintance|,,0.1
+contactAgent,Contact,contactItem|,chat:250,1,,,100,knownAgent|,,1
+shareDiscoveryAction,Share,discoveryItem|,chat:250,1,,,20,acquaintance|,,0.1
+jokeAction,Tell,jokeItem|,chat:250,1,,,20,acquaintance|,,0.1
+shareEmotionAction,Share Emotion,shareEmotionItem|,talk:250,1,,shareEmotionItem|,60,friend|,,0.1
+flirtAction,Flirt,flirtItem|,flirt:250,1,,flirtItem:100|complimentItem:10,40,romance|,,0.25
+complimentAction,Give,complimentItem|,flirt:250,1,,,40,romance|,,0.1
+dateAction,Date,dateItem|,date:250,1,,,60,dating|,,0.25
+proposeAction,Propose,ringItem|,date:500,1,,,80,dating|,,1
+ambushAction,Ambush,ambushItem|,ambush:300,1,,,100,target|,,0.15

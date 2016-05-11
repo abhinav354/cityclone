@@ -1,0 +1,144 @@
+!derive towerSourceKey args.key.replace('Tower', 'Source')
+!arg touchable true
+
+absolutePositionComponent: ()
+damageComponent: ?(args.damageMultipliers) ()
+emotionSourceComponent: towerEmotionSourceComponent()
+executeComponent: aliveMakeComponent()
+healthComponent: hundredHealthComponent()
+healthModifyComponent: ()
+identityComponent: ()
+managedComponent: ()
+positionComponent: ()
+rendererComponents: [towerRenderComponent(), emotionSourceRenderComponent()]
+sentinelComponent: sourceSentinelComponent()
+tickComponent: tickRenderActivateComponent()
+tickEmotionComponent: ()
+uiClickComponent: emotionSourceUiClickComponent()
+wishMakingComponent: producerWishMakingComponent()
+
+--- sourceSentinelComponent
+
+!inherit sentinelComponent
+
+sentinel: #sourceSentinel
+towerSourceKey:
+towerSourceCompletion:
+playerControlled: ?true
+
+#
+var sourceSentinel = function(entity, world){
+    if (!this.towerSourceKey){
+        return true;
+    }
+
+    if (this.playerControlled && world.lostControl()){
+        return false;
+    }
+
+    if (world.isTowerSourceActive(this.towerSourceKey)){
+        var itemAction = world.entityForKey(this.towerSourceKey).slotComponent.currentAction;
+        if (itemAction.goalTrackComponent.percentCompleted){
+            this.towerSourceCompletion = itemAction.goalTrackComponent.percentCompleted();
+        }
+        return true;
+    }
+    return false;
+};
+#
+
+--- towerEmotionSourceComponent
+
+!inherit infiniteEmotionSourceComponent
+
+shouldTick: #shouldTowerEmotionSourceTick
+spawnSourceKey: sourceTrait
+
+#
+var shouldTowerEmotionSourceTick = function(entity){
+    return entity.sentinelComponent.active;
+}
+#
+
+--- towerRenderComponent
+
+!inherit activateRenderComponent
+
+render: #towerRender
+icon:
+image: ?"towerHex"
+activated: 0
+priority: 9
+
+#
+var towerRender = function(rect, entity){
+    var image = getImage(this.image);
+    ctx.drawImage(image, rect[0] + 8, rect[1]);
+    ctx.fillStyle = (this.activated > 0) ? '#ff0000' : '#006600';
+    ctx.fillText(this.icon, rect[0] + rect[2] / 3, rect[1] + 14);
+    if (entity.sentinelComponent.active && entity.sentinelComponent.towerSourceCompletion){
+        ctx.fillText('' + entity.sentinelComponent.towerSourceCompletion + '%', rect[0] + rect[2] / 3, rect[1] + 2 * rect[3] / 3);
+    }
+};
+#
+
+--- tickRenderActivateComponent
+
+!inherit tickComponent
+
+tick: #tickRenderActivate
+
+#
+var tickRenderActivate = function(entity){
+    _.each(entity.rendererComponents, function(renderComponent){
+        if (renderComponent.activated > 0){
+            renderComponent.activated -= 1;
+        }
+    });
+};
+#
+
+--- producerWishMakingComponent
+
+!inherit wishMakingComponent
+
+wishKey: "currencyWish"
+makeWish: #makeCurrencyWish
+canMakeWish: #canMakeCurrencyWish
+
+#
+var makeCurrencyWish = function(entity){
+    var currency = _.chain(entity.tickEmotionComponent.currency)
+        .keys()
+        .filter(function(key){
+            return _.contains(PARAMETERS.wishCurrencies, key);
+        })
+        .sample()
+        .value();
+
+    if (!currency){
+        return undefined;
+    }
+    
+    var minCurrency = {};
+    var factor = 15;
+    minCurrency[currency] = entity.tickEmotionComponent.currency[currency] * factor;
+    var wish = makeEcs(this.wishKey, {
+        key: 'gen_prod_wish_' + entity.identityComponent.key,
+        name: entity.identityComponent.name + ' Wish',
+        minCurrency: minCurrency,
+        squashCurrency: {will: -1 * factor},
+        spawnSourceKey: entity.emotionSourceComponent.spawnSourceKey,
+        timeToDeath: factor * 2
+    });
+    return wish;
+};
+
+var canMakeCurrencyWish = function(entity){
+    return !entity.sentinelComponent.active;
+};
+#
+
+--- managedComponent
+
+managerKey: sourceTrait

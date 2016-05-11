@@ -1,0 +1,10 @@
+!inherit entityLifecycleComponent
+
+activeEntities: ?#[]
+startLifecycle: #makeActiveLifecycleEntities
+
+#
+var makeActiveLifecycleEntities = function(entity, world){
+    this.makeLifecycleEntities(entity, world, this.activeEntities);
+};
+#

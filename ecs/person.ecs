@@ -1,0 +1,151 @@
+!inherit builtSource
+
+personalityComponent: ()
+tickComponent: personTickComponent()
+traitStatusComponent: ()
+
+killExecutables: [personKillExec()]
+
+!extend createExecutables [personCreateExec(), randomOpenPositionExec()]
+
+!extend rendererComponents [personRenderComponent(), personScreenRenderComponent()]
+
+--- personalityComponent
+
+!default knownPersonalityTraits []
+!default unknownPersonalityTraits []
+
+heldOpinions: #PARAMETERS.defaultHeldOpinions
+personalityTraits: #args.unknownPersonalityTraits.concat(args.knownPersonalityTraits)
+knownPersonalityTraits: 
+personHistory: []
+
+getAll: #getAllPersonality
+addOpinionToPersonality: #
+
+#
+var getAllPersonality = function(){
+    return _.map(this.heldOpinions, getEntityKey).concat(this.personalityTraits);
+};
+
+var addOpinionToPersonality = function(opinionKey, entity, world){
+    var opinion = makeEcs(opinionKey, {
+        personHeld: entity.identityComponent.key
+    });
+    world.addEntity(opinion);
+    this.heldOpinions.push(opinion);
+};
+#
+
+--- personTickComponent
+
+!inherit tickComponent
+
+tick: #personTick
+traitChangeChance: 0.02
+traitRemoveChance: 0.25
+traitAddChance: 0.5
+
+#
+var personTick = function(entity){
+    entity.healthComponent.health -= 1;
+    if (Math.random() < this.traitChangeChance){
+        if (Math.random() < this.traitRemoveChance){
+            var trait = _.sample(entity.personalityComponent.personalityTraits);
+            var index = entity.personalityComponent.personalityTraits.indexOf(trait);
+            entity.personalityComponent.personalityTraits.splice(index, 1);
+            if (_.contains(entity.personalityComponent.knownPersonalityTraits, trait)){
+                index = entity.personalityComponent.knownPersonalityTraits.indexOf(trait);
+                entity.personalityComponent.knownPersonalityTraits.splice(index, 1);
+            }
+        }
+        
+        if (Math.random() < this.traitAddChance){
+            var newTrait = _.sample(csvIdentifiers.trait);
+            if (!_.contains(entity.personalityComponent.personalityTraits, newTrait)){
+                entity.personalityComponent.personalityTraits.push(newTrait);
+            }
+        }
+    }
+};
+#
+
+--- personRenderComponent
+
+!inherit rendererComponent
+
+priority: 7
+render: #personRender
+
+#
+var personRender = function(rect, entity, ui){
+    _.each(entity.personalityComponent.personalityTraits, function(trait){
+        ui.addFoldLine('#' + entity.identityComponent.key,
+                       _.contains(entity.personalityComponent.knownPersonalityTraits, trait) ? trait : '???',
+                      '#traits');
+    });
+};
+#
+
+--- personCreateExec
+
+!inherit executable
+
+execute: #personCreateExec
+
+#
+var personCreateExec = function(entity, world){
+    entity.personalityComponent.heldOpinions = _.map(entity.personalityComponent.heldOpinions, function(opinion){
+        opinion = makeEcs(opinion, {
+            personHeld: entity.identityComponent.key
+        });
+        world.addEntity(opinion);
+        return opinion;
+    });
+    _.each(entity.personalityComponent.personalityTraits, function(trait){
+        var piece = makeEcs('personTrait', {
+            source: entity,
+            trait: trait
+        });
+        world.addEntity(piece);
+    });
+};
+#
+
+--- personKillExec
+
+!inherit executable
+
+execute: #personKillExec
+
+#
+var personKillExec = function(entity, world){
+    _.each(entity.personalityComponent.heldOpinions, function(opinion){
+        opinion.healthComponent.health = 0;
+    });
+    _.chain(world.entities)
+        .filter(function(aquariumEntity){
+            return aquariumEntity.personAquariumPieceComponent &&
+                aquariumEntity.personAquariumPieceComponent.sourceTrait == entity.identityComponent.key;
+        })
+        .each(function(aquariumEntity){
+            aquariumEntity.healthComponent.health = 0;
+        });
+};
+#
+
+--- personScreenRenderComponent
+
+!inherit rendererComponent
+
+renderState: key
+priority: 6
+render: #personScreenRender
+
+#
+var personScreenRender = function(rect, entity){
+    ctx.drawImage(getImage('activeHex'), rect[0], rect[1]);
+    ctx.fillStyle = '#000000';
+    ctx.fillText(entity.identityComponent.name, rect[0], rect[1] + 10);
+};
+#

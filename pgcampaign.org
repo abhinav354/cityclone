@@ -1,0 +1,40 @@
+* DONE Starting point [2/2]
+  - [X] Make the first day about unpacking
+    - Add disgust/unhappiness every day until this is resolved
+    - Also make it reduce will
+  - [X] Add some consumption of pop culture
+* DONE Month one [4/4]
+  - [X] Talk to people again
+  - [X] Do light work
+  - [X] Stretch goal of bonus features
+  - [X] Hearing of interesting pop culture makes you want to consume it
+* DONE Month two [1/1]
+  - [X] Add more people to the project - design starts being more frustrating
+    - Make each design piece a multi-step process and make it frustrating to leave it unfinished
+      - Design
+      - Code
+      - Getting it through people
+        - Make this step involve getting angry enough to shout at people until progress happens
+* Month three
+  - Losing Evan makes work much easier
+  - Being less angry as a result
+  - Have getting designs through people become much easier
+  - You no longer have to shout at people
+* Month four
+  - Max joins - work is terrible
+  - Represent keeping temper with bad work
+  - See if you can figure out how to represent how political things started becoming
+* Month five
+  - Brian and Veigar join and are completely idiotic
+  - Keeping you from design work regularly
+  - Impossible to talk people into correct design
+  - Getting angry enough to quit
+    - Make this require multiple days of being absolutely furious
+  - Go through every possible check to make sure that the game will fail.
+  - Quit the game
+* Politicization:
+  - Take the shouting tower away after Evan leaves
+  - Every time that you complain about Max's work, force yourself to go through the follow up meetings
+    - These turn off most of your towers and leave you frustrated.
+  - Make events that show that people have been talking behind your back.
+

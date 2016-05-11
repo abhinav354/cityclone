@@ -1,0 +1,35 @@
+!arg touchable true
+!arg timeToDeath 30
+
+identityComponent: ()
+positionComponent: ()
+healthComponent: singleHealthComponent()
+rendererComponents: [clickTextRenderComponent()]
+clickComponent: clickKillComponent()
+timedDeathComponent: ()
+
+--- clickTextRenderComponent
+
+!inherit rendererComponent
+
+render: #clickTextRender
+priority: 9
+
+#
+var clickTextRender = function(rect, entity){
+    ctx.fillStyle = '#ff00ff';
+    ctx.fillText(entity.identityComponent.name, rect[0], rect[1] + rect[3] / 4);
+};
+#
+
+--- clickKillComponent
+
+!inherit clickComponent
+
+onClick: #clickKill
+
+#
+var clickKill = function(entity){
+    entity.healthComponent.health = 0;
+};
+#

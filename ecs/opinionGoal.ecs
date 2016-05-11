@@ -1,0 +1,24 @@
+!inherit goal
+
+timedDeathComponent: #undefined
+goalTrackComponent: haveDateGoalTrackComponent()
+
+--- haveDateGoalTrackComponent
+
+!inherit goalTrackComponent
+
+checkCompleted: #haveDateGoalCheck
+getInnerSt: #haveDateInnerSt
+opinionGoal:
+
+#
+var haveDateGoalCheck = function(player, entity, world){
+    var that = this;
+    return _.any(world.entities, function(worldEntity){
+        return worldEntity.personalityComponent && 
+            _.any(worldEntity.personalityComponent.heldOpinions, function(opinion){
+                return opinion.identityComponent.key == that.opinionGoal;
+            });
+    });
+};
+#

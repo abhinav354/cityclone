@@ -1,0 +1,10 @@
+!inherit emotionSourceComponent
+
+spawnComplete: #resetEmotionSource
+border: "#ffff00"
+
+#
+var resetEmotionSource = function(){
+    this.spawnCount = 0;
+};
+#

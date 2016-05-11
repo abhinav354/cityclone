@@ -1,0 +1,9 @@
+identityComponent: ()
+healthComponent: singleHealthComponent()
+emotionStateComponent: ()
+
+--- emotionStateComponent
+
+checkTag:
+source:
+result:

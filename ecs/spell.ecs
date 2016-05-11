@@ -1,0 +1,42 @@
+identityComponent: ()
+spellComponent: ()
+rendererComponents: [spellRenderComponent()]
+
+--- spellComponent
+
+spellCost:
+spellFn:
+spellButtonFunction: #undefined
+
+--- spellRenderComponent
+
+!inherit rendererComponent
+
+priority: 9
+render: #spellRender
+
+
+#
+var spellRender = function(rect, entity, ui){
+    if (entity.spellComponent.spellButtonFunction === undefined){
+        entity.spellComponent.spellButtonFunction = makeWrappedSpellFunction(entity, ui.world);
+    }
+    ui.addLine('#spells', {
+        line: [
+            {
+                buttonFunction: entity.spellComponent.spellButtonFunction,
+                text: entity.identityComponent.name
+            },
+            dictString(entity.spellComponent.spellCost)
+        ]
+    });
+};
+
+var makeWrappedSpellFunction = function(entity, world){
+    return function(){
+        if (world.player.calculatedCurrencyComponent.satisfiesCurrencyReq(entity.spellComponent.spellCost)){
+            world.currentSpell = entity;
+        }
+    };
+};
+#

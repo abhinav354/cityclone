@@ -1,0 +1,4 @@
+key,traitCost,traitKey,name
+adultButton,will:-100|experience:-1,adult,adult
+holcombButton,will:-100|experience:-1,holcomb,Holcomb
+lovesChessButton,will:-100|experience:-1,lovesChess,Loves Chess

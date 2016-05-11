@@ -1,0 +1,79 @@
+!inherit builtSource
+
+currencyStoreComponent: ()
+dayResponseComponent: ?(args.dailyEntities) traitDayResponseComponent()
+executeComponent: aliveMakeComponent()
+tickEmotionComponent: ?(args.currency) ()
+rendererComponents: [sourceInfoRender(), sourceActionRender(), traitRenderComponent(), currencyStoreRenderComponent(), traitScreenRenderComponent()]
+traitStatusComponent: ()
+tickComponent: traitTickComponent()
+
+--- traitDayResponseComponent
+
+!inherit dayResponseComponent
+
+dayStart: #traitDayStart
+dailyEntities:
+dailyEntityCounts: #{}
+
+#
+var traitDayStart = function(entity, world){
+    var that = this;
+    _.each(this.dailyEntities, function(val, key){
+        if (that.dailyEntityCounts[key] === undefined){
+            that.dailyEntityCounts[key] = 0;
+        }
+        that.dailyEntityCounts[key] += 1;
+        if (that.dailyEntityCounts[key] >= val){
+            world.addEntity(makeEcs(key));
+            that.dailyEntityCounts[key] = 0;
+        }
+    });
+};
+#
+
+--- traitStatusComponent
+
+traitActive: #false
+
+--- traitRenderComponent
+
+!inherit rendererComponent
+
+priority: 6
+render: #traitRender
+traitImage:
+
+#
+var traitRender = function(rect, entity){
+    var image = entity.traitStatusComponent.traitActive ? getImage(this.traitImage) : getImage('disabledTower');
+    ctx.drawImage(image, rect[0], rect[1]);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(entity.identityComponent.name, rect[0] + rect[2] / 3, rect[1] + rect[3]);
+};
+#
+
+--- traitTickComponent
+
+tick: #traitTick
+inactiveTicks: 0
+
+#
+var traitTick = function(entity){
+    if (entity.traitStatusComponent.traitActive){
+        this.inactiveTicks = 0;
+    }
+    else{
+        this.inactiveTicks += 1;
+        if (this.inactiveTicks > 120){
+            entity.healthComponent.health -= 1;
+        }
+    }
+};
+#
+
+--- traitScreenRenderComponent
+
+!inherit traitRenderComponent
+
+renderState: key

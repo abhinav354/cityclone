@@ -1,0 +1,5 @@
+!inherit trait
+
+timedDeathComponent: ?(args.timeToDeath) ()
+
+!extend killExecutables [makeEntityComponent()]

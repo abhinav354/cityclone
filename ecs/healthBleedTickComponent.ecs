@@ -1,0 +1,9 @@
+!inherit tickComponent
+
+tick: #healthBleedTick
+
+#
+var healthBleedTick = function(entity){
+    entity.healthComponent.health -= 1;
+};
+#

@@ -1,0 +1,33 @@
+!inherit tower
+
+damageComponent: diaryDamageComponent()
+
+--- diaryDamageComponent
+
+!inherit damageComponent
+
+triggerComponents: [#diaryTrigger]
+
+!arg hits 10
+
+hitsToClean: hits
+hits:
+
+#
+var diaryTrigger = function(damageComp, entity, target, world){
+    var effectkey = 'diary' + entity.identityComponent.uid
+    target.identityComponent.tags.push(effectkey);
+    this.hits -= 1;
+    if (this.hits <= 0){
+        _.chain(world.entities)
+            .filter(function(entity){
+                return entity.identityComponent &&
+                    _.contains(entity.identityComponent.tags, effectkey);
+            })
+            .each(function(entity){
+                entity.healthComponent.health = 0;
+            });
+        this.hits = this.hitsToClean
+    }
+};
+#

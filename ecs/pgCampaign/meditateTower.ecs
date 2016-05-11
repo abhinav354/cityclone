@@ -1,0 +1,20 @@
+!inherit tower
+
+damageComponent: meditateDamageComponent()
+
+--- meditateDamageComponent
+
+!inherit damageComponent
+
+triggerComponents: [#meditateTrigger]
+
+#
+var meditateTrigger = function(damageComp, entity, target, world){
+    if (!_.contains(target.damageableComponent.damageEffects, 'slowed')){
+        target.damageableComponent.damageEffects.push('slowed');
+        if (target.pathVelocityComponent){
+            target.pathVelocityComponent.velocity /= 2;
+        }
+    }
+};
+#

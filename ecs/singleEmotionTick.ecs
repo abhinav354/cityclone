@@ -1,0 +1,4 @@
+identityComponent: ()
+tickEmotionComponent: ()
+healthComponent: singleHealthComponent()
+tickComponent: healthBleedTickComponent()

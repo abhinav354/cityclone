@@ -1,0 +1,5 @@
+key,name,tags,activateActions,currency,focusCost
+workHardActivate,Work Hard,,,work:2,35
+pushYourselfActivate,Push Yourself,,,exercise:2,35
+listenActivate,Listen,talk|,,social:2,40
+complainActivate,Complain,talk|,,closure:3|social:-1,5

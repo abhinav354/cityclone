@@ -1,0 +1,10 @@
+!inherit executable
+
+execute: #killEntity
+
+#
+var killEntity = function(entity){
+    entity.healthComponent.health = 0;
+};
+#
+

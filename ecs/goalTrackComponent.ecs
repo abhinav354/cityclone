@@ -1,0 +1,4 @@
+checkCompleted:
+successExecutables: [goalCompleteExec(), informSuccessExec()]
+successChance: ?#false
+getInnerSt: #blankStringFunction

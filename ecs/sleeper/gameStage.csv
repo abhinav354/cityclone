@@ -1,0 +1,6 @@
+key,name,goalsToCheck,entitiesToKill,entitiesToMake,makeOnCreateEntities
+chapter1,Moving In,findHouse_holcomb|findJob_holcomb,,chapter2|,adultButton|holcombButton|findHouseWish|findHouseItem|findJobWish|findJobItem|startCash|startExperience
+chapter2,Fitting In,peopleGoal|friendGoal|workGoal|playChess,,chapter3|,meetPersonItem|meetPersonButton|lovesChessButton|peopleGoal|friendGoal|workGoal|playChess|smallTalkItem
+chapter3,It Begins,contactAgent_agentE|spyAction_agent|haveDate,,chapter4|,makeAgentE|agent|chessProject|haveDate
+chapter4,Escalation,haveMarriage|destroyEvidence_agent,,chapter5|,worldTerror|getEvidenceItem
+chapter5,Zenith,mission3Action_agent|confession,,chapter6|,mission1Item|bombButton|makeTarget

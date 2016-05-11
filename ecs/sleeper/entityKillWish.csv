@@ -1,0 +1,8 @@
+key,name,entitiesToKill,squashCurrency,focusCost,spawnSourceKey,timeToDeath
+findHouseWish,Find House,findHouseItem:1,,10,holcomb,240
+findJobWish,Find Job,findJobItem:1,,10,holcomb,240
+workGoal,Complete Work,driveCabItem:3,,5,holcomb,240
+playChess,Play Chess,chessItem:1,,5,adult,240
+talkWish,Talk,talkItem:1,,5,wishesToTalk,240
+spyGoal,Spy,spyItem:1,,20,agent,240
+confession,Confession,confessionItem:1,,40,agent,240

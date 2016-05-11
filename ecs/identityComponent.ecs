@@ -1,0 +1,6 @@
+name:
+key:
+sourceId: ?(args.source && args.source.identityComponent) args.source.identityComponent.uid
+tags: ?#[]
+uid:
+touchable: ?#false

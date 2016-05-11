@@ -1,0 +1,10 @@
+idleHealthChange: -10
+activeHealthChange: 30
+activated: #false
+healthModifyAmount: #
+
+#
+var healthModifyAmount = function(){
+    return this.activated ? this.activeHealthChange : this.idleHealthChange;
+};
+#

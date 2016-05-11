@@ -1,0 +1,253 @@
+* High Level Issues:
+** What are the TD combos that you can pull off?
+** How to get past the core issue of opacity of TDs?
+* Map
+** Make it feel alive!
+*** Moving textures on a starry looking mind. Have the textures shift according to the dominant moods of the person
+** Evolution of map through indirect player influence is key.
+** /Cities: Skyline/ style districts that can be created without direct player influence.
+** Represent the wishes on the map.
+** Make them multi-step buildings that can have different paths.
+** This is essentially a tech tree.
+** Put different skills radially outward from the centre and try to keep related skills close to each other.
+** Generation of lots of memories to create an aquarium and color them according to dominant emotion
+** Overlay the TD on the map and make the map the aquarium and then fade away the TD/hexmap for every night.
+** Have phrases come out of towers
+** Ripples that reorganize your mind
+   - Have this happen at night when you sleep
+   - You can use this to group related pieces of your mind together
+   - This also emphasizes the alien nature of the mind
+   - Make the paths still connect, just not physically. ie; creeps still move along the path connections even if they're no longer physically adjacent.
+** Put workers in the map servicing the buildings
+** Make the paths into gears so that the mind looks like clockwork
+** Put text in the progress bars of the towers to help sell the fantasy.
+* Assorted Pieces
+** Every day has an optional set of goals - you can sign up for more things as they come up.
+   - Derive this from your personality
+** Personality changing through actions - locking and unlocking actions.
+** Routine with different times allowing different activities.
+** Viruses are important, things going south.
+   - Negative pieces causing other pieces to go negative
+** Developing /Inside Out/ style core memories.
+** Generating traits explicitly, like workaholism.
+** Aspects affecting actions - talking should have very different effects with different people.
+** Gaining images from events happening like Prison Architect.
+** Big Pharma does upgrading somewhat well, where your process line for the first stage can then be extended to further stages. Their implementation is not perfect, but I like the idea there.
+   - The idea of building out activities works well - going from dilettante to expert
+   - Also becoming good at related activities
+** Emotional walls - either between new people or being made when things happen between the player character and other people.
+** Physical areas of the map becoming toxic and making everything in that area feel worse to people.
+** Represent having expectations
+** Slotting emotions (maybe this should be thoughts, what is this?) into towers - eg; putting emotions into your walk
+** Make the emotions that the TD deals with into thoughts
+** Represent ideas? Put in lightbulbs somewhere?
+** The /Inside Out/ thing of your core memories being lost within you is really good actually
+   - They're buried within your psyche, still there, but not accessible. They need to be found.
+   - I don't think that's relevant here, but nevertheless cool.
+** Does /Inside Out/ suffer from the lack of an antagonist? Would this game suffer as well?
+   - I really think that games do not need an antagonist as much as movies though.
+** Locking the board when she was running away so that her emotions had no control over her was very powerful though.
+** The resolution lacked coherence though. Why were the imaginary boyfriends essential? The metaphor falls apart.
+** The memories becoming sad because they were associated with something she had lost is strong though.
+   - We already got that one, but this is a second look at it.
+** Towers/development unlocking other towers is important
+** Have bad habits form without the player placing them.
+** Fear as a self-reinforcing thing.
+   - Getting rejected by girls before adds fear that you will be rejected the next time, adds fear that it will fail while ongoing.
+** Calculating emotional impact of an event by looking at consequences:
+   - eg; having your son go to college will also make a parent sad as it means that she can no longer perform actions that she enjoyed
+   - It is naturally important for this event to also make her very happy due to being proud of her son
+** Establishing routines that are groups of activities so that you can switch focus easier.
+   - Make routines map to times.
+   - Make changing your routine require will.
+   - Make creating a routine the whole 21 day thing
+   - Make every item action (or starting a goal) require will unless it is part of a routine.
+** Mutually exclusive towers
+   - I think this would be better as not being able to build a certain type of tower if you have another type.
+   - This is probably better than only allowing one of them to be active at a time.
+** Add inertia to turning off a set of towers
+   - Represent the time it takes to wind down from an activity and disengage.
+** Represent falling away from friends by requiring some actions to require multiple base activities.
+   - Eg; you used to talk with the friend about sports and no longer follow the same sport.
+   - Have the friend change too.
+** Civ-style layered objectives
+   - You want completing one objective to result in you being closer to completing another
+** Getting puzzle pieces of a different person/problem and needing to put them together to solve it.
+** The game could use a challenge/reward mechanism.
+** Have paths/towers that are unused for a while automatically decay and disappear
+   - Use that instead of a demolish tool
+   - Allow people to also expend will to demolish
+   - If you make a game hard like this, then you need to make it short as well.
+** Make being angry more likely to generate events that change relationships with people when you talk to them
+** Core traits for people which result in them taking actions
+   - Being able to figure this out from their actions
+   - Having this yourself
+   - Having other people treat you differently/being able to treat other people differently due to their traits
+   - Wanting to hide your traits accordingly.
+** It takes time to change yourself
+** Make things like the discuss feature competitive
+   - Make other people sometimes generate ideas and make the first idea to cross a threshold win
+** Having towers that are strong against happiness is powerful storytelling.
+** Make different walk paths (instead of walk items) like pop culture
+** This game would be a very interesting way to represent things like Asperger's
+   - Be very, very careful if you actually decide to attempt this. It is better that you do not.
+** Being able to impress people by doing things very quickly
+** Needing to let children handle issues themselves so that they're better able to deal with things themselves.
+** Thinking/planning about situations that you know will arise.
+** How can you make the towers transform permanently?
+** Not understanding the reason for something - needing to introspect.
+** You can't walk and do chores at the same time, or walk and work
+   - Have traits, so you can only have one active tower that uses your body
+   - Have states, so being on a walk means that you're moving and working requires you to be stationary
+** A good video for this game would be acting out some of the sillier situations that the game gets you into.
+** Localizing emotions to districts
+   - Even if you're calm overall, if a specific district has a lot of anger, it starts getting associated with it.
+** Sim-city like monsters that rampage around the mind
+** Ask players to diagram their minds and send them to you.
+** Generating traits at emotional peaks
+   - A cool thing would be having a core memory of being happy that always produces happiness
+   - If this is a child being born or something like that, this will be very meaningful to players.
+** Make it take time to switch tasks
+   - Make traits that change this time.
+** You can try using the diary/walk/talk to kill/strengthen other game pieces too.
+** Make memories store a snapshot of the mind state
+   - If possible, blur out parts of that snapshot as time passes.
+   - Also, blur out the less essential parts of the memory
+** Insights coming from dreams
+** Not liking yourself, and so not liking things that you like after a bit of time.
+** Telling the player how to fix their bad habits, but letting them fix it themselves
+   - http://lifehacker.com/knowing-how-to-improve-doesnt-matter-unless-you-build-n-1761914873
+** Fights between other people
+   - https://www.overcomingbias.com/2016/02/scared-sad-angry-bitter.html
+** Having major life decisions allow you to change your personality - you don't have to do the same things
+** Sometimes people are just busy and don't have the time to talk to you right then
+** Building out dependance on a game/person and then having to rebuild a lot when that fails.
+** Make a trait for lying to yourself
+   - It drastically reduces the negative aspects of failing at things
+   - However, it makes it much harder to analyse memories
+** People becoming more rigid with age.
+** Being able to write away things that hurt you
+  - For instance, failing a relationship should make something.
+  - Maybe just make this a core memory?
+  - This should hurt the self until it is gone.
+  - So, the core is to make more traits and to put them on the map.
+** Getting inspirations when unfocused
+   - lifehacker.com/to-get-inspired-sometimes-you-need-to-give-up-1763748419
+** Mechanics for complaining
+   - http://lifehacker.com/don-t-be-afraid-to-complain-1763933610
+** Tainting memories associated with things by having emotions associated with those things
+   - That is, if you have a memory of a game, but that game is associated with sadness, that memory should be tainted with sadness
+** Growth through paths and then have the paths go through non-adjacent squares 0/2
+** Make yourself more likely to generate flashbacks when not very busy.
+** Make an item for gossip
+** More work on action success 0/2
+    - Keep track of the success over the course of the action instead of just checking at the end
+    - Make it very visible
+    - Make things that affect the chances and attach them to the sources
+      - Eg; sadness attached to the talk source
+** goals.org
+** Having a store like the lifetime happiness one from The Sims where you buy activatables/traits
+   - Empathy from sadness
+   - Optimism from happiness
+** Fantasies as traits or similar entities
+   - Daydreams to produce happiness, currencies enough to kill wishes.
+   - Dreaming about being with someone to reduce the feeling of being alone
+** I think we want stories to be archetypal
+   - Being a person in a haunted house
+   - Being in a band
+** Putting deeper descriptions in the pieces
+   - SM:AC style flavor text
+** TOWERS THAT TRANSFORM EMOTIONS TO OTHER EMOTIONS
+* Deferred pieces:
+  - [ ] Try having emotions interact with each other. 0/4
+    - They can cancel each other out
+    - One of them can be converted to the other one.
+* Content pieces
+** Insults as entities that hurt your relationship when alive and can be killed through closure.
+** Going to the library to get books
+** Make the zeitgeist into a piece like your game
+   - Build it up with pop culture
+** Piece about keeping up with the news. (itemAction)
+** Trait for being introverted
+   - Put a cap on the amount of socializing that you can do.
+** A trait that makes you feel uncomfortable when you're in an emotional state that you're not used to
+   - So, if you're depressed you feel uncomfortable if happy
+   - Represent it as fear for being in a new place and sadness to try to push you back to where you're used to being.
+** Make a trait that generates an emotion when killing an item that is generating emotions
+** Make a trait that generates fear when overwhelmed.
+** Anxious trait - have fear for every ongoing goal.
+** Make a source that creates a negative thought whenever there are no other active thoughts.
+** Random events mapping to life, eg. company going under, getting hospitalized
+** Trait that makes you sad whenever a personal relationship is hurt
+** Trait that makes you sad when you lose a game.
+** Trait that makes you think less of people that like you
+** Disgust at other people's actions
+** Stress being represented as fear - maybe call it anxiety instead.
+** Guilt represented as sadness
+** It's hard to lie when tired or overwhelmed or sad or angry
+** Egoism as a trait
+   - Requires success from you
+** Damage trigger to make other damage be twice as effective
+** You can have talking to people have a chance of generating emotions
+   - It can generate emotions that the other person is feeling
+   - It can reinforce existing emotions
+** Using creation of art as a closure action
+** Have closure of a memory cause that memory to flare
+** I want pop culture to occasionally trigger memories
+** The anticipation of waiting for someone to repond to a message
+* Killed pieces:
+** Every time that a tower hits a new creep it gets activated.           :TD:
+   - Seems clearer and better to just have it activate continuously.
+   - This does not require as many creeps
+** Creeps do damage if they reach the end of a path.                     :TD:
+   - Obsoleted by just having the creeps pool and giving them an effect every tick
+** Upgrade trees for towers - letting people choose between different properties for activities.
+   - Tried it and found it uninteresting and lacking in sufficient expression.
+   - Replaced with slotting insights into towers.
+** Creeps are needs - need for socializing, need to exercise the mind, need to challenge yourself and emotions, like sadness, excitability, stress.
+* Completed pieces
+** The activation results in the player getting the currencies associated with that tower. :TD:
+** Standard pieces                                                       :TD:
+*** Hexagonal map.
+*** Different towers having different things that they can hit.
+** Towers failing to work (or being super-effective) due to mood.        :TD:
+** Make the emotions have an effect with every tick (until they get resolved)
+   - If necessary, you can have them do double that when pooling
+** Have a focus amount that you can split up between active pieces.
+   - Penalize efficiency when multitasking
+   - You can have things pop up when not fully focused representing introspection when not fully focused.
+** Generate will as the day progresses.
+   - Because all of it is given to you at the start, it feels like you should just build and then run a simulation and see how it goes.
+** Buildings require energy to maintain and depression reduces energy.
+** Represent mental fatigue - needing to take breaks from work to clear the mind.
+** Have all emotions be suppressed when you are in a flow state.
+** Goals taking focus while alive.
+** Create events represent desires to do things
+   - Eg; your bad habit towers want to be turned on.
+   - You can squash these by expending will
+** Sims-style wishes
+   - Make them cost will to suppress
+* Things I'm Worried About
+** Laying out the map
+   - I don't like how things are built out now.
+   - I want more things to spawn
+* Unnecessary features
+    - [ ] Try being able to craft insights together. 0/2
+    - [ ] Make insights require more work - possibly emphasize the crafting 0/4
+      - Possibly give out fragments before giving out a full piece
+      - Possibly make them require some work before time elapses
+      - Make them require going through a memory
+    - [ ] Try inertia for switching tasks 0/1
+* Dubious features
+  - [ ] Fog of War
+    - [ ] Things happening underneath it without your involvement
+    - [ ] Things dying
+    - [ ] Things being made
+  - [ ] Lying to yourself
+    - [ ] Towers sneakily being other ones - telling yourself that you're doing work when you're just playing games
+    - [ ] Traits causing you to lie to yourself
+  - [ ] Traits that can prevent lying to yourself and fog of war
+  - [ ] Try slotting insights in on the map as well and having the source grow with time 0/2
+  - [ ] Make boosts that keep emotions from being spawned 0/3
+  - [ ] Try soft-locking towers by increasing costs instead 0/2
+    - Try having the first tower require the source to be active

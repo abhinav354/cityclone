@@ -1,0 +1,1172 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /Users/nikhilmurthy/Desktop/city/project.org
+
+
+* DONE First Playable: [8/8]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-12-23 Wed 15:25
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  Goal: To have a basic TD that can be used as a canvas
+  - [X] Hex map
+  - [X] Central piece where creeps come from
+  - [X] Creeps
+  - [X] First tower
+  - [X] Activating tower when hit by a creep
+  - [X] Waves
+  - [X] Placing towers
+  - [X] Paths
+
+* DONE Stage Two: [15/15]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-12-23 Wed 15:25
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  Goal: See how the theming and core mechanic feel.
+  - [X] Five towers with meaningful names 2/1
+  - [X] Five meaningful creeps 2/1
+  - [X] Towers being activated 1/1
+  - [X] Some kind of setting. 2/3
+  - [X] Render paths 0.5/0.5
+  - [X] Improve rendering for emotions 0.5/0.5
+  - [X] Make towers cost something 1/1
+  - [X] Add player resources 2/2
+  - [X] Move towers to side UI 0.5/0.5
+  - [X] Put player resources in the side UI 0/0.5
+  - [X] Design system for waves ending 0/1
+  - [X] Program system for waves ending 3/2
+  - [X] Shift to tick-based economy 4/6
+  - [X] Design system for events 1/2
+  - [X] Program system for events 4/4
+
+* DONE First coherent version: [8/8]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-12-23 Wed 15:25
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  Goal: Make a representation with more meaning to better determine feel
+  - [X] Plot out everything that needs to be done for this. 1/1
+  - [X] Fix the tick timing 0.5/1
+  - [X] Design and implement secondary effects for towers 1.5/2
+  - [X] Set up primary and secondary effects for towers 1/2
+  - [X] Set up sensible emotion generation. 1/2
+  - [X] Iterate on playability 4/4
+  - [X] Cleanly separate days 1/2
+    - Kill all emotions
+    - Stop all systems
+    - Add in a way to start the next day.
+  - [X] Set up goals and add them 3/3
+
+* DONE Tower Life:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-12-23 Wed 15:25
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  Goal: Increase depth of simulation and gameplay
+  - [X] Plot out this step 1/1
+  - [X] Write out findings of previous step. 8/4
+    - Write out points as to why this is not that compelling as a game.
+    - Write out how it succeeds/fails as a representation
+    - Write out current interest points
+  - [X] Write out towers as conglomerations of towers 3/3
+    - Make them have O/P
+    - Link all of the ones that are the same, even if they're not built together.
+  - [X] Add controls to towers 5/3
+    - Add the ability to turn them off
+  - [X] Tie event generation to towers. 5/4
+    - Write out some events.
+    - Hook them into the towers.
+    - Communicate them.
+  - [X] Add towers shifting with moods 3/3
+    - When mood goes above or below a certain threshold, make the tower non-functional
+    - Represent being unable to design when angry and that making you angrier
+    - Prevent towers from being turned off in certain moods - remove control
+  - [X] Playtest 2/6
+    - [X] Support pausing the game.
+    - [X] Check creep health/damage
+    - [X] Reduce chance of design tower generating events.
+
+* Technical Debt:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-12-23 Wed 15:27
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE Make the player into an entity 0/1
+** DONE Move repo to BitBucket 0.5/0.5
+** DONE Change the ECS compiler to use the csv library instead. 0.5/0.5
+** DONE Group the args, derives and defaults so that they aren't separate variable 0.5/0.5
+** DONE Handle inheritance correctly for args, derives and defaults 0.5/0.5
+** DONE Split the game into separate files. 0.5/0.5
+
+* Things to put up:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-12-23 Wed 15:27
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE ECS compiler 8/8
+** DONE Starting notes for city
+** DONE Article notes for November 3/3
+
+* DONE The person [8/8]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-12-29 Tue 18:18
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Write out state after last sprint 2/1
+  - [X] Plot out this sprint 1/1
+  - [X] Add creation controls for paths and sources 2/2
+  - [X] Design and write out the focus system 3/3
+    - Write focus meter.
+    - Give towers a focus points amount
+    - Give the player an amount that can be spent on focus
+    - Establish different focus states depending on percent of focus spent
+    - Make the towers perform differently under different focus states
+  - [X] Set up system for things to persist between days. 2/2
+    - Eg; anger peaking will result in waking up angry the next day.
+  - [X] Try having different times in a day that do different things 2/2
+    - Generate will through this.
+  - [X] Make the goal generation better 3/4
+    - Generate will through this.
+    - Try tying them into existing towers.
+    - Give them time frames and failures
+    - Pieces [5/5]
+      - [X] Add the ability for towers to generate goals.
+      - [X] Make the daily goals be created fresh every day.
+      - [X] Make the results of the goal carry over to the next day.
+      - [X] Change the goal check to be every tick
+      - [X] Clean out completed goals
+  - [X] Playtest 4/4
+    - Pieces [4/4]
+      - [X] Make the goals keep track of their own currency changes. Eg; 100 social from when the goal starts.
+      - [X] Check cleaning out completed goals
+      - [X] Fix the start of day weirdness
+      - [X] Fix being able to build stuff without the will to do so.
+
+* DONE Information [8/8]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2015-12-29 Tue 18:18
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Plot out this sprint 1/1
+  - [X] Refactor currency to be like the focus system for things like anger - constant recalculation 7/1
+    Pieces:
+    - Move the tick emotion system to recalculation
+    - Move goal completion to recalculation
+  - [X] Show currency effects clearly 0/4
+    - From goals
+    - From towers
+    - From creeps
+  - [X] Show waves clearly 3/2
+    - From goals
+    - From events
+  - [X] Kill events when their effects are over 0/1
+  - [X] Improve placing paths 0/0.5
+  - [X] Playtest 4/4
+    - [X] Fix events not completing
+    - [X] Fix goal completion
+  - [X] Write blog post 5/4
+
+* DONE #Content [8/8]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-01-07 Thu 15:19
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Plot out sprint 3/5
+  - [X] Unpacking goal and adding disgust until it is resolved 1/1
+  - [X] Events that give you currency 2/2
+  - [X] Trigger changing from month one to month two: 6/4
+    - Pieces: [3/3]
+      - [X] Unlocks towers
+      - [X] Adds more goals
+      - [X] Add the trigger
+  - [X] Think more about representing how political things were 1/1
+  - [X] Write out all of the params 6/6 [2/2]
+    - [X] Add generic making entities on goal completion
+    - [X] Support both design work and dev work being considered work
+  - [X] Playtest 8/8
+    - Pieces: [7/7]
+      - [X] Make sure that dead goals are removed when there are no goals left
+      - [X] Pack all of the building of the same tower cost notifications together
+      - [X] Ensure that the game stage trigger takes place.
+      - [X] Make the source cost will
+      - [X] Will does not reset correctly from day to day
+      - [X] Param goals to be harder
+      - [X] Figure out negative joy
+  - [X] Write blog post 8/6
+    - [X] Figure out the current set of problems
+      - The game is not fun.
+      - There's no real challenge
+      - You just build the towers the game tells you to build
+      - The model still lacks depth
+      - The game feels flat
+      - Decisions do not have trade-offs
+      - The lack of depth in the simulation/gameplay makes the storytelling feel more controlled.
+      - Information is not communicated well
+      - The game needs more toys
+      - The game lacks a mechanism to make easy problems harder for yourself
+      - The game is gnarly, the systems need to be smoothed into each other.
+    - [X] Figure out what is going well
+      - It is still remarkably easy to write for this game
+      - The systems do communicate already
+      - Engineering is easy
+      - The systems are actually doing much of what they're expected to, just not to the degree that they should yet.
+    - [X] Read through the previous few posts to figure out where exactly you are.
+      Features
+      - Focus System - fail
+      - Times of Day - medium
+      - Goals - good
+      - Towers generating events - good
+      - Towers changing due to mood - good
+      - Tower output - good
+      - Tower controls - medium
+    - [X] Figure out if next sprint is fun or sim
+    - [X] Write it out
+
+* Technical Debt
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-01-15 Fri 16:51
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE Support brackets in csv cells 6/4
+   - Eg; distracted:(work:-20) as  emotionTickModifiers
+   - Use pyparsing
+** DONE Check the day transition
+** DONE Change controlledName to controlledKey
+** DONE Check if the event system actually does anything or whether it can be replaced with just making the thing that the event makes.
+** DONE Refactor the emotion spawn system to have it's own entities instead of adding to a wave and all of that. 7/4
+   - Add in the attach creeps stuff of the item action system.
+
+* DONE Honing: [13/13]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-01-19 Tue 15:41
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Plot out this sprint. 1/1
+  - [X] Try having the goal stuff generate creeps 6/3
+    - [X] Make the goals generate creeps.
+    - [X] Maybe have the creeps bounce back and forth instead of pooling
+    - [X] Try having the creeps work off currencyStoreComponents instead of tickEmotionComponents
+  - [X] Write the conclusions for the goal stuff out. 4.5/4
+    - It really does help build out the city
+    - It does a lot to make the tower defense real.
+    - The ones that are made on creation need to be made constantly instead.
+    - Bouncing back and forth is something that I'm excited about.
+    - The stored emotion vs. tickEmotion makes the emotions feel much more ephemeral.
+    - You lose a lot of the strength of storytelling of letting emotions build up.
+    - I think that these feelings can be recaptured, but in a way that the systems do more to communicate with this new system.
+      - This is because the build-up will be represented by a lot of creeps going back and forth
+      - Also, reducing that build-up is something that requires player interaction in building towers.
+    - Towers that both work toward ending a problem and killing the side effects are an interesting mechanism.
+      - The chores tower both help reduce the disgust generated by needing to unpack and help finish the unpacking goal that causes the emotions to be spawned
+  - [X] Support actions that require inventory stuff 5/5
+    - Eg; talking about pop culture consumes pop culture 
+    - [X] This can be slotted into an existing tower of the right type for a period of time.
+    - You can do this with all events for slotting
+  - [X] Write the conclusions out. 3.5/4
+  - [X] Make the damage multipliers additive so that towers do not damage some creeps 0.5/1
+    - Give the creeps a health bar
+  - [X] Change the feature thing process in the PG campaign to support slotting: 9/6
+    - [X] Slotting the base problem into a design tower provides a design solution
+    - [X] Slotting another design results in polishing it.
+    - [X] Slotting a design into dev work results in a playable thing
+    - [X] Bugs/tech debt can also be slotted into dev work
+    - [X] You then have to slot the built prototypes into discussion towers.
+    - [X] You can also talk about the stuff you do.
+    - [X] Let the discussion towers be very affected by mood
+  - [X] Player triggered actions as their own entities 3/3
+    - Shouting as its own entity that requires anger
+    - Alternately, you can make this a mode of the discussion towers
+  - [X] The game that is being worked on as an entity with it's own health 3/3
+    - [X] Adding features to the game changes this and that affects your mood
+  - [X] Similarly, make people their own entities. 4/4
+    - [X] Base entity
+    - [X] So, make Evan an entity and make him make the event where other designers fail more likely
+    - [X] Also, make him possibly generate dev work for you
+    - [X] Also, make him make the discuss work part take more work
+  - [X] You need to have chores to do before you can do chores 2/2
+    - [X] You can make it an inventory thing that gets generated
+    - [X] Then use the system above to deal with it
+    - [X] Make towers non-operable without the inventory item
+    - [X] Make only one item be slottable into a tower at a time.
+  - [X] Playtest 7/7
+    - [X] Pop culture item to let you discover new pop culture
+    - [X] Check that the generated events do something
+    - [X] Coalesce the effect of the creeps
+    - [X] Make the map bigger
+  - [X] Write the blog post 3/8
+    - Check through the pieces doc.
+    - Write about the ability of systems to communicate numbers
+    - I keep forgetting to slot in the items
+      - However, it tends not to matter much as the time lost is not important.
+      - It would be nice to give it a default item set though
+    - The game systems are designed to be interconnected, but the params are not
+
+* UI Debt
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-01-26 Tue 12:12
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE Better control panel 3/6
+** DONE Time controls
+    - Two minute days?
+
+* Technical Debt
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-01-26 Tue 12:12
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE Refactor out a death system 0.2/1
+** DONE Derive the controlled name from the tower the item is currently attached to 1/2
+   - Just make this part of the ECS debt item.
+** DONE Look at the itemActions and see if they can be better coalesced into the goal system 3/2
+   - Refactor item actions into being their own entities
+** DONE Make the emotionTickModifiers their own entities 3/2
+   - Make the towers have traits
+   - Make the emotionTickModifiers affect traits
+   - So, make talk towers less effective when sad
+   - Similarly, make entities to handle towers transforming
+
+* ECS Debt
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-01-26 Tue 12:12
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE Support deriving data from another csv file based off the args 2/2
+   - Remove controlKey from playerControl.csv with that
+** DONE Putting multiple pieces in one ecs file 1/2
+** DONE Shorthand for !default 1/1 [3/3]
+   - [X] eg; checkCount: ?300
+   - [X] Also for x: #x
+   - [X] Also for x: x()
+** DONE Fix parseCsv for lists
+** DONE Support mixing in data from the csv cells and derived ecs files. [3/3]
+    - [X] Better support subclasses in csvs
+    - [X] Give them a column that lets them define a subclass so that the CSVs are less fragmented.
+    - [X] default the class to the csv file name
+
+* Design Debt:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-01-26 Tue 12:13
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE Sorting pieces
+** DONE Instead of having goal failures result in currency, should they result in creeps?
+   - Maybe success as well?
+   - Maybe have them create creeps as long as they are active.
+** DONE The continual additive nature of the emotion of the creeps makes it too easy for that emotion to peak
+   - Maybe have them be a fixed amount instead of ticking up constantly.
+   - Maybe have them multiply to represent the growth of a problem. Eg; anger creeps spawn new anger creeps if not dealt with.
+   - Instead of having them generate a fixed amount, maybe have them keep making stuff as long as they are alive - disgust all the time.
+     - Then, not dealing with it at all causes it to grow.
+** DONE Feature audit
+
+* DONE Paying off debt: [10/10]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-02-11 Thu 15:05
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Plot out sprint 1/1
+  - [X] GitHub for ECS compiler 2/2
+    - Include sample ecs and csv files
+  - [X] Article on the core of the game. 7/2
+  - [X] Add a /blog/city page to my site that has a table of contents for these posts. 1/2
+  - [X] MDA analysis of game 6/5
+  - [X] Update the homepage of my site to talk about city instead of my old games and replace the PMV tab at the top with old games. 1/2
+  - [X] Take a look at the pieces doc again 1/2
+  - [X] Clear UI debt 3/6
+  - [X] Clear tech debt 8/9
+  - [X] Manage ECS debt 3/4
+
+* DONE Honing 2: [9/9]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-02-11 Thu 15:05
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Plot out sprint 2/2  
+  - [X] Put a decay on the emotions 0/0.5
+    - This feels more realistic.
+  - [X] Change the notifications for additional creeps to be added to a wave to be their own entities instead
+    - As part of this, refactor aliveCreeps to be continuously generated.
+    - Make the design tower generate anger creeps while active as well.
+    - This brings back the feeling of an emotion building up and helps the simulation
+  - [X] Look into putting the game and the people on the map instead of in a menu 0/4
+  - [X] Add create modifiers (like in concept.csv) to items 0/1
+  - [X] Add in the idea of sources defaulting to self and then letting the player move them out. 4/3
+  - [X] Make all towers require items to operate, but make some general infinite items
+    - Eg; small talk for talk towers
+  - [X] Make emotion sentinels 3/2
+    - Make being happy reduce your focus, but also reduces the will cost of everything
+    - Make peaking on any emotion carry over for a few days after.
+    - Being sad increases all of the will costs and makes speaking harder
+  - [X] Make the non-tower sources do more 1/2
+    - [X] Make them unlock towers.
+  - [X] Towers that generate will 4/3
+    - [X] Make slotting in an item cost will
+    - [X] Make talking, playing, pop culture and shouting add will
+    - [X] Make all of the work towers reduce will
+    - [X] Make random events that add and reduce will
+    - [X] Add will when not focused on anything
+
+* DONE Tower Defense: [7/7]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-02-11 Thu 15:05
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Make the paths clearer 2/4
+    - [X] Make them show where they will move entities
+    - [X] Make sure that they go to a neighbor
+    - [X] Show the neighbor that they go to.
+    - [X] Add a cost to them.
+  - [X] Prevent buiding multiple things on the same spot. 0.5/0.5
+  - [X] Make the damage targeted 2/2
+  - [X] Add effects to different towers 3/6
+    - [X] Make sure that you have towers to deal with different emotions
+    - [X] Check what exactly the towers hit
+    - [X] Put what the towers hit in the UI
+    - [X] Make sure that there are items for every tower.
+    - [X] Think about tower effects
+  - [X] Shift the toggle to the sources instead of the tower and make the code work along those lines. 7/4
+    - [X] Shift code
+    - [X] Change toggle
+    - [X] Make sources only be active when an item is slotted in
+    - [X] Maybe combine the above two?
+  - [X] Readability 4/4
+    - [X] Make some rough images for towers
+    - [X] Also, kill the hexmap text
+    - [X] Make an icon for when a tower has no attached item
+    - [X] Make the creeps much smaller and remove their text
+    - [X] Figure out how to show all of the creeps.
+  - [X] Make sure that everything is connected - only let people build new things next to existing things. 1/1
+
+* DONE Self-expression [11/11]:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-02-11 Thu 15:05
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Think about this 2/2
+  - [X] Make things that are not used start to die. 2/3
+  - [X] Tower abilities 5/6 [4/4]
+    - [X] Make time reduce the health of creeps
+    - [X] Make walks do splash damage
+    - [X] Make talking shoot a lot of small damage pieces
+    - [X] Make diary writing damage and tag stuff with a random chance of killing everything tagged.
+  - [X] Take out the parts of the day system. 1/2
+  - [X] Add things to tower sources 6/6
+    - [X] So, events that cause towers to start generating entities when active
+      - Create an entity that represents the emotion building up.
+      - Reset it partially every day
+      - If it ever crosses a certain threshold, it should add the emotion and then reset, but stronger
+    - [X] Events that increase damage against certain things
+  - [X] Try simple leveling of towers instead of damage associations. [4/4] 6/4
+    - [X] Try gaining experience with every action completed
+    - [X] Increase the damage done.
+    - [X] Increase focus costs
+    - [X] Implement tower cap
+  - [X] Being able to remove associations 4/6
+    - [X] Diary writing
+    - [X] Walking
+    - [X] Talking
+    - [X] This is another thing that differentiates between towers. Make diary > talking > walking
+    - [X] Make an action that works for multiple towers.
+    - [X] Allow setting only some of the towers or all of the towers.
+  - [X] Try splitting towers between damaging and non-damaging 2/4
+  - [X] Playtest 7/7 [11/11]
+    - [X] Create the missing items.
+    - [X] Only build the source when the first tower has been built.
+    - [X] Check that the transformed towers still work (ie; shoutTower and rageDesignWorkTower)
+    - [X] Try the damageBoostGenerateComponent and emotionSourceGenerateComponent as needing a consecutive streak
+    - [X] Try a param set
+      - [X] Generate household chores
+      - [X] Param the focus system to give will
+      - [X] Add will at the start of the day
+      - [X] Reduce the cost of starting normal tasks
+    - [X] Check to see if you like the damage boosts and the creep associations
+    - [X] Think about non-damaging towers
+    - [X] Reduce the number of creeps generated - maybe make them tougher as well
+    - [X] Only generate tower events when the tower is active.
+    - [X] Make the source system only check once every ten seconds
+    - [X] Maybe prevent repeat associations?
+      - Also make their descriptions include the tower
+      - Make them random and rarer
+  - [X] Make the creeps look better. 2/3
+    - [X] Show their movement better. Use the velocity system
+  - [X] Write out findings 8/8
+    - [X] The random events really do help
+    - [X] Will power working out - taking out the parts of the day system
+    - [X] Screenshots
+    - [X] Peaking emotion results
+    - [X] Tower abilities
+    - [X] Things losing health if not used
+    - [X] Liking associations and being able to remove them.
+    - [X] Structure of leveling - restricting towers working out.
+    - [X] Failure of damage boosts
+    - [X] Splitting into non-damaging towers
+      - The consequence of working to keep yourself busy to give the emotions time to die out
+
+* DONE Day-to-day stuff: [11/11]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-02-23 Tue 19:30
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  About increasing autonomy for the player
+  - [X] Plot sprint 3/3
+  - [X] Try out having things pop up on the map 10/5
+    - [X] Have emotion pieces pop up
+    - [X] Bonus towers
+      - Have these be of activities that you haven't built yet.
+      - You can make this of activities that you haven't built in a while and that are under the cap.
+    - [X] Write this feature out with goals.
+      - To give you things to build to
+        - I should test this. I'm not sure how important this is.
+        - Think about spacing on the map
+      - To make the game world feel more responsive, less predictable, more organic
+  - [X] Think about personality traits 8/5
+    - It would be nice if there could be trigger actions
+    - It really doesn't feel like there's enough here for core memories.
+    - Examples:
+      - Anxious trait - have fear for every ongoing goal.
+      - Make a trait that generates an emotion when killing an item that is generating emotions
+      - Make a trait that generates fear when overwhelmed.
+      - Workaholism
+  - [X] Think about wishes 4/5
+    - Add the ability to squash wishes
+  - [X] Let players choose traits when leveling towers 6/3
+    - [X] Put damage boosts in here.
+    - [X] Upgrade the persistent items for towers as well - refactor item actions not to be owned by the items
+    - [X] Add focus
+  - [X] Creep variance 4/4
+    - [X] Make invulnerable creeps
+    - [X] Creeps that damage things they pass
+    - [X] Creeps with more/less health.
+    - [X] Creeps that damage other creeps of different types
+    - [X] Change the spawning to have these other types
+  - [X] Put the towers into tabbed categories 2/2
+  - [X] Make the flow focus state reduce emotional effect of creeps 1.5/2
+  - [X] Tower radio buttons 1/2
+    - Eg; choosing between watching TV, reading and playing for pop culture
+    - Letting designs percolate
+    - Maybe you can just use the item system for this.
+    - Update actions
+  - [X] Playtest [7/7] 6/7
+    - [X] Don't count generated currencies that do not go toward a goal.
+      - Eg; don't count walk closure unless it goes toward closure
+      - Actually, leave this. It shows you what you could have used.
+    - [X] Collapse duplicate inventory items.
+      - Ie; show 2 x Cool Code Discovery
+    - [X] Support branching paths by having the creeps choose a random direction from the options
+    - [X] Turn off towers that consume will when you have no will
+    - [X] The minor traits and the wishes occupy a lot of the same space.
+      - Maybe make the minor traits generate wishes instead
+    - [X] All item actions are recreating themselves.
+    - [X] Entities that just function as randomized shortcuts to other entities, so a learn pop that has a spread between books and tv
+  - [X] Write out findings 6/8
+    - I'm loving these emotion pieces popping up. They're very flavorful and they change the map meaningfully.
+    - The invulnerable ones work out as the ones around them get killed
+    - I'm not sure about the damaging ones, you don't have that much scope to interact and they're sort of small.
+
+* DONE Run two [10/10]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-03-03 Thu 16:09
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Plot out sprint 1/1
+  - [X] Wishes to stop actions 2/2
+  - [X] Insight system  6/6
+    - [X] Generate pieces that can be used to modify producers/towers
+    - [X] For now make the modifications in damage and currencies generated
+    - [X] Be able to slot them - make them have traits and make towers/producers only allow certain types.
+    - [X] Getting them from game events
+    - [X] Test them out
+  - [X] Generating tower attributes 5/4
+    These are like insights, but cannot be unslotted.
+    - [X] Generate them
+    - [X] Fold the creep association into this.
+    - [X] Trait that generates wishes for the other actions
+  - [X] Make the minor traits generate wishes 5/3
+    - [X] Make the traits make wishes
+    - [X] Make the traits able to affect other things - make workaholism add happiness to the work tasks
+    - [X] Make failing the wishes generate emotions
+    - [X] Laziness as a reduction in will
+  - [X] Represent people as concepts 8/5
+    - [X] Generate wishes
+    - [X] Have actions dealing with them
+    - [X] Represent building up actions - base talk action + person talked to.
+    - [X] Make opinions
+  - [X] Making memories 7/6
+    - [X] Figure out when memories are to be made
+      - Emotional peaks
+      - I like having a random chance to form one
+    - [X] Figure out what all needs to be stored in them.
+      - For now, just make it store the emotions of the time
+      - And make it store the active elements
+    - [X] Make them
+    - [X] Being able to introspect and derive insights and traits from them
+    - [X] Having a collection of memories
+  - [X] Peak emotions generating personality traits 2/3
+    - [X] Associating traits with activities and emotional states
+    - [X] Also make memories
+  - [X] Playtest [6/6] 6/7
+    - [X] Only show items relevant to the tower tab that you have open.
+    - [X] Enforce that the source must be next to the first tower.
+    - [X] Check next day transition
+    - [X] Make a good way to show things like boosts being generated.
+    - [X] Make the generated names clearer
+    - [X] Fix wishes breaking at the end of the day
+  - [X] Write out findings 9/8
+    - [X] Check to see what major features are left - if there aren't any, do a consolidation run
+    - [X] Write
+
+* DONE Run three [10/10]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-03-17 Thu 23:43
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  Est: 113 pomodoros
+  - [X] Plot out sprint 2/2
+  - [X] Insight iteration [4/4]
+    - [X] Make the source grow out 3/2
+      - It can just grow out wherever it can find space or need to be moved if it is to grow
+      - Or, it can just destroy stuff around it.
+    - [X] Try just having them be added to the towers and forget the slot system. 2/2
+    - [X] Make a trait that makes you much more likely to generate insights (empathic/self-aware) 2/2
+      - You can also make the closure generating actions help make you more self-aware
+    - [X] Make them rarer 1/1
+  - [X] Missing minor features: [7/7]
+    - [X] Actions to hurt/heal traits and sources 2/2
+      - This feels more direct than it should be.
+      - Being able to remove opinions
+      - Have a better idea of what sources and traits are.
+      - Maybe make this a modifier?
+      - Talking to ruin a relationship with another person.
+      - Convincing yourself that you should stick with your game
+        - Make this it's own action though, and not procGen
+      - Successes to help repair the self
+    - [X] Making social actions have more social effects 2/2
+      - Picking up people's traits
+      - Improving the relationship
+    - [X] Having relationships deteriorate with time 0/1
+    - [X] Changing people's traits over time 1/1
+    - [X] Just fleshing out people in general - they're very shallow now. 3/3
+      - Giving them traits
+      - Hiding those traits from the player and letting them figure things out
+      - Having emotional state really affect these actions
+    - [X] Having random requests pop up, eg; someone wanting to speak to you. 3/3
+      - System for random requests
+      - Have people have a chance to generate them
+      - Make other people hold opinions like you and make opinions generate these wishes.
+      - [X] Make requests as items
+      - [X] Time them though
+      - [X] Make wishes to talk to other people
+    - [X] Radio buttons for actions 2/4
+      - Working hard or taking it easy
+      - Listening vs complaining
+  - [X] Can you merge traits and tower sources more? Give the tower source more trait stuff? 11/6
+    - You can make the traits unlock towers
+    - So coalesce the tower sources into the traits
+    - Some towers could require multiple traits? (dev work = game + programmer)
+      - This seems like a lot of additional complexity though
+      - Unless you make one key and a couple of support traits
+    - Some traits don't need towers.
+    - Adulthood is what unlocks chores
+    - Introvert for pop culture + walks? Try to find a better term than introvert though.
+    - Game: designWorkTower, devWorkTower,discussWorkTower (make it also work for rageDesignWorkTower, shoutTower)
+    - Person: chore tower, talkTower
+    - Solitary: walkTower, popTower, diaryTower.
+      - Also make it add will to social stuff.
+      - Alternately, make it force you to go through a getting comfortable talk option before you can do the real talking
+  - [X] Reparaming: [11/11]
+    - [X] Memories for completing tasks 2/2
+    - [X] There are way too many generated things 3/3
+      - [X] Make their text purple
+      - [X] Make clicking on a tower show you the attached boosts
+      - [X] Simplify them to just hit a single source
+      - [X] Playtest enough to determine the complexity.
+    - [X] The generated things are paramed to require too much work 1/1
+    - [X] Walks/pop culture takes too long 2/1
+    - [X] Failing tasks that people ask you damaging your relationship 1/1
+    - [X] Storing things like favors done - maybe making them opinions 1/1
+    - [X] Playing around with the will economy 4/4
+      - [X] Try cutting the will from the generic towers
+      - [X] Try the UI update
+    - [X] Short term actions 5/2
+      - Lazing around is in place
+      - More time bombs though 
+        - not exercising has adverse effects for instance (also, exercise is an action tied to the adult trait)
+        - Not having fun for a certain period of time.
+        - This can be done with more goals and giving them failure results.
+    - [X] Locking more actions/having actions change more due to emotional state. 1/2
+    - [X] Need to generate more emotions all the time 5/3
+      - [X] Refactor to the number based thing
+      - [X] Make more joy creeps from finishing tasks
+      - [X] Make more things produce creeps
+      - [X] Add will to finishing tasks
+    - [X] Experience levels don't do enough and don't rise fast enough right now. 3/3
+      - Can we kill this system in favor of just growing it out?
+      - I like just having them grow with use though, and this does that well.
+      - First build it out, then look to clean it up.
+      - We can have the growing out be with use though.
+  - [X] Iteration: [6/6]
+    - [X] Test the opinion stuff out some more. 2/2
+    - [X] Make generating wishes clearer 2/2
+    - [X] Param out which currencies can have generated wishes 0/1
+    - [X] Fix paths 2/2
+    - [X] Try shifting spawning to be in a random place instead of at the self source 3/3
+      - This is for sources/minor traits
+    - [X] More nuance in relationships, making the health matter more 0/4
+  - [X] Weirdness - this may be helped with aesthetics though [2/2]
+    - [X] More things popping up 0/4
+    - [X] Areas becoming toxic  3/2
+  - [X] I want to put memories on the map and have results from them  [2/2]
+    - [X] Maybe just always have them produce emotions 2/2
+      - Flashbacks?
+    - [X] Design the connection between them and minor traits 2/2
+      - This is the whole core memory thing
+  - [X] Playtest 4/7
+    - [X] Put exp on the trait description in the UI
+    - [X] Put a timer on the click text and make it clickable
+    - [X] Play through things
+      - Still need more pieces
+    - [X] Fix this path bug
+  - [X] Write out findings 4/8
+
+* Run Four [20/20]:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-03-29 Tue 12:47
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+  - [X] Plot out sprint 1/1
+  - [X] May as well add a bonus to the towers when the source levels up. 0/0.5
+  - [X] Make it so that you need to leave two spaces between traits 0/0.5
+  - [X] Try placing traits on the board 1/2
+    - Maybe make them unlock and then be placable as buttons
+    - Don't let towers be built until the trait has been placed.
+  - [X] Consider making self into a trait 1/1
+    - After doing that, kill the source ecs file.
+  - [X] Try giving traits tickEmotions 2/3
+    - Eg; give self aware a tick that adds closure
+    - This needs to add to itemActions
+  - [X] Put people on the map. 16/4
+    - [X] Give them a position component and use the random position exec
+    - [X] Let them grow, make a base between traits and the person class
+    - [X] Give them tower buttons
+  - [X] Be able to have person actions generate random events that have a dramatic efffect on person health 2/2
+    - Eg; Talking about work can result in a useful insight for the other person and so dramatically increase health
+  - [X] More directed short term goals 4/4
+    - Look at the sims wishes
+    - Add will to goal completion
+    - The number at any time needs to be more limited
+  - [X] Design long term goals 3/4
+  - [X] Replace quality items with infinite work items. 3/3
+    - Eg; studying for exams in the sims.
+    - [X] Make an entity for the feature
+    - [X] Add health to it.
+    - [X] Kill it when the work is done.
+  - [X] Activatables 7/6
+    - These are things that the player can turn on and off
+    - They modify towers with a specific trait
+    - Eg; working harder or taking it easy
+    - Eg; Listening vs complaining
+    - Can have focus changes
+    - Have some of these be locked by emotional states.
+  - [X] Only have traits be active if one of their towers is active 2/2
+    - [X] ^
+    - [X] Damage traits if they are inactive for too long
+    - [X] Move the emotionSourceGenerateComponent to the trait
+  - [X] Save/load 6/6
+  - [X] TD combos 7/5
+    - [X] Try having creeps multiply when bouncing again. This puts back in the distance mattering part of the tower defense
+    - [X] Freeze + DoT
+    - [X] Add meditation
+  - [X] Making traits into Civ2 style aquariums 4/3
+    - [X] Set the rendering entities
+      - Add a render state to the rendering component
+      - And the render system
+    - [X] Set up escaping from that state
+  - [X] Making people into the same 5/5
+    - [X] Making the aquarium
+    - [X] Giving them the same traits as the player
+    - [X] Generating actions as a result.
+  - [X] Merge health and xp 1/2
+  - [X] Playtest 4/7
+    - [X] Check the people and their buttons.
+    - [X] Play with the goals for a bit
+    - [X] Play with the projects.
+    - [X] Make tapping a trait on the map the same as tapping the button
+  - Spells! [2/2] 3/3
+    - [X] Give them a button
+    - [X] Give them an optional target
+  - [X] Write out findings 4/4
+
+* Technical Debt
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-03-29 Tue 13:02
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE Check buttons for when there are multiple items with the same key 0/1
+** DONE Remove the emotion component csv 1/1
+** DONE Take out the check for source when placing a tower.
+** DONE Move the pg start entities to the parameters
+** DONE Take goalComponents out of the item object and make an item system that does the same thing
+** DONE Kill the parts of creep variance that are not invulnerable creeps 0.5/1
+** DONE Take out the boredom will boost from the parameter file
+** DONE Refactor the damage system to flow more through the sources
+** DONE Refactor the boredom/active currencies into entities
+** DONE Make the mapspawncomponents use entity, world instead of world, entity
+** DONE Support for marking entities as unique by key, so that there can only be one of that entity for that key
+
+* DONE Planning and Analysis [8/8]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-04-05 Tue 15:19
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Plot out sprint 1/1
+  - [X] Figure out and write up everything that needs to be done by the end of June 3/3
+    - Goal: To have the game out on Steam Greenlight
+    - Rough art pass
+    - Better information fow
+    - One real story
+  - [X] Catch up on analysis techniques. 4/4
+  - [X] Deep analysis of the current game 14/12
+    - [X] MDA analysis
+    - [X] List out known design problems as well
+  - [X] Deep look at pieces and debt 2/2
+    - [X] Pieces
+    - [X] Debt
+  - [X] Playtest 4/6
+  - [X] Write up of the state 6/6
+  - [X] Reduce tech debt 4/6
+
+* DONE Information [12/12]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-04-13 Wed 22:12
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Plot out sprint 1/1
+  - [X] Go through notes deeply 1/2
+  - [X] Make more things into memories
+    - [X] Fold the associations into them 3/2
+    - [X] Work more on their health and make them into core memories if they survive long enough 2/2
+      - Also work on their flaring - make it more likely with associated activities
+    - [X] Work on their appearance. 2/4
+      - Make them flare obviously
+      - Show what they are about
+    - [X] Think about their conversion to traits 1/4
+      - You can fold in the emotion entity maker possibly
+      - You can trigger it off a flare
+      - There's possibly space to coalesce more of their functionality
+  - [X] Kill marked UI debt 4/5
+  - [X] Clean up side-bar 5/2
+    - [X] Make a UI element to show the lines of a div
+    - [X] Make a toggle set to let the player turn them on and off
+    - [X] Make them draggable
+    - [X] Support colors
+    - [X] Add the ECS parts
+    - [X] Align the panels.
+  - [X] Kill side bar 13/8
+    - [X] Put buttons in the info panels
+    - [X] Put lines in the info panels
+    - [X] Allow unfolding of the info panels
+      - [X] Focus
+      - [X] Calculated currency
+    - [X] Tabs for the building panel
+      - [X] Make panels for each of the traits that show what the side bar tabs do now
+      - [X] Make a single building panel that unfolds into each of these traits
+      - [X] Make paths come under the self trait
+    - [X] Put in an inventory
+    - [X] Kill all of the side bar
+  - [X] Refactor the slave entity system 2/2
+  - [X] Make focus clearer to see 0/2
+    - [X] Give it a panel
+  - [X] Emotion source clarity 4/4
+    - [X] Marker for what emotions are coming from what source
+    - [X] Details of where and why if clicked into
+    - [X] Put those details in a panel
+  - [X] Work on tower defense clarity 3/5
+    - [X] Show bullets
+    - [X] Show damage with color for bonus
+    - [X] Show damage number above the head
+  - [X] Playtest 5/6
+    - [X] Control panel so that it's okay if you close a key info panel
+    - [X] Move wishes to a panel
+    - [X] Remove squash buttons from side panel
+    - [X] Fix dragging minimizing
+  - [X] Write article 4/8
+
+* Bugs:
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-04-14 Thu 22:14
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE Why can't I press the closure buttons?
+** DONE Why are paths dying? Also buildings?
+    - Can you integate it in a way that represents reality?
+    - It is actually really cool when buildings disappear.
+** DONE makeEcs on a path bug
+** DONE There's something invisible that blocks you from building in places
+** DONE Fix save/load for info panels
+** DONE Why can't you restart an action once it has been completed?
+
+* Design Debt
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-04-15 Fri 14:08
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE Make the times of the day more meaningful
+** DONE The stop-start nature of the game interferes with the feeling of watching a simulation tick along
+** DONE Building out the person needs to flow better and be less cramped.
+   - Each separate part feels too divorced from the each other part.
+   - The tower defense piece needs to do more to incentivize building pieces together.
+** DONE You still get too much will in too fragmented a manner.
+   - Make running towers generate/cost will.
+** DONE Goal completion generating will is a positive reinforcement mechanism, which doesn't play that well
+** DONE Streamline the focus system - make it better integrated and less content dependent.
+   - Instead of having it affect each tower in a paramed fashion, try to devise an algorithm for it.
+** DONE Figuring out stuff to do is non-trvial
+   - What should I be doing next?
+   - What should I be doing now?
+** DONE Do I need the tower sources?
+
+* Social Debt
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-04-15 Fri 14:54
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE Self-expression
+   - [X] Write out some thoughts on autonomy/self-expression 7/6
+     - It requires multiple acceptable paths
+     - It requires tangible trophies/consequences representing your choice
+       - A fun example of this point is when you name characters after real people
+     - It should require some effort/action from the part of the player
+   - [X] More thoughts about self-expression 4/6
+     - *** For self-expression, the deciding factor needs to be the player's whims
+     - The sims with their various things to level
+     - Uniqueness vs group identifiers
+     - Combinatorial uniqueness in the case of CCGs vs binary in RPGs
+     - Difficulty and self-expression
+     - Reinforcement decisions - decisions that are the same as previous ones and which commit you further
+     - First order better than second order?
+     - Necessity of player interaction
+     - Making them meaningfully different helps players identify with them though
+       - The difference is in choosing clothes vs choosing a character
+       - The difference also lies in choosing a secondary characteristic that appeals to you.
+       - So choosing to exercise over watch TV to deal with anger because the secondary aspects appeal to you.
+       - This also lets people who don't want to make the decision make the one that is best from a mechanical perspective
+     - The difference between all of this and choosing a build that represents play-style
+       - Or making a deck that is unique
+       - This is in many ways an inversion, this is choosing the aspect of the game that is most comfortable.
+** DONE Get some screenshots
+** DONE Talk on depth and complexity 7/6
+** DONE Talk on self-expression 2/2
+** DONE Video on self-expression 4/2
+
+* Technical Debt
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-04-15 Fri 14:55
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :END:
+** DONE Rename the emotionComponent to be the damageable component or put it in the health component
+** DONE Make indexing unique entities easier.
+   - There is only ever one tower source, so mark it as unique in the identityComponent
+   - Then store a key -> entity dict in the world and use that for entityForKey
+** DONE Merge the create component and the aliveMakeComponent
+** DONE Merge the sourceComponents and the aliveMakeComponents
+** DONE Update Emacs
+   - [X] Function to move a buffer to a new frame where it is fullscreen
+   - [X] Function to open the article notes for the current month.
+** DONE Move the entities column from the tower source to the trait csv
+   - Then just autogenerate the towersource csv, you don't need the name either as it is not player-facing
+** DONE Split slave entities into slave entities and entities that are alive when the parent is alive
+
+* DONE Info part 2 [18/18]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-04-25 Mon 22:55
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Plot out sprint 1/1
+  - [X] Think about merging boosts with memories 1/1
+  - [X] Cut boosts 1/2
+  - [X] Give memories an info panel 1/2
+  - [X] Take out the people tab 1/2
+    - [X] Put health on the sources
+    - [X] Kill the tab
+  - [X] Merge focus and will tabs? 1/1
+  - [X] Darken the buttons if they cost more than the player can afford 1/2
+  - [X] Keyboard shortcuts 2/4
+    - [X] Game speed
+    - [X] Path
+    - [X] Towers
+    - [X] Actions
+    - [X] Goals
+    - [X] Focus/will
+  - [X] Put an indicator on the producers to show how far along they are with their current item 1/2
+  - [X] Organise the goals into foldouts 1/3
+    - [X] Completed goals
+    - [X] Active goals
+  - [X] Fix bugs 2/3
+  - [X] Plot out design debt 2/2
+    - [X] Overwhelemed by emotions
+    - [X] Economy
+    - [X] Handling emotions
+    - [X] Emotions must do more
+    - [X] Look over last analysis again
+  - [X] Overwhelmed by emotions 3/3
+    - [X] Think about the design a bit
+    - [X] Take away control
+    - [X] Turn off towers that require player control
+    - [X] Kill the emotions, but not the sources
+      - Maybe kill all of the emotions
+    - [X] Add a memory
+    - [X] Make the entity
+  - [X] Make emotional states take focus 1/2
+  - [X] Make memories flare randomly depending on focus 1/2
+    - Also make memories take focus when flaring.
+  - [X] Research sleeper agents 4/4
+  - [X] Playtest 6/6
+    - [X] Also put the emotion sources on a trait in the trait info panel
+    - [X] Put a background on the source extensions
+    - [X] Make the sources not be blue
+    - [X] Maybe make all bonus towers use the random positionexec
+  - [X] Write up article 0/6
+
+* DONE Story part 1 [10/10]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-04-25 Mon 22:55
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Plot out sprint 1/1
+  - [X] Determine the necessary pieces of the campaign 2/2
+    - Needs something that you can and must spend a lot of time on (like work for the PG campaign)
+    - Needs to give you scope for personal development
+    - Needs to have people, but not too many
+    - Needs to start out without too much personality already in place
+      - This is so that the player is not overwhelmed when they start the game, if you can do this in another way, that's fine.
+    - Reasons to manipulate emotions 
+      - Times when you need to be calm
+      - Times when you need to be emotional
+    - Potential for dramatic events.
+  - [X] Figure out the setting of the campaign 2/2
+    - Murder investigation?
+    - New school?
+    - Rock star?
+    - Survival on a desert island?
+    - Sleeper Agent!!!!
+    - Superhero? (balancing superhero life with personal life a la Superman)
+  - [X] Figure out what is the mechanical core of the intersection of city and that setting 4/4
+  - [X] Plot out content to handle these pieces 3/3
+  - [X] Implement 15/5
+    - [X] Chapter 1
+    - [X] Chapter 2
+  - [X] Implement the people specced in chapter 2 3/5
+  - [X] Implement Chapter 3 5/10
+  - [X] Playtest 4/3
+  - [X] Resolve notes 0/6
+
+* DONE Story part 2: [18/18]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2016-05-04 Wed 13:11
+  :ARCHIVE_FILE: ~/Desktop/city/project.org
+  :ARCHIVE_CATEGORY: project
+  :ARCHIVE_TODO: DONE
+  :END:
+  - [X] Plot sprint 0/1
+  - [X] Design making the people less placeholder 2/2
+    - [X] Give them more traits
+    - [X] Make your relationship with them have the scope to be more meaningful
+    - [X] Towers for the tower god
+  - [X] Implement the people towers 4/4
+  - [X] Implement inviting people to actions 6/5
+    - [X] Calculate if the person can do the action
+    - [X] Make the item to invite the person
+    - [X] Make that action make the goal
+    - [X] Make succeeding at that goal improve your relationship
+  - [X] Check the person creating entities when active 1/2
+    - [X] Check making people
+    - [X] Check people being active
+    - [X] Check the generation of entities
+  - [X] Making traits due to emotional state 3/3
+    - Is being a little sad a lot of the time as likely to teach you as being very sad for a bit of the time?
+    - Make the summation of emotion matter
+    - Make memories have the chance of generating these traits
+  - [X] Improve the people 5/5
+    - [X] Allow liking chess to let you play chess with that person - essentially opinions that unlock actions
+  - [X] Maybe take away the abilty to build towers from players 5/5
+    - Maybe let them place the first one and that's all?
+    - Maybe only let them place towers that do damage? [4/4]
+      - [X] Put the producers on the extensions
+      - [X] Put the marker on the extension for the tower
+      - [X] Remove the random placement near the tower
+      - [X] Shift the sources to one tower per extension and make them grow much faster.
+  - [X] Resolve story for July 4/4
+  - [X] Implement Chapter 4 6/10
+  - [X] Implement Chapter 5 3/10
+  - [X] Improve the random open position exec 1/2
+    - Things cannot be built on top of each other
+    - Don't let things be built next to each other either
+  - [X] Definitely need a better way of informing the player of emotion sources being generated 1/4
+    - Try putting in the basis of N. panels
+    - You can just have this be click texts for now
+    - [X] Put a panel on losing control too
+    - [X] Add in completing an action
+  - [X] Maybe wipe the emotion sources when you lose control as well 1/2
+  - [X] Try making memories no longer be items. 1/3
+  - [X] Playtest 7/8
+    - [X] Playtest the emotion sources being wiped.
+    - [X] Fix the info panel being drawn under other things
+  - [X] Story analysis 2/4
+    - Figure out the high level goals that the narrative needs to achieve
+    - Try to identify what would make the july session something that people feel is brilliant.
+    - What exactly are the situations that you need to engineer?
+  - [X] Write blog post 5/6

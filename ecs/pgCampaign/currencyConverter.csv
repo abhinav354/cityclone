@@ -1,0 +1,9 @@
+key,currencyKey,emotionsConversion,currencyConversion
+choresConvert,chores,joy:1,will:0.25
+workConvert,work,joy:1,will:0.5
+popConvert,pop culture,,
+walkConvert,walk,joy:1,will:0.25
+diaryConvert,diary,sadness:1,will:-0.5
+closureConvert,closure,joy:1|sadness:1,
+exerciseConvert,exercise,joy:2,will:0.5
+meditateConvert,meditate,joy:1,will:0.25

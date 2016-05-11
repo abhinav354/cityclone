@@ -1,0 +1,30 @@
+infoRender: #infoFoldoutRender
+lineCount: #infoFoldoutLineCount
+
+foldout:
+folded:
+foldLines:
+
+#
+var infoFoldoutRender = function(infoPanelRender, rect, lineCount){
+    ctx.fillStyle = '#ffffff';
+    var foldRect = [rect[0], rect[1] + lineCount * infoPanelRender.lineHeight + infoPanelRender.offset, 
+                    infoPanelRender.panelLength, infoPanelRender.lineHeight];
+    ctx.fillText(this.foldout, foldRect[0], foldRect[1]);
+    foldRect[1] -= infoPanelRender.lineHeight;
+    infoPanelRender.foldRects.push([foldRect, this.foldout]);
+    
+    if (!this.folded){
+        lineCount += 1;
+        _.each(this.foldLines, function(foldLine){
+            lineCount = infoPanelRender.renderPanelPiece(foldLine, [rect[0] + 10, rect[1], rect[2] - 10, rect[3]], lineCount);
+        });
+        lineCount -= 1;
+    }
+    return lineCount;
+};
+
+var infoFoldoutLineCount = function(){
+    return 1 + (this.folded ? 0  : this.foldLines.length);
+};
+#

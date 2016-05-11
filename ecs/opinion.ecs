@@ -1,0 +1,28 @@
+identityComponent: ()
+healthComponent: hundredHealthComponent()
+executeComponent: aliveMakeComponent()
+opinionComponent: ()
+personHeldComponent: ()
+
+createExecutables: [opinionCreateExec()]
+
+--- opinionComponent
+
+successOpinions: ?#{}
+
+--- opinionCreateExec
+
+!inherit executable
+
+execute: #opinionCreateExec
+buttonKeys: ?[]
+
+#
+var opinionCreateExec = function(entity, world){
+    _.each(this.buttonKeys, function(key){
+        var buttonKey = mangleIdentityWithTrait(key, entity.personHeldComponent.personHeld);
+        var button = makeEcs(buttonKey);
+        world.addEntity(button);
+    });
+};
+#

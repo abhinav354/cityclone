@@ -1,0 +1,16 @@
+!inherit currencyStore
+
+dayResponseComponent: refreshCurrencyDayResponseComponent()
+focusCostComponent: ()
+
+--- refreshCurrencyDayResponseComponent
+
+!inherit dayResponseComponent
+
+!derive dayEnd refreshCurrencyDayEnd
+
+#
+var refreshCurrencyDayEnd = function(entity, world){
+    entity.currencyStoreComponent.currencies = {};
+};
+#

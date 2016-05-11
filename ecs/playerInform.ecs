@@ -1,0 +1,19 @@
+!arg timeToDeath 15
+
+timedDeathComponent: ()
+healthComponent: singleHealthComponent()
+rendererComponents: [playerInformRenderComponent()]
+
+--- playerInformRenderComponent
+
+!inherit rendererComponent
+
+priority: 9
+render: #playerInformRender
+informText:
+
+#
+var playerInformRender = function(rect, entity, ui){
+    ui.addFoldLine('#goals', this.informText, 'completed');
+};
+#

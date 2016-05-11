@@ -1,0 +1,8 @@
+!inherit dayResponseComponent
+!derive dayEnd dayEndKillEntity
+
+#
+var dayEndKillEntity = function(entity, world){
+    entity.healthComponent.health = 0;
+};
+#

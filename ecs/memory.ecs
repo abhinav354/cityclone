@@ -1,0 +1,179 @@
+!inherit builtSource
+
+!arg touchable true
+
+!derive key 'memory_' + args.uid
+!derive name 'memory #' + args.uid
+!arg tags association|
+!arg mapSpawnKey memoryExtension
+
+clickComponent: memoryClickComponent()
+identityComponent: ()
+memoryComponent: ()
+rendererComponents: [memoryRenderComponent(), memoryUiRenderComponent(), sourceInfoRender(), sourceActionRender()]
+sentinelComponent: memorySentinelComponent()
+tickComponent: memoryTickComponent()
+traitStatusComponent: ()
+isaacEntityComponent: memoryIsaacEntityComponent()
+
+createExecutables: [randomOpenPositionExec()]
+
+--- memoryComponent
+
+memoryEmotions:
+memoryActives:
+memoryGoal: ?false
+coreMemory: false
+ticksToCoreMemory: 240
+
+--- memoryRenderComponent
+
+!inherit rendererComponent
+
+priority: 6
+render: #memoryRender
+
+#
+var memoryRender = function(rect, entity){
+    var image = entity.sentinelComponent.active ? getImage('activeHex') : getImage('disabledTower');
+    ctx.drawImage(image, rect[0], rect[1]);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(entity.identityComponent.name, rect[0], rect[1] + 10);
+    _.each(entity.memoryComponent.memoryActives, function(key, i){
+        ctx.fillText(key, rect[0], rect[1] + rect[3] / 4 + 10 + i * 10);
+    });
+    ctx.fillText('Health: ' + Math.floor(entity.healthComponent.health), rect[0] + rect[2] / 2, rect[1] + rect[3])
+    var count = 0;
+    _.each(entity.memoryComponent.memoryEmotions, function(val, key){
+        ctx.strokeStyle = EMOTION_FILLSTYLES[key];
+        for (var chk = 0; chk < val; chk += 5){
+            var x = rect[0] + rect[2] / 4 + count * 4;
+            ctx.beginPath();
+            ctx.moveTo(x, rect[1]);
+            ctx.lineTo(x, rect[1] + rect[3]);
+            ctx.stroke();
+        }
+    });
+};
+#
+
+--- memoryUiRenderComponent
+
+!inherit rendererComponent
+
+priority: 9
+render: #memoryUiRender
+
+#
+var memoryUiRender = function(rect, entity, ui){
+    var uiKey = '#memory_' + entity.identityComponent.uid;
+    ui.addLine(uiKey, 'Health: ' + entity.healthComponent.health);
+    _.each(entity.memoryComponent.memoryEmotions, function(val, key){
+        ui.addFoldLine(uiKey, key + ' - ' + val, 'Emotions');
+    });
+    
+    _.each(entity.memoryComponent.memoryActives, function(active){
+        ui.addFoldLine(uiKey, active, 'Actives');
+    });
+};
+#
+
+--- memoryTickComponent
+
+!inherit tickComponent
+
+tick: #memoryTick
+flashbackTicks: 0
+traitMakeChance: 0.25
+
+#
+var memoryTick = function(entity, world){
+    if (!entity.memoryComponent.coreMemory){
+        entity.healthComponent.health -= 1;
+        entity.ticksToCoreMemory -= 1;
+        if (entity.ticksToCoreMemory <= 0){
+            entity.coreMemory = true;
+        }
+    }
+
+    var flashbackChance = _.chain(entity.memoryComponent.memoryActives)
+        .map(function(sourceKey){
+            return world.isTowerSourceActive(sourceKey) ? entity.healthComponent.health : 0;
+        })
+        .reduce(addFunction, 0)
+        .value() / 100;
+
+    flashbackChance += (100 - world.player.focusComponent.focusUsed) / 1000;
+
+    flashbackChance /= 5;
+    
+    if (Math.random() < flashbackChance){
+        var spawnSourceKey = _.chain(entity.memoryComponent.memoryActives)
+            .map(function(sourceKey){
+                var towerSource = world.entityForKey(sourceKey);
+                return towerSource.towerSourceComponent.sourceTrait;
+            })
+            .sample()
+            .value();
+        
+        var emotion = _.sample(_.keys(entity.memoryComponent.memoryEmotions));
+
+        if (!emotion){
+            return;
+        }
+
+        var emotionsToAdd = simpleDict(emotion, max(Math.floor(entity.memoryComponent.memoryEmotions[emotion] / 25), 1));
+        
+        var flashback = makeEcs('emotionSource', {
+            key: 'flashback',
+            name: 'flashback',
+            spawnSourceKey: spawnSourceKey,
+            emotionsToAdd: emotionsToAdd
+        });
+        world.addEntity(flashback);
+        entity.healthComponent.health += 10;
+
+        if (Math.random() < this.traitMakeChance){
+            makeTraitForEmotion(world, emotion);
+        }
+    }
+};
+#
+
+--- memoryClickComponent
+
+!inherit clickComponent
+
+onClick: #memoryOnClick
+
+#
+var memoryOnClick = function(entity, world, ui){
+    ui.openPanelAtPos('#memory_' + entity.identityComponent.uid, entity.positionComponent);
+    traitOnClick(entity, world, ui);
+};
+#
+
+--- memorySentinelComponent
+
+!inherit sentinelComponent
+
+sentinel: #memorySentinel
+
+#
+var memorySentinel = function(entity, world){
+    return entity.tickComponent.flashbackTicks > 0;
+};
+#
+
+--- memoryIsaacEntityComponent
+
+!inherit isaacEntityComponent
+
+startLifecycle: #memoryStartLifecycle
+memoryButtonKeys: #csvIdentifiers.memoryTowerButton
+
+#
+var memoryStartLifecycle = function(entity, world){
+    this.entitiesMade = makeEntities(entity, world, this.memoryButtonKeys);
+};
+#

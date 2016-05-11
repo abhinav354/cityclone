@@ -1,0 +1,14 @@
+!inherit rendererComponent
+
+priority: 2
+render: #activateRender
+activated: #false
+
+#
+var activateRender = function(rect){
+    if (this.activated){
+        ctx.drawImage(getImage('activeHex'), rect[0], rect[1]);
+        this.activated = false;
+    }
+}
+#

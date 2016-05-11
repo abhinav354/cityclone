@@ -1,0 +1,22 @@
+!inherit personAction
+
+goalTrackComponent: proposeActionGoalTrackComponent()
+
+--- proposeActionGoalTrackComponent
+
+!inherit personActionGoalTrackComponent
+
+!extend successExecutables [marryPerson()]
+
+--- marryPerson
+
+!inherit executable
+
+execute: #marryPerson
+
+#
+var marryPerson = function(entity, world){
+    var person = world.entityForKey(entity.personHeldComponent.personHeld);
+    person.personalityComponent.addOpinionToPersonality('married');
+};
+#

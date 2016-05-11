@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>City</title>
+  </head>
+  <body>
+    <table border="1">
+      <tr><td>
+          <div id="game">
+            <canvas id="canvas" width="1024" height="768" align="center"></canvas>
+          </div> 
+        </td><td align="top">
+          <div id="ui">
+            <div id="will"></div>
+            <div id="currentBuildState"></div>
+            <hr />
+            <div id="buttonHeader"></div>
+            <hr />
+            <div id="buttonControls"></div>
+            <hr />
+            <div id="towers"></div>
+            <hr />
+            <div id="controls"></div>
+            <hr />
+            <div id="activeControl"></div>
+            <hr />
+            <div id="items"></div>
+            <hr />
+            <div id="selectActions"></div>
+            <hr />
+            <div id="activatables"></div>
+            <hr />
+            <div id="squashes"></div>
+            <hr />
+            <div id="boosts"></div>
+            <hr />
+            <div id="spells"></div>
+            <hr />
+          </div>
+        </td>
+    </tr></table>
+    <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="underscore-min.js"></script>
+    <script type="text/javascript" src="ecs.js"></script>
+    <script type="text/javascript" src="std.js"></script>
+    <script type="text/javascript" src="hexMap.js"></script>
+    <script type="text/javascript" src="city.js"></script>
+    <script type="text/javascript" src="stdMain.js"></script>
+  </body>
+</html>

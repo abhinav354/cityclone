@@ -1,0 +1,68 @@
+identityComponent: ()
+buttonControlComponent: traitButtonControlComponent()
+healthComponent: singleHealthComponent()
+rendererComponents: [traitButtonRender()]
+
+--- traitButtonControlComponent
+
+!inherit controlComponent
+
+traitCost:
+traitKey:
+traitExtKey: #args.traitKey + '_ext'
+
+canMakeEntity: #canBuildTrait
+makeEntity: #buildTrait
+wrappedFunction: #undefined
+checkMakePos: #traitButtonCheckMakePos
+
+#
+var canBuildTrait = function(world){
+    if (!world.player.calculatedCurrencyComponent.satisfiesCurrencyReq(this.traitCost)){
+        return false;
+    }
+
+    return true;
+};
+
+var buildTrait = function(world, pos){
+    var key = world.entityForKey(this.traitKey) ? this.traitExtKey : this.traitKey;
+    var entity = makeEcs(key, {
+        x: pos[0],
+        y: pos[1]
+    });
+    world.addCost('built ' + entity.identityComponent.name, this.traitCost);
+    return entity;
+};
+
+var traitButtonCheckMakePos = function(world, pos){
+    return !world.isPosTaken(pos);
+}
+#
+
+--- traitButtonRender
+
+!inherit rendererComponent
+
+priority: 8
+render: #traitButtonRender
+
+#
+var traitButtonRender = function(rect, entity, ui){
+    if (entity.buttonControlComponent.wrappedFunction === undefined){
+        entity.buttonControlComponent.wrappedFunction = makeButtonWrappedFunction(entity, ui.world);
+    }
+    
+    var line = {
+        line: [
+            {
+                buttonFunction: entity.buttonControlComponent.wrappedFunction,
+                text: entity.identityComponent.name + ' (' + dictString(entity.buttonControlComponent.traitCost) + ')',
+                disabled: !entity.buttonControlComponent.canMakeEntity(ui.world)
+            }
+        ]
+    };
+
+    ui.addLine('#self', line);
+};
+#

@@ -1,0 +1,3 @@
+key,name,traits,spawnSourceKey,emotionsToAdd,qualityRange,createModifiers,personFailHealthDiff
+talkRequestItem,Talk Request,,adult,,,,-5
+choreRequestItem,Chore Request,,adult,,,,-10

@@ -1,0 +1,3 @@
+!inherit healthComponent
+
+!arg health 100

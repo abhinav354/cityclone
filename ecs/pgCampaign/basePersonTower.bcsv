@@ -1,0 +1,3 @@
+key,name,damageMultipliers,currency,emotionsToAdd,entities,disableTimes,traits,icon,image,damage
+talkTower,talk,anger:1|joy:1|sadness:1|fear:1|disgust:1,social:2|closure:1,,learnPop:5|talkFun:10|saidWrong:5,early morning|night,talk,TALK,,15
+sadTalkTower,sad talk,sadness:3,social:1,sadness:1,saidWrong:20|talkFun:5,early morning|night,talk,TALK,blueTower,15

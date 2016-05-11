@@ -1,0 +1,3 @@
+health:
+maxHealth: health
+damageFactor: ?1

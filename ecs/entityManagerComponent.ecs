@@ -1,0 +1,26 @@
+getManageLevel: #
+canMakeManagedEntity: #
+managedEntityCount: #
+entitiesPerLevel: 1
+maxEntityCount: #
+
+#
+var managedEntityCount = function(entity, world){
+    return _.filter(world.entities, function(worldEntity){
+        return worldEntity.managedComponent && worldEntity.managedComponent.managerKey == entity.identityComponent.key;
+    }).length;
+};
+
+var getManageLevel = function(entity, world){
+    return Math.floor(min(this.managedEntityCount(entity, world) / this.entitiesPerLevel, 5));
+};
+
+var canMakeManagedEntity = function(entity, world){
+    return this.managedEntityCount(entity, world) < this.maxEntityCount(entity);
+};
+
+var maxEntityCount = function(entity){
+    var level = entity.experienceComponent.getXpLevel(entity);
+    return level * this.entitiesPerLevel;
+};
+#

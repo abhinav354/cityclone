@@ -1,0 +1,11 @@
+key,name,towerCost,tags
+choreButton,chore,will:-100,adult|
+exerciseButton,exercise,will:-100,adult|
+meditateButton,meditate,will:-100,adult|
+meetPersonButton,meet person,will:-100,holcomb|
+travelButton,travel,will:-100,holcomb|
+chessButton,chess,will:-100,lovesChess|
+spyButton,spy,will:-100,agent|
+relaxButton,relax,will:-100,holcomb|
+bombButton,bomb,will:-100,agent|
+playButton,play,will:-100,adult|

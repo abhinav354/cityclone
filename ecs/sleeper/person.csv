@@ -1,0 +1,7 @@
+key,name,unknownPersonalityTraits,knownPersonalityTraits
+personA,Person A,racist|,adult|holcomb
+personB,Person B,racist|lovesChess,adult|holcomb
+personC,Person C,racist|,adult|holcomb
+personD,Person D,,adult|holcomb
+agentE,Agent E,,adult|holcomb
+TargetA,Target A,,adult|holcomb

@@ -1,0 +1,17 @@
+sentinelComponent: emotionSentinelComponent()
+activeEntityComponent: ()
+
+--- emotionSentinelComponent
+
+!inherit sentinelComponent
+
+emotionSentinel:
+
+sentinel: #emotionSentinelCheck
+
+#
+var emotionSentinelCheck = function(entity, world){
+    var tags = emotionTags(world.player);
+    return _.contains(tags, this.emotionSentinel);
+};
+#

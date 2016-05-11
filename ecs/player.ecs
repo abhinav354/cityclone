@@ -1,0 +1,97 @@
+calculatedCurrencyComponent: ()
+dayResponseComponent: ()
+focusComponent: ()
+keyPressComponent: playerKeyPressComponent()
+rendererComponents: [playerRenderComponent()]
+serializeComponent: playerSerializeComponent()
+traitMarkingComponent: ()
+
+!derive dayEnd playerDayEnd
+
+#
+var playerDayEnd = function(entity, world){
+    entity.calculatedCurrencyComponent.currencies = {};
+};
+#
+
+--- calculatedCurrencyComponent
+
+!inherit currencyStoreComponent
+
+!arg factors flow:0.5
+
+factors:
+
+--- playerRenderComponent
+
+!inherit rendererComponent
+
+priority: 8
+render: #playerRender
+dayControlFunctions: #undefined
+
+#
+var playerRender = function(rect, entity, ui){
+    if (this.dayControlFunctions === undefined){
+        this.dayControlFunctions = {};
+        var that = this;
+        _.each(['pause', 'toggle', 'nextDay'], function(key){
+            that.dayControlFunctions[key] = function(){ ui[key](); };
+        });
+    }
+    ui.addLine('#calculatedCurrency', dictString(entity.calculatedCurrencyComponent.currencies));
+    ui.addLine('#focusWill', 'FOCUS: ' + entity.focusComponent.focusUsed + '/' + entity.focusComponent.focusMax);
+    ui.addLine('#day', {
+        line: _.map(this.dayControlFunctions, function(val, key){
+            return {
+                text: key,
+                buttonFunction: val
+            };
+        })
+    });
+};
+
+var dictString = function(dict){
+    return _.reduce(dict, function(memo, val, key){
+        var lineString = key + ' - ' + val;
+        return memo ? (memo + '\n' + lineString) : lineString;
+    }, '');
+};
+#
+
+--- playerSerializeComponent
+
+serialize: #playerSerialize
+
+#
+var playerSerialize = function(entity){
+    entity.rendererComponents[0].dayControlFunctions = undefined;
+};
+#
+
+--- playerKeyPressComponent
+
+!inherit keyPressComponent
+
+handleKeyPress: #playerHandleKeyPress
+
+#
+var playerHandleKeyPress = function(key, entity, ui){
+    var keyDict = {
+        48: ui.pause,
+        49: ui.normalSpeed,
+        50: ui.fastSpeed,
+        51: ui.vfastSpeed,
+        32: ui.pause
+    };
+    var fn = keyDict[key];
+    if (fn){
+        fn();
+    }
+};
+#
+
+--- traitMarkingComponent
+
+storedEmotion: #dictFromPairs(_.map(KEY_EMOTIONS, function(key){ return [key, 0]; }))
+emotionCountToReset: 10000

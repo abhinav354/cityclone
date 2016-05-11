@@ -1,0 +1,9 @@
+focusCost: ?0
+focusActive: #
+
+#
+var focusActive = function(entity){
+    return (!entity.itemActionComponent || (entity.itemActionComponent && entity.itemActionComponent.slottedItem)) &&
+        (!entity.sentinelComponent || entity.sentinelComponent.active);
+}
+#

@@ -1,0 +1,16 @@
+!inherit rendererComponent
+
+priority: 9
+render: #hitRender
+wasHit: #false
+
+#
+var hitRender =  function(rect, entity){
+    if (this.wasHit){
+        var emotionRect = getEmotionRect(rect, entity);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(emotionRect[0], emotionRect[1], emotionRect[2], emotionRect[3]);
+        this.wasHit = false;
+    }
+};
+#

@@ -1,0 +1,2 @@
+key,name,towerCost,towerKey,sourceKey
+talkButton,talk,will:-100,talkTower,talkSource

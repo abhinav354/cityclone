@@ -1,0 +1,32 @@
+dayCounterComponent: ()
+rendererComponents: [dayRenderComponent()]
+healthComponent: singleHealthComponent()
+
+--- dayCounterComponent
+
+!arg ticks 120
+
+ticks: 
+impulseTicks: ticks
+getPartOfDay: #getPartOfDay
+
+#
+var getPartOfDay = function(){
+    var partsOfDay = ['early morning', 'late morning', 'afternoon', 'evening', 'night'];
+    var index = Math.floor((this.impulseTicks - this.ticks) / (this.impulseTicks / partsOfDay.length));
+    return partsOfDay[index];
+};
+#
+
+--- dayRenderComponent
+
+!inherit rendererComponent
+
+priority: 7
+render: #dayRender
+
+#
+var dayRender = function(rect, entity, ui){ 
+    ui.addLine('#day', entity.dayCounterComponent.getPartOfDay() + ' ' + entity.dayCounterComponent.ticks);
+};
+#

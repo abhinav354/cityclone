@@ -1,0 +1,20 @@
+key,name,items,currency,consumeCheck,towerEffect,entitiesToMake,focusCost,entitiesToHeal,makeMemoryChance,startCost
+findHouse,Find House,findHouseItem|,travel:150,1,,rentMaker|,40,,1,
+findJob,Find Job,findJobItem|,travel:150,1,,driveCabItem|,40,,1,
+meetPersonAction,Meet,meetPersonItem|,meetPerson:150,1,,meetPersonItem|,40,,0.5,
+choreAction,Clean,choreItem|,chores:50,1,,,20,,0.05,
+exerciseAction,Exercise,exerciseItem|,exercise:250,1,,exerciseItem|,40,,0.05,
+meditateAction,Meditate,meditateItem|,meditate:300,1,,meditateItem|,20,,0.05,
+driveCabAction,Drive,driveCabItem|,travel:300,1,,driveCabItem|cash,40,,0.1,
+chessAction,Play,chessItem|,chess:300,1,,chessItem|,40,,0.1,
+spyAction,Spy,spyItem|,spy:100,1,,spyItem|reportItem|spyFear,80,,1,
+chessMatchAction,Play Match,chessMatchItem|,chess:250,1,,chessMatchItem|,80,chessProject:40,0.25,
+relaxAction,Relax,relaxItem|,relax:300,1,,relaxItem|,40,,0.05,cash:-10
+getEvidenceAction,Discover,getEvidenceItem|,travel:100,1,,evidenceItem|,80,,1,
+destroyEvidence,Destroy,evidenceItem|,travel:250,1,fear:2,confessionItem|,80,,1,
+buyRingAction,Buy,buyRingItem|,travel:100,1,,ringItem|,40,,1,cash:-500
+mission1Action,Spy,mission1Item|,spy:250,1,,mission2Item|confession,80,,1,
+mission2Action,Deliver,mission2Item|,travel:250,1,fear:2,mission3Item|confession,80,,1,
+mission3Action,Bomb,mission3Item|,bomb:250,1,fear:4,confession|,100,,1,
+playAction,Play,playItem|,play:300,1,,playItem|,40,,0.05,
+rememberAction,Remember,rememberItem|,remember:300,1,,rememberItem|,20,,0,

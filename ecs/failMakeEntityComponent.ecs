@@ -1,0 +1,5 @@
+!inherit makeEntityComponent
+
+!default failEntities []
+
+entitiesToMake: failEntities

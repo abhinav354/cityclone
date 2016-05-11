@@ -1,0 +1,82 @@
+!arg x 0
+!arg y 0
+!derive draggable false
+
+absolutePositionComponent: ()
+controlPanelComponent: ()
+keyPressComponent: controlPanelKeyPressComponent()
+rendererComponents: [controlPanelRenderComponent()]
+uiClickComponent: controlPanelClickComponent()
+
+--- controlPanelComponent
+
+panelKeys: ["#day", "#goals", "#calculatedCurrency", "#focusWill", "#spells", "#towers", "#actions"]
+
+--- controlPanelRenderComponent
+
+!inherit rendererComponent
+
+priority: 9
+render: #controlPanelRender
+
+#
+var controlPanelRender = function(rect, entity, ui){
+    ctx.fillStyle = '#666666';
+    var width = 125;
+    ctx.fillRect(rect[0], rect[1], width, entity.controlPanelComponent.panelKeys.length * 16);
+    entity.absolutePositionComponent.size = [width, entity.controlPanelComponent.panelKeys.length * 16];
+    ctx.fillStyle = '#ffffff';
+    _.each(entity.controlPanelComponent.panelKeys, function(key, i){
+        ctx.fillText(key, 0, (i + 1) * 16);
+    });
+};
+#
+
+
+--- controlPanelClickComponent
+
+uiClick: #controlPanelClick
+
+#
+var controlPanelClick = function(pos, entity, ui){
+    var panelKey = entity.controlPanelComponent.panelKeys[Math.floor(pos[1] / 16)];
+    var infoPanel = ui.getPanel(panelKey);
+    flipPanel(infoPanel, ui);
+};
+
+var flipPanel = function(infoPanel, ui){
+    if (infoPanel.panelComponent.closed){
+        ui.showPanel(infoPanel);
+    }
+    else{
+        infoPanel.panelComponent.closed = true;
+        infoPanel.panelComponent.minimized = true;
+    }
+};
+#
+
+--- controlPanelKeyPressComponent
+
+!inherit keyPressComponent
+
+handleKeyPress: #controlPanelHandleKeyPress
+
+#
+var controlPanelHandleKeyPress = function(key, entity, ui){
+    var panelDict = {
+        68: '#day',
+        71: '#goals',
+        67: '#calculatedCurrency',
+        70: '#focusWill',
+        83: '#spells',
+        84: '#towers',
+        65: '#actions',
+        72: '#self'
+    };
+    var panelKey = panelDict[key];
+    if (panelKey !== undefined){
+        var infoPanel = ui.getPanel(panelKey);
+        flipPanel(infoPanel, ui);
+    }
+};
+#

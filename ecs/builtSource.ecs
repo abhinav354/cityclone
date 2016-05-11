@@ -1,0 +1,199 @@
+!inherit source
+
+!default health 75
+
+entityManagerComponent: ()
+mapSpawnComponent: builtSourceMapSpawnComponent()
+uniqueComponent: builtSourceUniqueComponent()
+isaacEntityComponent: ()
+experienceComponent: ()
+
+!extend rendererComponents [sourceInfoRender(), sourceActionRender()]
+
+--- builtSourceUniqueComponent
+
+uniqueDuplicateEvent: #builtSourceUniqueDuplicateEvent
+
+#
+var builtSourceUniqueDuplicateEvent = function(entity, orig, world){
+    orig.healthComponent.health += 5;
+    return false;
+};
+#
+
+--- builtSourceMapSpawnComponent
+
+!inherit mapSpawnComponent
+
+!default mapSpawnKey args.key + '_ext'
+
+mapSpawnChance: #builtSourceMapSpawnChance
+mapSpawnPos: #builtSourceMapSpawnPos
+
+shouldExpand: false
+mapPostSpawn: #builtSourceMapPostSpawn
+
+#
+var builtSourceMapSpawnChance = function(entity, world){
+    return (this.shouldExpand && entity.positionComponent.defaultSource === undefined) ? 1 : 0;
+};
+
+var builtSourceMapSpawnPos = function(entity, world){
+    var adjPos = _.chain(world.entities)
+        .filter(function(chkEntity){
+            return chkEntity.identityComponent &&
+                (chkEntity.identityComponent.key === entity.identityComponent.key ||
+                 (chkEntity.sourceExtensionComponent && 
+                  chkEntity.sourceExtensionComponent.sourceKey === entity.identityComponent.key));
+        })
+        .map(function(posEntity){
+            return world.hexMap.neighbors(posEntity.positionComponent.x, posEntity.positionComponent.y);
+        })
+        .flatten(true)
+        .filter(function(neighbor){
+            return world.isPosBuildable(neighbor);
+        })
+        .sample()
+        .value();
+    return adjPos ? adjPos : world.randomOpenPosition();
+};
+
+var builtSourceMapPostSpawn = function(entity, world){
+    this.shouldExpand = false;
+};
+#
+
+--- sourceInfoRender
+
+!inherit rendererComponent
+
+priority: 6
+render: #sourceInfoRender
+
+#
+var sourceInfoRender = function(rect, entity, ui){
+    var towerLine = 'Towers: ' + entity.entityManagerComponent.managedEntityCount(entity, ui.world) + '/' + 
+        entity.entityManagerComponent.maxEntityCount(entity);
+    ui.addLine('#' + entity.identityComponent.key, towerLine, true);
+    ui.addLine('#' + entity.identityComponent.key, 'xp: ' + entity.healthComponent.health);
+};
+#
+
+--- sourceActionRender
+
+!inherit rendererComponent
+
+priority: 8
+render: #sourceActionRender
+itemActionFunctions: #{}
+makeItemActionFunction: #
+
+
+#
+var sourceActionRender = function(rect, entity, ui){
+    var that = this;
+    
+    var sources = _.chain(ui.world.entities)
+        .filter(function(buttonEntity){
+            return buttonEntity.buttonControlComponent && 
+                _.contains(buttonEntity.identityComponent.tags, entity.identityComponent.key);
+        })
+        .map(function(entity){
+            return ui.world.entityForKey(entity.buttonControlComponent.sourceKey);
+        })
+        .value();
+
+    
+    var items = _.filter(ui.world.entities, function(entity){
+        return entity.itemComponent;
+    });
+
+    var itemCounts = _.countBy(items, function(item){
+        return item.identityComponent.key;
+    });
+
+    
+    items = _.uniq(items, false, function(item){
+        return item.identityComponent.key;
+    });
+
+    _.chain(this.itemActionFunctions)
+        .map(function(val, key){ return key; })
+        .filter(function(key){
+            return !_.any(ui.world.entities, function(entity){
+                return entity.identityComponent && entity.identityComponent.uid == key;
+            });
+        })
+        .each(function(keyToRemove){
+            that.itemActionFunctions[keyToRemove] = undefined;
+        });
+
+    var actions = _.map(sources, function(source){
+        return _.chain(source.towerSourceComponent.towerActions)
+            .map(function(actionKey){
+                return ui.world.entityForKey(mangleIdentityWithTrait(actionKey, entity.identityComponent.key));
+            })
+            .filter(_.identity)
+            .value();
+    });
+
+    var actionsForItem = function(item){
+        return _.map(actions, function(actionList){
+            return _.filter(actionList, function(action){
+                return action.itemActionComponent.checkItemForAction(item, entity);
+            });
+        });
+    };
+
+    var foldPanel = ui.addFoldLine('#' + entity.identityComponent.key, undefined, '#actions');
+    foldPanel.foldLines = _.chain(items)
+        .map(function(item){
+            var itemActions = actionsForItem(item);
+
+            var itemKey = item.identityComponent.key;
+            var itemName = ((itemCounts[itemKey] > 1) ? ('' + itemCounts[itemKey] + 'x') : '') + item.identityComponent.name;
+
+            return _.chain(itemActions)
+                .map(function(actionList, i){
+                    var towerSource = sources[i].identityComponent.key;
+
+                    return _.map(actionList, function(action){
+                        var line = {
+                            line: [
+                                itemName,
+                                {
+                                    buttonFunction: that.makeItemActionFunction(action, item, towerSource, ui),
+                                    text: action.identityComponent.name
+                                },
+                                minDictString(action.goalTrackComponent.currency)
+                            ]
+                        };
+                        ui.addFoldLine('#actions', line, '#' + entity.identityComponent.key);
+                        return line;
+                    });
+                })
+                .flatten()
+                .value();
+        })
+        .flatten()
+        .value();
+};
+
+var makeItemActionFunction = function(action, item, towerSource, ui){
+    var itemActionFunctionKey = action.identityComponent.uid;
+    
+    if (this.itemActionFunctions[itemActionFunctionKey]){
+        return this.itemActionFunctions[itemActionFunctionKey];
+    }
+    
+    var itemActionFunction = function(){
+        if (!ui.world.player.calculatedCurrencyComponent.satisfiesCurrencyReq(action.itemActionComponent.startCost)){
+            return;
+        }
+        var sourceEntity = ui.world.entityForKey(towerSource);
+        ui.startAction(item, action, sourceEntity);
+    };
+    this.itemActionFunctions[itemActionFunctionKey] = itemActionFunction;
+    return itemActionFunction;
+};
+#

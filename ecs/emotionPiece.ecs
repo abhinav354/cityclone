@@ -1,0 +1,59 @@
+identityComponent: ()
+positionComponent: ()
+focusCostComponent: ()
+rendererComponents: [emotionPieceRenderComponent()]
+emotionPieceComponent: ()
+healthComponent: hundredHealthComponent()
+createExecutables: [findAdjacentPosition()]
+
+!derive adjacentTo PARAMETERS.self
+
+--- emotionPieceComponent
+
+emotion:
+
+--- emotionPieceRenderComponent
+
+!inherit rendererComponent
+
+priority: 8
+render: #emotionPieceRender
+
+#
+var emotionPieceRender = function(rect, entity){
+    ctx.fillStyle = EMOTION_FILLSTYLES[entity.emotionPieceComponent.emotion];
+    ctx.beginPath();
+    ctx.arc(rect[0] + rect[2] / 2, rect[1] + rect[3] / 2, entity.healthComponent.health * rect[2] / 150, 0, 2 * Math.PI);
+    ctx.fill();
+};
+#
+
+--- findAdjacentPosition
+
+!inherit executable
+
+adjacentTo:
+
+execute: #findAdjacentPosition
+
+#
+var findAdjacentPosition = function(entity, world){
+    var baseEntity = world.entityForKey(this.adjacentTo);
+    var positions = [[baseEntity.positionComponent.x, baseEntity.positionComponent.y]];
+    for (var i = 0; i < 5; i++){
+        positions = _.map(positions, function(position){ return world.hexMap.neighbors(position[0], position[1]); });
+        var position = _.chain(positions)
+            .flatten(true)
+            .filter(function(position){
+                return world.isPosTaken(position);
+            })
+            .sample()
+            .value();
+        if (position){
+            entity.positionComponent.x = position[0];
+            entity.positionComponent.y = position[1];
+            return;
+        }
+    }
+};
+#

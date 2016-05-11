@@ -1,0 +1,55 @@
+!default tags _.keys(args.currency)
+
+activatableComponent: ()
+focusCostComponent: ()
+identityComponent: ()
+rendererComponents: [focusRenderComponent()]
+sentinelComponent: activatableSentinelComponent()
+tickEmotionComponent: ()
+uniqueComponent: ()
+
+createExecutables: [activatableUpdateExec()]
+killExecutables: [activatableUpdateExec()]
+
+--- activatableComponent
+
+activated: #false
+activateActions: ?#deriveActivateActions(args)
+canActivate: ?#trueFunction
+
+#
+var deriveActivateActions = function(args){
+    var currencyKeys = _.keys(args.currency);
+    return _.chain(allArgs)
+        .filter(function(args){
+            return args.items &&
+                _.intersection(currencyKeys, _.keys(args.currency)).length > 0;
+        })
+        .map(function(args){
+            return args.key;
+        })
+        .value();
+};
+#
+
+--- activatableSentinelComponent
+
+sentinel: #activatableSentinel
+
+#
+var activatableSentinel = function(entity, world){
+    return entity.activatableComponent.activated; //also make sure that there is an action here
+};
+#
+
+--- activatableUpdateExec
+
+!inherit executable
+
+execute: #activatableUpdateExecute
+
+#
+var activatableUpdateExecute = function(entity, world){
+    world.game.ui.toResetActivatables = true;
+};
+#

@@ -1,0 +1,44 @@
+healthComponent: singleHealthComponent()
+tickComponent: bulletTickComponent()
+rendererComponents: [bulletRenderComponent()]
+
+--- bulletTickComponent
+
+!inherit tickComponent
+
+tick: #bulletTick
+
+#
+var bulletTick = function(entity){
+    entity.healthComponent.health = 0;
+};
+#
+
+--- bulletRenderComponent
+
+!inherit rendererComponent
+
+priority: 9
+render: #bulletRender
+bulletSourcePos:
+bulletEndPos:
+damage:
+bonus:
+
+
+#
+var bulletRender = function(rect, entity, ui){
+    var startRect = ui.world.hexMap.cellForPosComp(this.bulletSourcePos).rect;
+    var endRect = ui.world.hexMap.cellForPosComp(this.bulletEndPos).rect;
+    ctx.strokeStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.moveTo(startRect[0] + startRect[2] / 2, startRect[1] + startRect[3] / 2);
+    var endPos = [endRect[0] + endRect[2] / 2, endRect[1] + endRect[3] / 2];
+    ctx.lineTo(endPos[0], endPos[1]);
+    ctx.stroke();
+    ctx.fillStyle = (this.bonus > 2) ? '#ff0000' :
+        (this.bonus > 1) ? '#ffff00' : 
+        '#ffffff';
+    ctx.fillText('' + this.damage + '*' + this.bonus + '=' + this.damage * this.bonus, endPos[0], endPos[1] - 10);
+};
+#

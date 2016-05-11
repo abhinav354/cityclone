@@ -1,0 +1,12 @@
+!inherit rendererComponent
+
+priority: 9
+render: #focusRender
+
+#
+var focusRender = function(rect, entity, ui){
+    if (entity.focusCostComponent.focusActive(entity)){
+        ui.addFoldLine('#focusWill', entity.identityComponent.name + ' - ' + entity.focusCostComponent.focusCost, 'focus costs');
+    }
+};
+#

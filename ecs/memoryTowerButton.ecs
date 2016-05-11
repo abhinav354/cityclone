@@ -1,0 +1,4 @@
+!inherit towerButton
+
+!derive tags args.source ? [args.source.identityComponent.key] : []
+!derive managerKey args.source ? args.source.identityComponent.key : undefined

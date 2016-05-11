@@ -1,0 +1,2 @@
+key,name,towerKey,towerActions
+talkSource,talk source,talkTower,smallTalkAction|coolCodeAction|chatWorkAction|closureTalkAction|talkFriendAction|talkRequestAction

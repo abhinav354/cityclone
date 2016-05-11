@@ -1,0 +1,37 @@
+!arg name path
+!arg key path
+
+identityComponent: ()
+rendererComponents: [pathButtonRenderComponent()]
+
+--- pathButtonRenderComponent
+
+!inherit rendererComponent
+
+priority: 8
+render: #pathButtonRender
+pathButtonFunction: #undefined
+
+#
+var pathButtonRender = function(rect, entity, ui){
+    if (!this.pathButtonFunction){
+        this.pathButtonFunction = function(){
+            var world = ui.world;
+            if (world.currentPath){
+                world.resetCurrents();
+            }
+            else{
+                world.resetCurrents();
+                world.currentPath = true;
+            }
+        };
+    }
+    ui.addLine('#self', {
+        buttonFunction: this.pathButtonFunction,
+        text: 'path (' + dictString(PATH_COST) + ')',
+        disabled: !ui.world.player.calculatedCurrencyComponent.satisfiesCurrencyReq(PATH_COST)
+    });
+    ui.addLine('#self', '');
+};
+#
+

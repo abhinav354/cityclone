@@ -1,0 +1,46 @@
+!inherit tower
+
+!arg damage 0
+
+damageComponent: walkDamageComponent()
+tickComponent: walkTickComponent()
+
+--- walkDamageComponent
+
+!inherit damageComponent
+
+triggerComponents: [#walkTrigger]
+
+#
+var walkTrigger = function(damageComp, entity, target, world){
+    var effectKey = 'walkDot' + entity.identityComponent.uid;
+    if (!_.contains(target.damageableComponent.damageEffects, effectKey)){
+        target.damageableComponent.damageEffects.push(effectKey);
+    }
+};
+#
+
+--- walkTickComponent
+
+!inherit tickComponent
+
+impulseTicks: 5
+ticks: 5
+
+tick: #walkTick
+
+#
+var walkTick = function(entity, world){
+    if (tickComp(this)){
+        var effectKey = 'walkDot' + entity.identityComponent.uid;
+        _.chain(world.entities)
+            .filter(function(damageEntity){
+                return damageEntity.damageableComponent &&
+                    _.contains(damageEntity.damageableComponent.damageEffects, effectKey);
+            })
+            .each(function(damageEntity){
+                damageEntity.healthComponent.health -= 10;
+            });
+    }
+};
+#

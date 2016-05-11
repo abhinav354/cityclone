@@ -1,0 +1,28 @@
+!inherit currencyStore
+
+!derive emotion args.source.damageableComponent.emotion
+!derive currencies simpleDict(args.emotion, 20)
+
+healthComponent: hundredHealthComponent()
+positionComponent: ()
+rendererComponents: [currencyStoreRenderComponent(), mapEmotionRenderComponent()]
+damageableComponent: ()
+
+--- mapEmotionRenderComponent
+
+!inherit rendererComponent
+
+priority: 7
+render: #mapEmotionRender
+
+#
+var mapEmotionRender = function(rect, entity){
+    var emotion = entity.damageableComponent.emotion;
+    ctx.fillStyle = {
+        anger: '#ff0000',
+        sadness: '#0000ff',
+        joy: '#ffff00'
+    }[emotion];
+    ctx.fillText(emotion, rect[0] + rect[2] / 2, rect[1] + 3 * rect[3] / 4);
+};
+#

@@ -1,0 +1,15 @@
+!arg name gameStateEntity
+!arg key gameStateEntity
+
+identityComponent: ()
+emotionStateSystemComponent: ()
+rendererSystemComponent: ()
+uniqueComponent: assertUniqueComponent()
+
+--- emotionStateSystemComponent
+
+lastTags: []
+
+--- rendererSystemComponent
+
+currentRenderState: "default"

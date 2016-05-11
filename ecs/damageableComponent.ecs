@@ -1,0 +1,10 @@
+emotion:
+traits: ?[]
+getAll: #getAllEmotionParts
+damageEffects: []
+
+#
+var getAllEmotionParts = function(){
+    return [this.emotion].concat(this.traits);
+}
+#

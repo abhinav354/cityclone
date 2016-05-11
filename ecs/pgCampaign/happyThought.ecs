@@ -1,0 +1,17 @@
+!inherit spell
+
+!derive spellFn happyThoughtFn
+
+#
+var happyThoughtFn = function(hexPos, entity, world){
+    var creep = makeEcs('creep', {
+        x: hexPos[0],
+        y: hexPos[1],
+        emotion: 'joy',
+        name: 'happy thought',
+        traits: [],
+        source: entity
+    });
+    world.addEntity(creep);
+};
+#

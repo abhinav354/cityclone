@@ -1,0 +1,149 @@
+!derive origKey args.key
+
+!derive key mangleIdentityWithTrait(args.key, args.traitKey)
+
+identityComponent: ()
+healthComponent: singleHealthComponent()
+itemActionComponent: ()
+goalTrackComponent: itemActionGoalTrackComponent()
+focusCostComponent: ()
+
+rendererComponents: [focusRenderComponent()]
+
+--- itemActionComponent
+
+consumeCheck:
+towerEffect:
+items:
+startCost: ?#{will: -25}
+xp: #_.reduce(args.currency, addFunction, 0) / 25
+slottedItem: #undefined
+
+checkItemForAction: #
+
+#
+var checkItemForAction = function(item, trait){
+    return _.contains(this.items, item.identityComponent.key) ||
+        _.intersection(this.items, item.identityComponent.tags).length > 0;
+};
+#
+
+--- itemActionGoalTrackComponent
+
+!inherit goalTrackComponent
+
+currency:
+origCurrency: #_.clone(args.currency)
+checkCompleted: #checkItemActionCompleted
+percentCompleted: #itemActionPercentCompleted
+
+!extend successExecutables [makeEntityComponent(), itemActionSuccessComponent(), healEntities(), itemActionMakeMemory()]
+
+#
+var itemActionPercentCompleted = function(){
+    var currency = _.reduce(this.currency, addFunction, 0);
+    var origCurrency = _.reduce(this.origCurrency, addFunction, 0);
+    return Math.floor(100 * (1 - (currency / origCurrency)));
+};
+#
+
+#
+var checkItemActionCompleted = function(player, entity, world){
+    return _.all(this.currency, function(val){ return val <= 0; });
+};
+#
+
+--- itemActionSuccessComponent
+
+!inherit executable
+
+execute: #itemActionSuccessExecute
+emotionSourceKey: ?#PARAMETERS.emotionSource
+currencyStoreKey: "dailyCurrencyStore"
+
+#
+var itemActionSuccessExecute = function(entity, world){
+    var item = entity.itemActionComponent.slottedItem;
+    if (entity.itemActionComponent.consumeCheck){
+        item.healthComponent.health = 0;
+    }
+    var converters = _.filter(world.entities, function(worldEntity){
+        return worldEntity.currencyConverterComponent;
+    });
+    
+    var emotionsToAdd = {};
+    var currencyToAdd = {};
+    
+    var makeEmotionSource = false;
+    var makeCurrencySource = false;
+
+    _.each(converters, function(converter){
+        var currencyVal = entity.goalTrackComponent.origCurrency[converter.currencyConverterComponent.currencyKey];
+        if (!currencyVal){
+            return;
+        }
+        _.each(converter.currencyConverterComponent.emotionsConversion, function(val, key){
+            if (emotionsToAdd[key] === undefined){
+                emotionsToAdd[key] = 0;
+            }
+            emotionsToAdd[key] += val * currencyVal;
+            makeEmotionSource = true;
+        });
+        _.each(converter.currencyConverterComponent.currencyConversion, function(val, key){
+            if (currencyToAdd[key] === undefined){
+                currencyToAdd[key] = 0;
+            }
+            currencyToAdd[key] += val * currencyVal;
+            makeCurrencySource = true;
+        });
+    });
+
+    for (var key in emotionsToAdd){
+        emotionsToAdd[key] = Math.floor(emotionsToAdd[key] / 100);
+    }
+
+    for (var key in currencyToAdd){
+        currencyToAdd[key] = Math.floor(currencyToAdd[key]);
+    }
+
+    if (makeEmotionSource){
+        var emotionSource = makeEcs(this.emotionSourceKey, {
+            key: 'completed_emotion_' + entity.identityComponent.key,
+            name: 'Completed ' + entity.identityComponent.name + ' ' + item.identityComponent.name,
+            spawnSourceKey: item.itemComponent.spawnSourceKey,
+            emotionsToAdd: emotionsToAdd
+        });
+        world.addEntity(emotionSource);
+    }
+
+    if (makeCurrencySource){
+        var currencyStore = makeEcs(this.currencyStoreKey, {
+            key: 'completed_currency_' + entity.identityComponent.key,
+            name: 'Completed ' + entity.identityComponent.name + ' ' + item.identityComponent.name,
+            currencies: currencyToAdd
+        });
+        world.addEntity(currencyStore);
+    }
+};
+#
+
+--- itemActionMakeMemory
+
+!inherit executable
+
+execute: #itemActionMakeMemory
+makeMemoryChance: ?0
+
+#
+var itemActionMakeMemory = function(entity, world){
+    if (Math.random() < this.makeMemoryChance){
+        var memory = makeEcs(PARAMETERS.memory, {
+            memoryEmotions: getMemoryEmotions(world),
+            memoryActives: getMemoryActives(world),
+            memoryGoal: entity.identityComponent.key,
+            health: _.reduce(entity.goalTrackComponent.origCurrency, addFunction, 0) + 50
+        });
+        world.addEntity(memory);
+    }
+};
+#

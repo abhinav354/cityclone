@@ -1,0 +1,52 @@
+!inherit wish
+
+goalTrackComponent: entityKillTrackComponent()
+notificationComponents: [entityKillNotificationComponent()]
+
+--- entityKillTrackComponent
+
+!inherit goalTrackComponent
+
+checkCompleted: #checkForEntityKillSuccess
+
+entitiesToKill:
+completed: false
+getInnerSt: #getEntityKillInnerSt
+
+#
+var checkForEntityKillSuccess = function(){
+    return this.completed;
+};
+
+var getEntityKillInnerSt = function(){
+    return _.chain(this.entitiesToKill)
+        .map(function(val, key){
+            return (val === 1) ? key : (key + '-' + val);
+        })
+        .reduce(function(memo, st){
+            return memo ? (memo + ', ' + st) : st;
+        }, false)
+        .value();
+};
+#
+
+--- entityKillNotificationComponent
+
+!inherit notificationComponent
+
+
+notificationFunctions: #{killedEntities: entityKillNotification}
+
+#
+var entityKillNotification = function(entity, args){
+    _.each(args.killedEntities, function(entityKey){
+        if (entity.goalTrackComponent.entitiesToKill[entityKey]){
+            entity.goalTrackComponent.entitiesToKill[entityKey] -= 1;
+        }
+    });
+
+    entity.goalTrackComponent.completed = _.all(entity.goalTrackComponent.entitiesToKill, function(val){
+        return val <= 0;
+    });
+};
+#

@@ -1,0 +1,15 @@
+!inherit executable
+
+entitiesToKill: ?#[]
+
+execute: #executeKillEntities
+
+#
+var executeKillEntities = function(entity, world){
+    _.each(this.entitiesToKill, function(key){
+        _.each(world.entitiesForKey(key), function(entity){
+            entity.healthComponent.health = 0;
+        });
+    });
+};
+#

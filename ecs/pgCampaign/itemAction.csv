@@ -1,0 +1,21 @@
+key,name,items,currency,consumeCheck,towerEffect,entitiesToMake,focusCost,entitiesToHeal,makeMemoryChance
+unpackingAction,Unpack,unpackingItem|,chores:150,1,chores:1,,20,,1
+lightWorkAction,Complete,lightWorkItem|,work:500,1,,,40,game:10,1
+stretchWorkAction,Complete,stretchWorkItem|,work:500,1,,,40,game:10,1
+designProblemAction,Complete,designProblemItem|,work:1000,1,,designSolutionItem|,40,,1
+bugAction,Solve,bugItem|,work:250,1,,,40,,0.25
+designSolutionAction,Solve,designSolutionItem|,work:1000,1,,,40,feature:100,1
+featureItemAction,Discuss,featureItem|,work:1000,1,,,40,game:60,1
+designSolutionPolishAction,Polish,designSolutionPolishItem|,work:500,0,,,40,feature:40,0.5
+discoverPopAction,Discover,discoverPop|,pop culture:50,1,,discoverPop|learnPop,20,,0
+walkAction,Walk,walkItem|,walk:100,1,,walkItem|,20,,0.1
+diaryAction,Write,diaryItem|,diary:100,1,,diaryItem|,40,,0.1
+closureAction,Solve,association|,closure:300,1,,selfAware:5,40,,0
+choreAction,Clean,choreItem|,chores:50,1,,,20,,0.1
+readBookAction,Read,bookItem|,pop culture:100,1,,,40,,0.8
+watchTvAction,Watch,tvItem|,pop culture:400,1,,,20,,0.8
+memoryAction,Ponder,memoryItem|,closure:250,1,,,20,,0
+choreRequestAction,Handle,choreRequestItem|,chores:50,1,,,20,,0.1
+exerciseAction,Exercise,exerciseItem|,exercise:250,1,,exerciseItem|,40,,0.1
+findFeatureAction,Find,findFeatureItem|,work:250,1,,feature|,40,,1
+meditateAction,Meditate,meditateItem|,meditate:100,1,,meditateItem|,20,,0.1

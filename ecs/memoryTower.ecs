@@ -1,0 +1,3 @@
+!inherit tower
+
+!derive sourceTrait args.source ? args.source.identityComponent.key : undefined

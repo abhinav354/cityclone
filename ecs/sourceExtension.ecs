@@ -1,0 +1,89 @@
+!derive touchable true
+
+clickComponent: sourceExtensionClickComponent()
+currencyStoreComponent: ()
+identityComponent: ()
+positionComponent: ()
+rendererComponents: [sourceExtensionRenderComponent()]
+sentinelComponent: sourceExtensionSentinelComponent()
+sourceExtensionComponent: ()
+mapSpawnComponent: sourceExtensionMapSpawnComponent()
+
+--- sourceExtensionComponent
+
+sourceKey:
+
+--- sourceExtensionSentinelComponent
+
+!inherit sentinelComponent
+
+sentinel: #sourceExtensionSentinel
+
+#
+var sourceExtensionSentinel = function(entity, world){
+    var source = world.entityForKey(entity.sourceExtensionComponent.sourceKey);
+    return source.traitStatusComponent.traitActive;
+};
+#
+
+--- sourceExtensionRenderComponent
+
+!inherit rendererComponent
+
+priority: 6
+render: #sourceExtensionRender
+
+#
+var sourceExtensionRender = function(rect, entity){
+    var image = entity.sentinelComponent.active ? getImage('blueTower') : getImage('disabledTower');
+    ctx.drawImage(image, rect[0], rect[1]);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(entity.identityComponent.name, rect[0] + rect[2] / 3, rect[1] + rect[3] / 2);
+};
+#
+
+--- sourceExtensionClickComponent
+
+!inherit clickComponent
+
+onClick: #sourceExtensionOnClick
+
+#
+var sourceExtensionOnClick = function(entity, world, ui){
+    ui.openPanelAtPos('#' + entity.sourceExtensionComponent.sourceKey, entity.positionComponent);
+};
+#
+
+--- sourceExtensionMapSpawnComponent
+
+!inherit mapSpawnComponent
+
+mapSpawnChance: #sourceExtensionMapSpawnChance
+mapSpawnPos: #sourceExtensionMapSpawnPos
+mapSpawnKey: #sourceExtensionMapSpawnKey
+mapSpawnBaseChance: 0.03
+
+#
+var sourceExtensionMapSpawnChance = function(entity, world){
+    var chk = world.isPosEmptyTrait([entity.positionComponent.x, entity.positionComponent.y],
+                                    entity.sourceExtensionComponent.sourceKey);
+    return chk ? this.mapSpawnBaseChance : 0;
+};
+
+var sourceExtensionMapSpawnPos = function(entity, world){
+    return [entity.positionComponent.x, entity.positionComponent.y];
+};
+
+var sourceExtensionMapSpawnKey = function(entity, world){
+    return _.chain(world.entities)
+        .filter(function(worldEntity){
+            return worldEntity.buttonControlComponent &&
+                worldEntity.buttonControlComponent.managerKey == entity.sourceExtensionComponent.sourceKey;
+        })
+        .map(function(worldEntity){
+            return worldEntity.buttonControlComponent.towerKey;
+        })
+        .sample()
+        .value();
+};
+#
